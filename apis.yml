@@ -7,11 +7,164 @@ tags:
   - Fast Food
   - Restaurants
   - Food & Beverage
-description: 'An American fast-food restaurant chain specializing in chicken sandwiches and operating over 3,000 locations across the United States. Known for its customer service, closed-on-Sunday policy, and consistently high sales per restaurant.'
+  - Loyalty
+  - Mobile Ordering
+  - Catering
+description: >-
+  Chick-fil-A is an American fast-food restaurant chain specializing in
+  chicken sandwiches and operating over 3,000 locations across the United
+  States. Known for customer service and a closed-on-Sunday policy,
+  Chick-fil-A operates the Chick-fil-A One tiered loyalty program, the
+  Chick-fil-A mobile app for ordering and rewards, the catering platform,
+  and eGift Cards.
 created: '2026-05-05'
-modified: '2026-05-05'
+modified: '2026-05-16'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: chickfila:chick-fil-a-mobile-app
+    name: Chick-fil-A Mobile App
+    tags:
+      - Mobile App
+      - Mobile Ordering
+      - Loyalty
+      - Pickup
+    humanURL: https://www.chick-fil-a.com/mobile-app
+    properties:
+      - url: https://www.chick-fil-a.com/mobile-app
+        type: Documentation
+    description: >-
+      The Chick-fil-A mobile app provides mobile ordering, in-restaurant
+      pickup, curbside, drive-thru express, and delivery ordering. The app
+      manages Chick-fil-A One loyalty membership, points balance, tier
+      progress, available rewards, order history, customization, and
+      digital receipts.
+
+  - aid: chickfila:chick-fil-a-one
+    name: Chick-fil-A One
+    tags:
+      - Loyalty
+      - Rewards
+      - Tiered Membership
+    humanURL: https://www.chick-fil-a.com/one
+    properties:
+      - url: https://www.chick-fil-a.com/one
+        type: Documentation
+    description: >-
+      Chick-fil-A One is the tiered loyalty rewards program with four
+      levels (Member, Silver, Red, Signature) offering 10-13 points per
+      dollar, food rewards starting at 200 points, member-tier benefits
+      including reward gifting, Backstage Tour invitations, exclusive
+      rewards, and birthday rewards.
+
+  - aid: chickfila:chick-fil-a-ordering
+    name: Chick-fil-A Online Ordering
+    tags:
+      - Online Ordering
+      - Pickup
+      - Delivery
+      - Drive-Thru
+    humanURL: https://order.chick-fil-a.com/
+    properties:
+      - url: https://order.chick-fil-a.com/
+        type: Documentation
+    description: >-
+      Chick-fil-A's online ordering platform at order.chick-fil-a.com
+      supports pickup, drive-thru, curbside, dine-in, and delivery
+      ordering. Integrated with the Chick-fil-A One loyalty program
+      for points earning and reward redemption.
+
+  - aid: chickfila:chick-fil-a-catering
+    name: Chick-fil-A Catering
+    tags:
+      - Catering
+      - Groups
+      - Trays
+    humanURL: https://www.chick-fil-a.com/catering
+    properties:
+      - url: https://www.chick-fil-a.com/catering
+        type: Documentation
+    description: >-
+      Chick-fil-A's catering platform for ordering party trays, packaged
+      meals, entrees, and sides for groups. Supports same-day and
+      advance scheduling, with pickup or delivery via local restaurant
+      coordination.
+
+  - aid: chickfila:chick-fil-a-egift-cards
+    name: Chick-fil-A eGift Cards
+    tags:
+      - Gift Cards
+      - Digital Gifts
+      - Payments
+    humanURL: https://www.chick-fil-a.com/gift-cards
+    properties:
+      - url: https://www.chick-fil-a.com/gift-cards
+        type: Documentation
+    description: >-
+      Chick-fil-A eGift Cards in denominations from $5 to $100 are
+      deliverable via email and redeemable in-restaurant, through the
+      mobile app, and via the online ordering platform.
+
+  - aid: chickfila:chick-fil-a-restaurant-locator
+    name: Chick-fil-A Restaurant Locator
+    tags:
+      - Locations
+      - Store Locator
+      - Restaurants
+    humanURL: https://www.chick-fil-a.com/locations
+    properties:
+      - url: https://www.chick-fil-a.com/locations
+        type: Documentation
+    description: >-
+      Chick-fil-A restaurant locator for finding nearby locations with
+      filters for services such as drive-thru, dine-in, delivery,
+      catering, and curbside pickup, plus hours and contact info.
 common:
   - type: Website
     url: https://www.chick-fil-a.com/
+  - type: Login
+    url: https://www.chick-fil-a.com/sign-in
+  - type: SignUp
+    url: https://www.chick-fil-a.com/sign-up
+  - type: Ordering
+    url: https://order.chick-fil-a.com/
+  - type: Features
+    data:
+      - name: Mobile Ordering
+        description: Order ahead via the mobile app for pickup, drive-thru, curbside, dine-in, or delivery.
+      - name: Tiered Loyalty
+        description: Chick-fil-A One offers four-tier loyalty status with escalating point rates and benefits.
+      - name: Point Earning and Redemption
+        description: Earn 10 to 13 points per dollar; redeem from 200 points for food rewards.
+      - name: Gifted Rewards
+        description: Silver and higher tier members can gift earned rewards to other members.
+      - name: Birthday Rewards
+        description: Automatic birthday reward delivered through the mobile app.
+      - name: Catering Orders
+        description: Group catering ordering with same-day and advance options.
+      - name: eGift Cards
+        description: Email-deliverable digital gift cards in multiple denominations.
+      - name: Restaurant Locator
+        description: Find nearby Chick-fil-A locations with services and hours.
+  - type: UseCases
+    data:
+      - name: Mobile Pickup
+        description: Order ahead through the app for in-store, drive-thru, or curbside pickup.
+      - name: Loyalty Engagement
+        description: Earn and redeem points across visits with tier progression.
+      - name: Group Catering
+        description: Office, school, and event catering through the catering platform.
+      - name: Family Meal Ordering
+        description: Order family-sized meals and trays for at-home dining.
+      - name: Delivery Orders
+        description: Home delivery via partnered delivery services.
+  - type: Integrations
+    data:
+      - name: DoorDash
+        description: Third-party delivery integration for home delivery of Chick-fil-A orders.
+      - name: Uber Eats
+        description: Third-party delivery integration via Uber Eats marketplace.
+      - name: Grubhub
+        description: Third-party delivery integration via Grubhub marketplace.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
