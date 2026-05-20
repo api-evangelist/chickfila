@@ -119,6 +119,10 @@ apis:
       filters for services such as drive-thru, dine-in, delivery,
       catering, and curbside pickup, plus hours and contact info.
 common:
+  - type: GitHubOrganization
+    url: https://github.com/chick-fil-a
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/chick-fil-a-corporate
   - type: Website
     url: https://www.chick-fil-a.com/
   - type: Login
