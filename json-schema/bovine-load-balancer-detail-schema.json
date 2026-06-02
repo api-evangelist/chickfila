@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LoadBalancerDetail",
+  "description": "Detailed load balancer information.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-load-balancer-detail-schema.json",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "type": "object",
+      "properties": {
+        "AccountNum": {
+          "type": "string",
+          "example": "123456789012"
+        }
+      }
+    },
+    "LoadBalancer": {
+      "type": "object",
+      "properties": {
+        "LoadBalancerName": {
+          "type": "string",
+          "example": "prod-web-elb"
+        },
+        "Subnets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "subnet-0a1b2c3d4e5f60718"
+          }
+        }
+      }
+    }
+  }
+}

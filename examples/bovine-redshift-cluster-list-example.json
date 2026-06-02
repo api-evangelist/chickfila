@@ -1,0 +1,9 @@
+{
+  "Clusters": [
+    {
+      "Region": "us-east-1",
+      "ClusterIdentifier": "analytics-prod",
+      "AccountAlias": "prod-platform"
+    }
+  ]
+}

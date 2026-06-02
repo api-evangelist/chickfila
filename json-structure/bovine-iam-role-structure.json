@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-iam-role-structure.json",
+  "name": "IamRole",
+  "description": "An IAM role record for an account.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "The IAM role name.",
+      "example": "platform-deploy-role"
+    }
+  }
+}

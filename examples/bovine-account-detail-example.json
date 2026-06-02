@@ -1,0 +1,15 @@
+{
+  "Account": {
+    "accountNum": "123456789012",
+    "owner": "Platform Team",
+    "alias": "prod-platform",
+    "email": "aws-prod@example.com",
+    "iam": 18,
+    "publicIP": 6,
+    "riskysg": 2,
+    "unusedsg": 5,
+    "bastion": "bastion-prod-1",
+    "risk_score": -1,
+    "admins": 3
+  }
+}

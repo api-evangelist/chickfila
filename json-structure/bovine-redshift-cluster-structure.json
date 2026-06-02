@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-redshift-cluster-structure.json",
+  "name": "RedshiftCluster",
+  "description": "A Redshift cluster record.",
+  "type": "object",
+  "properties": {
+    "Region": {
+      "type": "string",
+      "example": "us-east-1"
+    },
+    "ClusterIdentifier": {
+      "type": "string",
+      "example": "analytics-prod"
+    },
+    "AccountAlias": {
+      "type": "string",
+      "example": "prod-platform"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IamUserSummary",
+  "description": "A summary IAM user record for an account.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-iam-user-summary-schema.json",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "type": "object",
+      "properties": {
+        "accountNum": {
+          "type": "string",
+          "example": "123456789012"
+        }
+      }
+    },
+    "Username": {
+      "type": "string",
+      "description": "The IAM username.",
+      "example": "jsmith"
+    }
+  }
+}

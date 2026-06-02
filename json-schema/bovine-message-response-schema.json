@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MessageResponse",
+  "description": "Generic message wrapper used for not-found and informational responses.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-message-response-schema.json",
+  "type": "object",
+  "properties": {
+    "Message": {
+      "type": "string",
+      "description": "A human-readable message.",
+      "example": "Account not found."
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-s3-bucket-detail-structure.json",
+  "name": "S3BucketDetail",
+  "description": "Detailed S3 bucket information including object listing.",
+  "type": "object",
+  "properties": {
+    "Bucket": {
+      "type": "object",
+      "properties": {
+        "BucketName": {
+          "type": "string",
+          "example": "my-app-logs-bucket"
+        },
+        "Objects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Key": {
+                "type": "string",
+                "example": "logs/2026-06-01.json"
+              },
+              "Encryption": {
+                "type": "string",
+                "example": "AES256"
+              },
+              "StorageType": {
+                "type": "string",
+                "example": "STANDARD"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

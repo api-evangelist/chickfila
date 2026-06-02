@@ -1,0 +1,1244 @@
+openapi: 3.0.3
+info:
+  title: Chick-fil-A BOVINE API
+  description: >-
+    BOVI(n)E — Building Operational Visibility Into (n) Environments — is a
+    serverless, single-page application open-sourced by Chick-fil-A
+    (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across
+    all of an enterprise's AWS accounts in a multi-account strategy. The backend
+    runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and
+    audit reports in S3. The API surfaces account inventory, IAM users and roles,
+    EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/
+    Redshift databases, S3 buckets, and compliance audit reports for security and
+    governance teams. This specification was generated from the project's
+    serverless.yml route definitions and Python Lambda handlers.
+  version: '1.0'
+  x-generated-from: documentation
+  x-source-url: https://github.com/chick-fil-a/bovine
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: See repository
+    url: https://github.com/chick-fil-a/bovine
+servers:
+  - url: https://api.example.com
+    description: >-
+      Deployment-specific AWS API Gateway endpoint. BOVINE is self-hosted; the
+      host is configured per-deployment via the serverless domainName setting.
+tags:
+  - name: System
+    description: Health and configuration operations.
+  - name: Accounts
+    description: AWS account inventory and metadata operations.
+  - name: Summary
+    description: Aggregate counts across accounts.
+  - name: Identity
+    description: IAM users and roles across accounts.
+  - name: Compute
+    description: EC2 instances and public IP address operations.
+  - name: Networking
+    description: Security groups and load balancers.
+  - name: Databases
+    description: RDS, DynamoDB, and Redshift inventory.
+  - name: Storage
+    description: S3 bucket inventory and object listing.
+  - name: Compliance
+    description: Compliance rules and audit report operations.
+paths:
+  /api/ping:
+    get:
+      operationId: getPing
+      summary: Chick-fil-A Ping the BOVINE Service
+      description: Health-check style endpoint that dispatches a named operation and returns a response payload.
+      tags:
+        - System
+      parameters:
+        - name: operation
+          in: query
+          required: false
+          description: The named operation to dispatch.
+          schema:
+            type: string
+          example: status
+      responses:
+        '200':
+          description: Service responded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /login:
+    get:
+      operationId: getLogin
+      summary: Chick-fil-A Initiate Login
+      description: Initiates the authentication flow for the BOVINE single-page application.
+      tags:
+        - System
+      responses:
+        '200':
+          description: Login flow initiated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/dashboard:
+    get:
+      operationId: getDashboard
+      summary: Chick-fil-A Get Dashboard Summary
+      description: Returns the aggregate dashboard summary statistics across all monitored AWS accounts.
+      tags:
+        - System
+      responses:
+        '200':
+          description: Dashboard summary returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/rules:
+    get:
+      operationId: getComplianceRules
+      summary: Chick-fil-A List Compliance Rules
+      description: Lists all enabled compliance rules grouped by AWS service, sourced from the rules S3 bucket.
+      tags:
+        - Compliance
+      responses:
+        '200':
+          description: Compliance rules returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ComplianceRule'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/reports:
+    get:
+      operationId: getReports
+      summary: Chick-fil-A List Compliance Reports
+      description: Lists available compliance audit reports stored in the reports S3 bucket.
+      tags:
+        - Compliance
+      responses:
+        '200':
+          description: Reports returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Report'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/reports/run:
+    get:
+      operationId: runReport
+      summary: Chick-fil-A Run Compliance Audit Report
+      description: Triggers an asynchronous compliance audit Lambda that generates a new compliance report.
+      tags:
+        - Compliance
+      responses:
+        '200':
+          description: Audit report run invoked.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunReportResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/summary/accountcount:
+    get:
+      operationId: getAccountCount
+      summary: Chick-fil-A Get Account Count
+      description: Returns the total number of AWS accounts tracked in BOVINE.
+      tags:
+        - Summary
+      responses:
+        '200':
+          description: Account count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/summary/usercount:
+    get:
+      operationId: getUserCount
+      summary: Chick-fil-A Get User Count
+      description: Returns aggregate IAM user counts across accounts, optionally scoped to a single account.
+      tags:
+        - Summary
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: User count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/summary/instancecount:
+    get:
+      operationId: getInstanceCount
+      summary: Chick-fil-A Get Instance Count
+      description: Returns aggregate EC2 instance counts across accounts, optionally scoped to a single account.
+      tags:
+        - Summary
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: Instance count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/accounts:
+    get:
+      operationId: getAccounts
+      summary: Chick-fil-A List Accounts
+      description: Lists all AWS accounts tracked in the BOVINE DynamoDB accounts table.
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: Accounts returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountListItem'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/account:
+    get:
+      operationId: getAccount
+      summary: Chick-fil-A Get Account
+      description: Returns detailed metadata and risk posture for a single AWS account, looked up by account number or alias.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: Account detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDetail'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/addAccount:
+    post:
+      operationId: addAccount
+      summary: Chick-fil-A Add Account
+      description: Adds an AWS account to the BOVINE accounts table. The account number must be a 12-digit numeric string.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        description: AWS account metadata to add.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddAccountRequest'
+      responses:
+        '200':
+          description: Account added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddAccountResponse'
+        '500':
+          description: Incorrect account number or account not added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddAccountResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/users:
+    get:
+      operationId: getUsers
+      summary: Chick-fil-A List IAM Users
+      description: Lists IAM users for a given account.
+      tags:
+        - Identity
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: IAM users returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IamUserSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/user:
+    get:
+      operationId: getUser
+      summary: Chick-fil-A Get IAM User
+      description: Returns detailed IAM user information including managed policies and access keys for a given account and user.
+      tags:
+        - Identity
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - name: user
+          in: query
+          required: true
+          description: The IAM username to look up.
+          schema:
+            type: string
+          example: jsmith
+      responses:
+        '200':
+          description: IAM user detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IamUserDetail'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/roles:
+    get:
+      operationId: getRoles
+      summary: Chick-fil-A List IAM Roles
+      description: Lists IAM roles for a given account.
+      tags:
+        - Identity
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: IAM roles returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IamRole'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/publicips:
+    get:
+      operationId: getPublicIps
+      summary: Chick-fil-A List Public IPs
+      description: Lists Elastic IP / public IP addresses and their associated instances and network interfaces for a given account.
+      tags:
+        - Compute
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Public IPs returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PublicIp'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/instances:
+    get:
+      operationId: getInstances
+      summary: Chick-fil-A List EC2 Instances
+      description: Lists EC2 instances for a given account, annotated with cluster/workload associations.
+      tags:
+        - Compute
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: EC2 instances returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ec2Instance'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/instance:
+    get:
+      operationId: getInstance
+      summary: Chick-fil-A Get EC2 Instance
+      description: Returns detailed information for a single EC2 instance, including public IP, subnet, and ELB associations.
+      tags:
+        - Compute
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - name: instance
+          in: query
+          required: true
+          description: The EC2 instance ID to look up.
+          schema:
+            type: string
+          example: i-0a1b2c3d4e5f60718
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: EC2 instance detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ec2InstanceDetail'
+        '404':
+          description: Instance not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/securitygroups:
+    get:
+      operationId: getSecurityGroups
+      summary: Chick-fil-A List Security Groups
+      description: Lists EC2 security groups for a given account and region.
+      tags:
+        - Networking
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Security groups returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityGroupList'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/securitygroup:
+    get:
+      operationId: getSecurityGroup
+      summary: Chick-fil-A Get Security Group
+      description: Returns detailed inbound and outbound rules and associated instances for a single security group.
+      tags:
+        - Networking
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - name: securitygroup
+          in: query
+          required: true
+          description: The security group ID to look up.
+          schema:
+            type: string
+          example: sg-0a1b2c3d4e5f60718
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Security group detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityGroupDetail'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/elbs:
+    get:
+      operationId: getElbs
+      summary: Chick-fil-A List Load Balancers
+      description: Lists elastic load balancers for a given account and region.
+      tags:
+        - Networking
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Load balancers returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadBalancerList'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/elb:
+    get:
+      operationId: getElb
+      summary: Chick-fil-A Get Load Balancer
+      description: Returns detailed information for a single load balancer including subnets and gateway routing.
+      tags:
+        - Networking
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - name: elb
+          in: query
+          required: true
+          description: The load balancer name to look up.
+          schema:
+            type: string
+          example: prod-web-elb
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Load balancer detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadBalancerDetail'
+        '404':
+          description: Load balancer not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/databases:
+    get:
+      operationId: getDatabases
+      summary: Chick-fil-A List RDS Databases
+      description: Lists RDS database instances for a given account and region.
+      tags:
+        - Databases
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: RDS databases returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RdsDatabase'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/dynamotables:
+    get:
+      operationId: getDynamoTables
+      summary: Chick-fil-A List DynamoDB Tables
+      description: Lists DynamoDB tables for a given account and region.
+      tags:
+        - Databases
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: DynamoDB tables returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamoTableList'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/redshiftclusters:
+    get:
+      operationId: getRedshiftClusters
+      summary: Chick-fil-A List Redshift Clusters
+      description: Lists Redshift clusters for a given account and region.
+      tags:
+        - Databases
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Redshift clusters returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedshiftClusterList'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/s3:
+    get:
+      operationId: getS3Buckets
+      summary: Chick-fil-A List S3 Buckets
+      description: Lists S3 buckets for a given account, flagging globally accessible buckets.
+      tags:
+        - Storage
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: S3 buckets returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/S3Bucket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/bucket:
+    get:
+      operationId: getS3Bucket
+      summary: Chick-fil-A Get S3 Bucket
+      description: Returns detailed information and object listing for a single S3 bucket.
+      tags:
+        - Storage
+      parameters:
+        - $ref: '#/components/parameters/AccountParam'
+        - name: bucket
+          in: query
+          required: true
+          description: The S3 bucket name to look up.
+          schema:
+            type: string
+          example: my-app-logs-bucket
+        - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: S3 bucket detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3BucketDetail'
+        '404':
+          description: Bucket or account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
+    RegionParam:
+      name: region
+      in: query
+      required: false
+      description: The AWS region to scope the request to.
+      schema:
+        type: string
+        default: us-east-1
+      example: us-east-1
+  schemas:
+    PingResponse:
+      type: object
+      description: Response from the BOVINE ping/dispatch endpoint.
+      properties:
+        response:
+          type: string
+          description: The dispatched operation response payload.
+          example: ok
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    DashboardSummary:
+      type: object
+      description: Aggregate dashboard statistics across all monitored AWS accounts.
+      properties:
+        Summary:
+          type: object
+          description: Aggregate counts and risk metrics for the dashboard.
+          properties:
+            AccountsCount:
+              type: integer
+              description: Total number of AWS accounts tracked.
+              example: 42
+            InstancesCount:
+              type: integer
+              description: Total number of EC2 instances across accounts.
+              example: 318
+            UsersCount:
+              type: integer
+              description: Total number of IAM users across accounts.
+              example: 127
+    CountSummary:
+      type: object
+      description: A summary count wrapper returned by the count endpoints.
+      properties:
+        Summary:
+          type: object
+          description: The aggregate count payload.
+          properties:
+            AccountsCount:
+              type: integer
+              description: Count of accounts.
+              example: 42
+            UsersCount:
+              type: integer
+              description: Count of IAM users.
+              example: 127
+            InstancesCount:
+              type: integer
+              description: Count of EC2 instances.
+              example: 318
+        Time:
+          type: number
+          format: double
+          description: Elapsed time in seconds to compute the count.
+          example: 1.42
+    ComplianceRule:
+      type: object
+      description: An enabled compliance rule grouped by AWS service.
+      properties:
+        Service:
+          type: string
+          description: The AWS service the rule applies to.
+          example: s3
+        Rule:
+          type: object
+          description: The compliance rule definition.
+          properties:
+            name:
+              type: string
+              description: Rule name.
+              example: s3-public-read-prohibited
+            description:
+              type: string
+              description: Rule description.
+              example: Checks that S3 buckets do not allow public read access.
+            priority:
+              type: integer
+              description: Rule priority.
+              example: 1
+    Report:
+      type: object
+      description: A compliance audit report stored in S3.
+      properties:
+        Report:
+          type: string
+          description: The report identifier (S3 key prefix).
+          example: 2026-06-01
+        LastModified:
+          type: string
+          description: The last-modified timestamp of the report object.
+          example: '2026-06-01 14:30:00+00:00'
+    RunReportResponse:
+      type: object
+      description: Response indicating an audit report run was invoked.
+      properties:
+        Response:
+          type: integer
+          description: The Lambda invocation status code.
+          example: 202
+    AccountListItem:
+      type: object
+      description: A summary AWS account record from the accounts table.
+      properties:
+        accountNum:
+          type: string
+          description: The 12-digit AWS account number.
+          example: '123456789012'
+        alias:
+          type: string
+          description: The account alias.
+          example: prod-platform
+        email:
+          type: string
+          format: email
+          description: The account root contact email.
+          example: aws-prod@example.com
+        AccountOwner:
+          type: string
+          description: The account owner.
+          example: Platform Team
+        remediate:
+          type: boolean
+          description: Whether automated remediation is enabled for the account.
+          example: false
+    AccountDetail:
+      type: object
+      description: Detailed AWS account metadata and risk posture.
+      properties:
+        Account:
+          type: object
+          description: The account detail payload.
+          properties:
+            accountNum:
+              type: string
+              description: The 12-digit AWS account number.
+              example: '123456789012'
+            owner:
+              type: string
+              description: The account owner.
+              example: Platform Team
+            alias:
+              type: string
+              description: The account alias.
+              example: prod-platform
+            email:
+              type: string
+              format: email
+              description: The account root contact email.
+              example: aws-prod@example.com
+            iam:
+              type: integer
+              description: Number of IAM users in the account.
+              example: 18
+            publicIP:
+              type: integer
+              description: Number of public IP addresses in the account.
+              example: 6
+            riskysg:
+              type: integer
+              description: Number of risky security groups detected.
+              example: 2
+            unusedsg:
+              type: integer
+              description: Number of unused security groups detected.
+              example: 5
+            bastion:
+              type: string
+              description: The bastion host identifier, if present.
+              example: bastion-prod-1
+            risk_score:
+              type: integer
+              description: The computed risk score for the account.
+              example: -1
+            admins:
+              type: integer
+              description: Number of admin group members.
+              example: 3
+    AddAccountRequest:
+      type: object
+      description: Request body to add an AWS account to BOVINE.
+      required:
+        - accountNum
+      properties:
+        accountNum:
+          type: string
+          description: The 12-digit AWS account number.
+          example: '123456789012'
+        alias:
+          type: string
+          description: The account alias.
+          example: prod-platform
+        email:
+          type: string
+          format: email
+          description: The account root contact email.
+          example: aws-prod@example.com
+        AccountOwner:
+          type: string
+          description: The account owner.
+          example: Platform Team
+        remediate:
+          type: boolean
+          description: Whether automated remediation is enabled.
+          example: false
+    AddAccountResponse:
+      type: object
+      description: Response from adding an account.
+      properties:
+        response:
+          type: string
+          description: The result of the add operation, or an error message.
+          example: added
+    IamUserSummary:
+      type: object
+      description: A summary IAM user record for an account.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        Username:
+          type: string
+          description: The IAM username.
+          example: jsmith
+    IamUserDetail:
+      type: object
+      description: Detailed IAM user record including policies and access keys.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        User:
+          type: object
+          properties:
+            Username:
+              type: string
+              example: jsmith
+            ManagedPolicies:
+              type: array
+              description: Attached managed policies.
+              items:
+                type: object
+                properties:
+                  ManagedPolicy:
+                    type: string
+                    example: AdministratorAccess
+            AccessKeys:
+              type: array
+              description: Access keys associated with the user.
+              items:
+                type: object
+                properties:
+                  AccessKeyId:
+                    type: string
+                    example: AKIAEXAMPLE1234567
+                  Status:
+                    type: string
+                    example: Active
+    IamRole:
+      type: object
+      description: An IAM role record for an account.
+      properties:
+        Name:
+          type: string
+          description: The IAM role name.
+          example: platform-deploy-role
+    PublicIp:
+      type: object
+      description: A public/Elastic IP address association.
+      properties:
+        PublicIP:
+          type: string
+          description: The public IP address.
+          example: 203.0.113.25
+        InstanceId:
+          type: string
+          description: The associated EC2 instance ID.
+          example: i-0a1b2c3d4e5f60718
+        PrivateIP:
+          type: string
+          description: The associated private IP address.
+          example: 10.0.4.12
+        NetworkInterface:
+          type: string
+          description: The associated network interface ID.
+          example: eni-0a1b2c3d4e5f60718
+    Ec2Instance:
+      type: object
+      description: An EC2 instance record, annotated with cluster/workload association.
+      properties:
+        InstanceId:
+          type: string
+          example: i-0a1b2c3d4e5f60718
+        Cluster:
+          type: string
+          description: The cluster or workload association (ECS, Beanstalk, ASG, etc.).
+          example: ecs-prod-web
+        Region:
+          type: string
+          example: us-east-1
+    Ec2InstanceDetail:
+      type: object
+      description: Detailed EC2 instance information.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        Instance:
+          type: object
+          properties:
+            InstanceId:
+              type: string
+              example: i-0a1b2c3d4e5f60718
+            PublicIpAddress:
+              type: string
+              example: 203.0.113.25
+            SubnetId:
+              type: string
+              example: subnet-0a1b2c3d4e5f60718
+            LoadBalancers:
+              type: array
+              description: ELBs associated with this instance.
+              items:
+                type: string
+                example: prod-web-elb
+    SecurityGroupList:
+      type: object
+      description: A list of security groups for an account.
+      properties:
+        SecurityGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroup'
+    SecurityGroup:
+      type: object
+      description: An EC2 security group record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        GroupId:
+          type: string
+          example: sg-0a1b2c3d4e5f60718
+        GroupName:
+          type: string
+          example: prod-web-sg
+    SecurityGroupDetail:
+      type: object
+      description: Detailed security group including inbound and outbound rules and associated instances.
+      properties:
+        GroupId:
+          type: string
+          example: sg-0a1b2c3d4e5f60718
+        InboundRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroupRule'
+        OutboundRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroupRule'
+        Instances:
+          type: array
+          description: Instances associated with this security group.
+          items:
+            type: object
+            properties:
+              InstanceId:
+                type: string
+                example: i-0a1b2c3d4e5f60718
+              Name:
+                type: string
+                example: prod-web-1
+    SecurityGroupRule:
+      type: object
+      description: A single inbound or outbound security group rule.
+      properties:
+        FromPort:
+          type: integer
+          example: 443
+        ToPort:
+          type: integer
+          example: 443
+        Protocol:
+          type: string
+          example: tcp
+        Cidr:
+          type: string
+          example: 10.0.0.0/16
+    LoadBalancerList:
+      type: object
+      description: A list of load balancers for an account.
+      properties:
+        LoadBalancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+    LoadBalancer:
+      type: object
+      description: An elastic load balancer record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        LoadBalancerName:
+          type: string
+          example: prod-web-elb
+    LoadBalancerDetail:
+      type: object
+      description: Detailed load balancer information.
+      properties:
+        Account:
+          type: object
+          properties:
+            AccountNum:
+              type: string
+              example: '123456789012'
+        LoadBalancer:
+          type: object
+          properties:
+            LoadBalancerName:
+              type: string
+              example: prod-web-elb
+            Subnets:
+              type: array
+              items:
+                type: string
+                example: subnet-0a1b2c3d4e5f60718
+    RdsDatabase:
+      type: object
+      description: An RDS database instance record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        DBName:
+          type: string
+          example: orders
+        Endpoint:
+          type: object
+          description: The RDS endpoint descriptor.
+          properties:
+            Address:
+              type: string
+              example: orders.abc123.us-east-1.rds.amazonaws.com
+            Port:
+              type: integer
+              example: 5432
+        CreateDate:
+          type: string
+          description: The instance creation timestamp.
+          example: '2025-01-15T10:00:00Z'
+        AccountAlias:
+          type: string
+          example: prod-platform
+    DynamoTableList:
+      type: object
+      description: A list of DynamoDB tables for an account.
+      properties:
+        Tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamoTable'
+    DynamoTable:
+      type: object
+      description: A DynamoDB table record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        TableName:
+          type: string
+          example: AWS-Accounts-Table
+    RedshiftClusterList:
+      type: object
+      description: A list of Redshift clusters for an account.
+      properties:
+        Clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RedshiftCluster'
+    RedshiftCluster:
+      type: object
+      description: A Redshift cluster record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        ClusterIdentifier:
+          type: string
+          example: analytics-prod
+        AccountAlias:
+          type: string
+          example: prod-platform
+    S3Bucket:
+      type: object
+      description: An S3 bucket record, flagged if globally accessible.
+      properties:
+        BucketName:
+          type: string
+          example: my-app-logs-bucket
+        Global:
+          type: boolean
+          description: Whether the bucket is globally (publicly) accessible.
+          example: false
+        AccountAlias:
+          type: string
+          example: prod-platform
+    S3BucketDetail:
+      type: object
+      description: Detailed S3 bucket information including object listing.
+      properties:
+        Bucket:
+          type: object
+          properties:
+            BucketName:
+              type: string
+              example: my-app-logs-bucket
+            Objects:
+              type: array
+              items:
+                type: object
+                properties:
+                  Key:
+                    type: string
+                    example: logs/2026-06-01.json
+                  Encryption:
+                    type: string
+                    example: AES256
+                  StorageType:
+                    type: string
+                    example: STANDARD

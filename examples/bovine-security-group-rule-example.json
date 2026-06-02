@@ -1,0 +1,6 @@
+{
+  "FromPort": 443,
+  "ToPort": 443,
+  "Protocol": "tcp",
+  "Cidr": "10.0.0.0/16"
+}

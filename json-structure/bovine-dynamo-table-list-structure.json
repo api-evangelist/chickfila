@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-dynamo-table-list-structure.json",
+  "name": "DynamoTableList",
+  "description": "A list of DynamoDB tables for an account.",
+  "type": "object",
+  "properties": {
+    "Tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A DynamoDB table record.",
+        "properties": {
+          "Region": {
+            "type": "string",
+            "example": "us-east-1"
+          },
+          "TableName": {
+            "type": "string",
+            "example": "AWS-Accounts-Table"
+          }
+        }
+      }
+    }
+  }
+}

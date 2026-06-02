@@ -1,0 +1,266 @@
+vocabulary: 1.0.0
+info:
+  provider: Chick-fil-A
+  description: Unified taxonomy for the Chick-fil-A BOVINE AWS multi-account governance API, mapping operational (OpenAPI) and capability (Naftiko) dimensions.
+  created: '2026-06-02'
+  modified: '2026-06-02'
+operational:
+  apis:
+  - name: Chick-fil-A BOVINE API
+    namespace: bovine
+    version: '1.0'
+    baseUrl: https://api.example.com
+    status: active
+  resources:
+  - name: account
+    api: bovine
+  - name: accountcount
+    api: bovine
+  - name: accounts
+    api: bovine
+  - name: addAccount
+    api: bovine
+  - name: bucket
+    api: bovine
+  - name: dashboard
+    api: bovine
+  - name: databases
+    api: bovine
+  - name: dynamotables
+    api: bovine
+  - name: elb
+    api: bovine
+  - name: elbs
+    api: bovine
+  - name: instance
+    api: bovine
+  - name: instancecount
+    api: bovine
+  - name: instances
+    api: bovine
+  - name: login
+    api: bovine
+  - name: ping
+    api: bovine
+  - name: publicips
+    api: bovine
+  - name: redshiftclusters
+    api: bovine
+  - name: reports
+    api: bovine
+  - name: roles
+    api: bovine
+  - name: rules
+    api: bovine
+  - name: run
+    api: bovine
+  - name: s3
+    api: bovine
+  - name: securitygroup
+    api: bovine
+  - name: securitygroups
+    api: bovine
+  - name: user
+    api: bovine
+  - name: usercount
+    api: bovine
+  - name: users
+    api: bovine
+  actions:
+  - name: add
+    method: POST
+    pattern: write
+  - name: get
+    method: GET
+    pattern: read
+  - name: run
+    method: GET
+    pattern: write
+  schemas:
+    core:
+    - PingResponse
+    - MessageResponse
+    - DashboardSummary
+    - CountSummary
+    - ComplianceRule
+    - Report
+    - RunReportResponse
+    - AccountListItem
+    - AccountDetail
+    - AddAccountRequest
+    - AddAccountResponse
+    - IamUserSummary
+    - IamUserDetail
+    - IamRole
+    - PublicIp
+    - Ec2Instance
+    - Ec2InstanceDetail
+    - SecurityGroupList
+    - SecurityGroup
+    - SecurityGroupDetail
+    - SecurityGroupRule
+    - LoadBalancerList
+    - LoadBalancer
+    - LoadBalancerDetail
+    - RdsDatabase
+    - DynamoTableList
+    - DynamoTable
+    - RedshiftClusterList
+    - RedshiftCluster
+    - S3Bucket
+    - S3BucketDetail
+  parameters:
+    identifiers:
+    - account
+    - user
+    - instance
+    - securitygroup
+    - elb
+    - bucket
+    filters:
+    - region
+    system:
+    - operation
+  authentication:
+    scheme: bearer
+    note: BOVINE uses AWS Cognito auth in front of API Gateway; modeled here as bearer.
+capability:
+  workflows:
+  - name: "Chick-fil-A BOVINE API \u2014 Accounts"
+    file: capabilities/bovine-accounts.yaml
+    domain: Accounts
+    tools: 3
+  - name: "Chick-fil-A BOVINE API \u2014 Compliance"
+    file: capabilities/bovine-compliance.yaml
+    domain: Compliance
+    tools: 3
+  - name: "Chick-fil-A BOVINE API \u2014 Compute"
+    file: capabilities/bovine-compute.yaml
+    domain: Compute
+    tools: 3
+  - name: "Chick-fil-A BOVINE API \u2014 Databases"
+    file: capabilities/bovine-databases.yaml
+    domain: Databases
+    tools: 3
+  - name: "Chick-fil-A BOVINE API \u2014 Identity"
+    file: capabilities/bovine-identity.yaml
+    domain: Identity
+    tools: 3
+  - name: "Chick-fil-A BOVINE API \u2014 Networking"
+    file: capabilities/bovine-networking.yaml
+    domain: Networking
+    tools: 4
+  - name: "Chick-fil-A BOVINE API \u2014 Storage"
+    file: capabilities/bovine-storage.yaml
+    domain: Storage
+    tools: 2
+  - name: "Chick-fil-A BOVINE API \u2014 Summary"
+    file: capabilities/bovine-summary.yaml
+    domain: Summary
+    tools: 3
+  - name: "Chick-fil-A BOVINE API \u2014 System"
+    file: capabilities/bovine-system.yaml
+    domain: System
+    tools: 3
+  personas:
+  - id: cloud-security-engineer
+    name: Cloud Security Engineer
+    description: Audits IAM, security groups, public IPs, and S3 exposure across AWS accounts.
+    workflows:
+    - Identity
+    - Networking
+    - Compute
+    - Storage
+  - id: cloud-governance-lead
+    name: Cloud Governance Lead
+    description: Tracks account inventory, aggregate counts, and compliance reports across the estate.
+    workflows:
+    - Accounts
+    - Summary
+    - Compliance
+  - id: platform-engineer
+    name: Platform Engineer
+    description: Inventories compute, networking, database, and storage resources per account.
+    workflows:
+    - Compute
+    - Networking
+    - Databases
+    - Storage
+  domains:
+  - Accounts
+  - Compliance
+  - Compute
+  - Databases
+  - Identity
+  - Networking
+  - Storage
+  - Summary
+  - System
+  namespaces:
+  - consumed: bovine-accounts
+    rest: bovine-accounts-rest
+    mcp: bovine-accounts-mcp
+  - consumed: bovine-compliance
+    rest: bovine-compliance-rest
+    mcp: bovine-compliance-mcp
+  - consumed: bovine-compute
+    rest: bovine-compute-rest
+    mcp: bovine-compute-mcp
+  - consumed: bovine-databases
+    rest: bovine-databases-rest
+    mcp: bovine-databases-mcp
+  - consumed: bovine-identity
+    rest: bovine-identity-rest
+    mcp: bovine-identity-mcp
+  - consumed: bovine-networking
+    rest: bovine-networking-rest
+    mcp: bovine-networking-mcp
+  - consumed: bovine-storage
+    rest: bovine-storage-rest
+    mcp: bovine-storage-mcp
+  - consumed: bovine-summary
+    rest: bovine-summary-rest
+    mcp: bovine-summary-mcp
+  - consumed: bovine-system
+    rest: bovine-system-rest
+    mcp: bovine-system-mcp
+  binds:
+  - key: BOVINE_TOKEN
+    description: Bearer token for the BOVINE API.
+    workflows:
+    - Accounts
+    - Compliance
+    - Compute
+    - Databases
+    - Identity
+    - Networking
+    - Storage
+    - Summary
+    - System
+crossReference:
+- resource: accounts
+  operations:
+  - getAccounts
+  - getAccount
+  - addAccount
+  workflows:
+  - Accounts
+  personas:
+  - cloud-governance-lead
+- resource: users
+  operations:
+  - getUsers
+  - getUser
+  workflows:
+  - Identity
+  personas:
+  - cloud-security-engineer
+- resource: s3
+  operations:
+  - getS3Buckets
+  - getS3Bucket
+  workflows:
+  - Storage
+  personas:
+  - cloud-security-engineer
+  - platform-engineer

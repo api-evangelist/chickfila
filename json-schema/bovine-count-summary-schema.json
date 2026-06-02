@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CountSummary",
+  "description": "A summary count wrapper returned by the count endpoints.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-count-summary-schema.json",
+  "type": "object",
+  "properties": {
+    "Summary": {
+      "type": "object",
+      "description": "The aggregate count payload.",
+      "properties": {
+        "AccountsCount": {
+          "type": "integer",
+          "description": "Count of accounts.",
+          "example": 42
+        },
+        "UsersCount": {
+          "type": "integer",
+          "description": "Count of IAM users.",
+          "example": 127
+        },
+        "InstancesCount": {
+          "type": "integer",
+          "description": "Count of EC2 instances.",
+          "example": 318
+        }
+      }
+    },
+    "Time": {
+      "type": "number",
+      "format": "double",
+      "description": "Elapsed time in seconds to compute the count.",
+      "example": 1.42
+    }
+  }
+}

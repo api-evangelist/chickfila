@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SecurityGroupList",
+  "description": "A list of security groups for an account.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-security-group-list-schema.json",
+  "type": "object",
+  "properties": {
+    "SecurityGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "An EC2 security group record.",
+        "properties": {
+          "Region": {
+            "type": "string",
+            "example": "us-east-1"
+          },
+          "GroupId": {
+            "type": "string",
+            "example": "sg-0a1b2c3d4e5f60718"
+          },
+          "GroupName": {
+            "type": "string",
+            "example": "prod-web-sg"
+          }
+        }
+      }
+    }
+  }
+}

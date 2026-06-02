@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LoadBalancerList",
+  "description": "A list of load balancers for an account.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-load-balancer-list-schema.json",
+  "type": "object",
+  "properties": {
+    "LoadBalancers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "An elastic load balancer record.",
+        "properties": {
+          "Region": {
+            "type": "string",
+            "example": "us-east-1"
+          },
+          "LoadBalancerName": {
+            "type": "string",
+            "example": "prod-web-elb"
+          }
+        }
+      }
+    }
+  }
+}

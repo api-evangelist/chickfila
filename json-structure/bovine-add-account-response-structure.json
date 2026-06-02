@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-add-account-response-structure.json",
+  "name": "AddAccountResponse",
+  "description": "Response from adding an account.",
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "string",
+      "description": "The result of the add operation, or an error message.",
+      "example": "added"
+    }
+  }
+}

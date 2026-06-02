@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DynamoTable",
+  "description": "A DynamoDB table record.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-dynamo-table-schema.json",
+  "type": "object",
+  "properties": {
+    "Region": {
+      "type": "string",
+      "example": "us-east-1"
+    },
+    "TableName": {
+      "type": "string",
+      "example": "AWS-Accounts-Table"
+    }
+  }
+}

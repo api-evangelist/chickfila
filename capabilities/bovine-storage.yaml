@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "Chick-fil-A BOVINE API \u2014 Storage"
+  description: 'Storage surface of the Chick-fil-A BOVINE AWS governance API. 2 operations. Lead operation: List S3 Buckets. Self-contained Naftiko capability covering one Chick-fil-A business surface.'
+  tags:
+  - Chick-fil-A
+  - BOVINE
+  - Storage
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    BOVINE_TOKEN: BOVINE_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: bovine-storage
+    baseUri: https://api.example.com
+    description: "Chick-fil-A BOVINE API \u2014 Storage business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.BOVINE_TOKEN}}'
+    resources:
+    - name: api-s3
+      path: /api/s3
+      operations:
+      - name: getS3Buckets
+        method: GET
+        description: Chick-fil-A List S3 Buckets
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-bucket
+      path: /api/bucket
+      operations:
+      - name: getS3Bucket
+        method: GET
+        description: Chick-fil-A Get S3 Bucket
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: bucket
+          in: query
+          type: string
+          required: true
+          description: The S3 bucket name to look up.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: bovine-storage-rest
+    port: 8080
+    description: "REST adapter for Chick-fil-A BOVINE API \u2014 Storage. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+    resources:
+    - path: /v1/s3
+      name: s3
+      description: REST surface for Chick-fil-A List S3 Buckets.
+      operations:
+      - method: GET
+        name: getS3Buckets
+        description: Chick-fil-A List S3 Buckets
+        call: bovine-storage.getS3Buckets
+        with:
+          account: rest.account
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/bucket
+      name: bucket
+      description: REST surface for Chick-fil-A Get S3 Bucket.
+      operations:
+      - method: GET
+        name: getS3Bucket
+        description: Chick-fil-A Get S3 Bucket
+        call: bovine-storage.getS3Bucket
+        with:
+          account: rest.account
+          bucket: rest.bucket
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bovine-storage-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for Chick-fil-A BOVINE API \u2014 Storage. One tool per consumed operation, routed inline through this capability's consumes block."
+    tools:
+    - name: list-s3-buckets
+      description: Chick-fil-A List S3 Buckets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-storage.getS3Buckets
+      with:
+        account: tools.account
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-s3-bucket
+      description: Chick-fil-A Get S3 Bucket
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-storage.getS3Bucket
+      with:
+        account: tools.account
+        bucket: tools.bucket
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.

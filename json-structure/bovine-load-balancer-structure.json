@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-load-balancer-structure.json",
+  "name": "LoadBalancer",
+  "description": "An elastic load balancer record.",
+  "type": "object",
+  "properties": {
+    "Region": {
+      "type": "string",
+      "example": "us-east-1"
+    },
+    "LoadBalancerName": {
+      "type": "string",
+      "example": "prod-web-elb"
+    }
+  }
+}

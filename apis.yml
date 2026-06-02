@@ -18,7 +18,7 @@ description: >-
   Chick-fil-A mobile app for ordering and rewards, the catering platform,
   and eGift Cards.
 created: '2026-05-05'
-modified: '2026-05-16'
+modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
   - aid: chickfila:chick-fil-a-mobile-app
@@ -118,6 +118,51 @@ apis:
       Chick-fil-A restaurant locator for finding nearby locations with
       filters for services such as drive-thru, dine-in, delivery,
       catering, and curbside pickup, plus hours and contact info.
+
+  - aid: chickfila:chick-fil-a-bovine
+    name: Chick-fil-A BOVINE
+    tags:
+      - Open Source
+      - Cloud Governance
+      - Security
+      - AWS
+      - Observability
+    humanURL: https://github.com/chick-fil-a/bovine
+    properties:
+      - url: https://github.com/chick-fil-a/bovine
+        type: Documentation
+      - url: openapi/chickfila-bovine.yml
+        type: OpenAPI
+      - url: https://github.com/chick-fil-a/bovine
+        type: SourceCode
+      - type: NaftikoCapability
+        url: capabilities/bovine-system.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-accounts.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-summary.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-identity.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-compute.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-networking.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-databases.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-storage.yaml
+      - type: NaftikoCapability
+        url: capabilities/bovine-compliance.yaml
+    description: >-
+      BOVI(n)E (Building Operational Visibility Into (n) Environments) is a
+      serverless, open-source AWS multi-account governance dashboard published
+      by Chick-fil-A. Built on AWS Lambda, API Gateway, DynamoDB, S3, and an
+      AngularJS front end with Cognito auth, it provides a single-pane view of
+      accounts, IAM users and roles, EC2 instances, public IPs, security groups,
+      load balancers, RDS/DynamoDB/Redshift databases, S3 buckets, and
+      compliance audit reports across an enterprise AWS estate. This is the only
+      Chick-fil-A repository exposing a documented HTTP API surface; the company
+      operates no public consumer developer API.
 common:
   - type: GitHubOrganization
     url: https://github.com/chick-fil-a
@@ -131,6 +176,28 @@ common:
     url: https://www.chick-fil-a.com/sign-up
   - type: Ordering
     url: https://order.chick-fil-a.com/
+  - type: Rules
+    url: rules/chickfila-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/chickfila-vocabulary.yml
+  - type: Blog
+    title: Chick-fil-A Tech Blog
+    url: https://medium.com/chick-fil-atech
+  - type: Tools
+    title: gha-docker-run GitHub Action
+    url: https://github.com/chick-fil-a/gha-docker-run
+  - type: Tools
+    title: gha-clear-workspace GitHub Action
+    url: https://github.com/chick-fil-a/gha-clear-workspace
+  - type: Tools
+    title: HoovesUp Bare-Metal SSM Bootstrap
+    url: https://github.com/chick-fil-a/hoovesup
+  - type: CodeExamples
+    title: GitOps Edge Kubernetes Demo
+    url: https://github.com/chick-fil-a/gitops
+  - type: CodeExamples
+    title: Kustomize Application Feeder Repository
+    url: https://github.com/chick-fil-a/kustomize-application
   - type: Features
     data:
       - name: Mobile Ordering

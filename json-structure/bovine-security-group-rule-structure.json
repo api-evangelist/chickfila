@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-security-group-rule-structure.json",
+  "name": "SecurityGroupRule",
+  "description": "A single inbound or outbound security group rule.",
+  "type": "object",
+  "properties": {
+    "FromPort": {
+      "type": "int32",
+      "example": 443
+    },
+    "ToPort": {
+      "type": "int32",
+      "example": 443
+    },
+    "Protocol": {
+      "type": "string",
+      "example": "tcp"
+    },
+    "Cidr": {
+      "type": "string",
+      "example": "10.0.0.0/16"
+    }
+  }
+}

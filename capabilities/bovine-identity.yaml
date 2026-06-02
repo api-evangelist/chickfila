@@ -1,0 +1,169 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "Chick-fil-A BOVINE API \u2014 Identity"
+  description: 'Identity surface of the Chick-fil-A BOVINE AWS governance API. 3 operations. Lead operation: List IAM Users. Self-contained Naftiko capability covering one Chick-fil-A business surface.'
+  tags:
+  - Chick-fil-A
+  - BOVINE
+  - Identity
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    BOVINE_TOKEN: BOVINE_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: bovine-identity
+    baseUri: https://api.example.com
+    description: "Chick-fil-A BOVINE API \u2014 Identity business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.BOVINE_TOKEN}}'
+    resources:
+    - name: api-users
+      path: /api/users
+      operations:
+      - name: getUsers
+        method: GET
+        description: Chick-fil-A List IAM Users
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-user
+      path: /api/user
+      operations:
+      - name: getUser
+        method: GET
+        description: Chick-fil-A Get IAM User
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: user
+          in: query
+          type: string
+          required: true
+          description: The IAM username to look up.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-roles
+      path: /api/roles
+      operations:
+      - name: getRoles
+        method: GET
+        description: Chick-fil-A List IAM Roles
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: bovine-identity-rest
+    port: 8080
+    description: "REST adapter for Chick-fil-A BOVINE API \u2014 Identity. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+    resources:
+    - path: /v1/users
+      name: users
+      description: REST surface for Chick-fil-A List IAM Users.
+      operations:
+      - method: GET
+        name: getUsers
+        description: Chick-fil-A List IAM Users
+        call: bovine-identity.getUsers
+        with:
+          account: rest.account
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user
+      name: user
+      description: REST surface for Chick-fil-A Get IAM User.
+      operations:
+      - method: GET
+        name: getUser
+        description: Chick-fil-A Get IAM User
+        call: bovine-identity.getUser
+        with:
+          account: rest.account
+          user: rest.user
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/roles
+      name: roles
+      description: REST surface for Chick-fil-A List IAM Roles.
+      operations:
+      - method: GET
+        name: getRoles
+        description: Chick-fil-A List IAM Roles
+        call: bovine-identity.getRoles
+        with:
+          account: rest.account
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bovine-identity-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for Chick-fil-A BOVINE API \u2014 Identity. One tool per consumed operation, routed inline through this capability's consumes block."
+    tools:
+    - name: list-iam-users
+      description: Chick-fil-A List IAM Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-identity.getUsers
+      with:
+        account: tools.account
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-iam-user
+      description: Chick-fil-A Get IAM User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-identity.getUser
+      with:
+        account: tools.account
+        user: tools.user
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-iam-roles
+      description: Chick-fil-A List IAM Roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-identity.getRoles
+      with:
+        account: tools.account
+      outputParameters:
+      - type: object
+        mapping: $.

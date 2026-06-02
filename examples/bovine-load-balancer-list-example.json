@@ -1,0 +1,8 @@
+{
+  "LoadBalancers": [
+    {
+      "Region": "us-east-1",
+      "LoadBalancerName": "prod-web-elb"
+    }
+  ]
+}

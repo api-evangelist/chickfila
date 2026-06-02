@@ -1,0 +1,152 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "Chick-fil-A BOVINE API \u2014 Accounts"
+  description: 'Accounts surface of the Chick-fil-A BOVINE AWS governance API. 3 operations. Lead operation: List Accounts. Self-contained Naftiko capability covering one Chick-fil-A business surface.'
+  tags:
+  - Chick-fil-A
+  - BOVINE
+  - Accounts
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    BOVINE_TOKEN: BOVINE_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: bovine-accounts
+    baseUri: https://api.example.com
+    description: "Chick-fil-A BOVINE API \u2014 Accounts business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.BOVINE_TOKEN}}'
+    resources:
+    - name: api-accounts
+      path: /api/accounts
+      operations:
+      - name: getAccounts
+        method: GET
+        description: Chick-fil-A List Accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-account
+      path: /api/account
+      operations:
+      - name: getAccount
+        method: GET
+        description: Chick-fil-A Get Account
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-addaccount
+      path: /api/addAccount
+      operations:
+      - name: addAccount
+        method: POST
+        description: Chick-fil-A Add Account
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: bovine-accounts-rest
+    port: 8080
+    description: "REST adapter for Chick-fil-A BOVINE API \u2014 Accounts. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+    resources:
+    - path: /v1/accounts
+      name: accounts
+      description: REST surface for Chick-fil-A List Accounts.
+      operations:
+      - method: GET
+        name: getAccounts
+        description: Chick-fil-A List Accounts
+        call: bovine-accounts.getAccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/account
+      name: account
+      description: REST surface for Chick-fil-A Get Account.
+      operations:
+      - method: GET
+        name: getAccount
+        description: Chick-fil-A Get Account
+        call: bovine-accounts.getAccount
+        with:
+          account: rest.account
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/addaccount
+      name: addaccount
+      description: REST surface for Chick-fil-A Add Account.
+      operations:
+      - method: POST
+        name: addAccount
+        description: Chick-fil-A Add Account
+        call: bovine-accounts.addAccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bovine-accounts-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for Chick-fil-A BOVINE API \u2014 Accounts. One tool per consumed operation, routed inline through this capability's consumes block."
+    tools:
+    - name: list-accounts
+      description: Chick-fil-A List Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-accounts.getAccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-account
+      description: Chick-fil-A Get Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-accounts.getAccount
+      with:
+        account: tools.account
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-account
+      description: Chick-fil-A Add Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bovine-accounts.addAccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

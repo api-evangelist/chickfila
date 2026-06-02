@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-count-summary-structure.json",
+  "name": "CountSummary",
+  "description": "A summary count wrapper returned by the count endpoints.",
+  "type": "object",
+  "properties": {
+    "Summary": {
+      "type": "object",
+      "description": "The aggregate count payload.",
+      "properties": {
+        "AccountsCount": {
+          "type": "int32",
+          "description": "Count of accounts.",
+          "example": 42
+        },
+        "UsersCount": {
+          "type": "int32",
+          "description": "Count of IAM users.",
+          "example": 127
+        },
+        "InstancesCount": {
+          "type": "int32",
+          "description": "Count of EC2 instances.",
+          "example": 318
+        }
+      }
+    },
+    "Time": {
+      "type": "double",
+      "description": "Elapsed time in seconds to compute the count.",
+      "example": 1.42
+    }
+  }
+}

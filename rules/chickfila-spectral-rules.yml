@@ -1,0 +1,262 @@
+# Chick-fil-A BOVINE API — Spectral Ruleset
+# Enforces the conventions observed across the Chick-fil-A BOVINE OpenAPI specification.
+# Apply with: spectral lint openapi/chickfila-bovine.yml --ruleset rules/chickfila-spectral-rules.yml
+rules:
+
+  # ── INFO / METADATA ─────────────────────────────────────────────
+  info-title-prefix:
+    description: API title should start with "Chick-fil-A".
+    severity: warn
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Chick-fil-A"
+  info-description-required:
+    description: Info object must have a description of reasonable length.
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: truthy
+  info-version-required:
+    description: Info object must declare a version.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+  info-contact-required:
+    description: Info object should declare a contact.
+    severity: info
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  # ── OPENAPI VERSION ─────────────────────────────────────────────
+  openapi-version-3:
+    description: Specifications must use OpenAPI 3.0.x.
+    severity: warn
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\.0\\."
+
+  # ── SERVERS ─────────────────────────────────────────────────────
+  servers-defined:
+    description: At least one server must be defined.
+    severity: error
+    given: $.servers
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+  server-https:
+    description: Server URLs should use HTTPS.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+  server-description:
+    description: Each server should have a description.
+    severity: info
+    given: $.servers[*]
+    then:
+      field: description
+      function: truthy
+
+  # ── PATHS ───────────────────────────────────────────────────────
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: ".+/$"
+  paths-no-query-string:
+    description: Paths must not contain query strings.
+    severity: error
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\?"
+  paths-lower-case:
+    description: Path segments should be lower camelCase or kebab-case (no UPPER snake).
+    severity: info
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "[A-Z]{2,}"
+
+  # ── OPERATIONS ──────────────────────────────────────────────────
+  operation-operationId-required:
+    description: Every operation must declare an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  operation-operationId-camelcase-verb:
+    description: operationId should be camelCase and begin with a verb (get/list/add/run/create/update/delete).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(get|list|add|run|create|update|delete|getAll)[A-Z0-9].*$|^(get|list|add|run|create|update|delete)[A-Za-z0-9]*$"
+  operation-summary-required:
+    description: Every operation must have a summary.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+  operation-summary-prefix:
+    description: Operation summaries should be prefixed with "Chick-fil-A".
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Chick-fil-A "
+  operation-description-required:
+    description: Every operation should have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+  operation-tags-required:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+  operation-microcks-extension:
+    description: Each operation should carry an x-microcks-operation extension for mock compatibility.
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  # ── TAGS ────────────────────────────────────────────────────────
+  global-tags-defined:
+    description: A global tags array should be defined.
+    severity: info
+    given: $
+    then:
+      field: tags
+      function: truthy
+  tag-description:
+    description: Each global tag should have a description.
+    severity: info
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+  tag-title-case:
+    description: Tag names should be Title Case (single capitalized words like "Accounts", "Networking").
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z]+$"
+
+  # ── PARAMETERS ──────────────────────────────────────────────────
+  parameter-description-required:
+    description: Every parameter must have a description.
+    severity: warn
+    given: $..parameters[*]
+    then:
+      field: description
+      function: truthy
+  parameter-schema-required:
+    description: Every parameter must declare a schema with a type.
+    severity: warn
+    given: $..parameters[?(@.in)]
+    then:
+      field: schema
+      function: truthy
+
+  # ── REQUEST BODIES ──────────────────────────────────────────────
+  request-body-json:
+    description: Request bodies should offer application/json content.
+    severity: warn
+    given: $.paths[*][post,put,patch].requestBody.content
+    then:
+      field: application/json
+      function: truthy
+  request-body-description:
+    description: Request bodies should have a description.
+    severity: info
+    given: $.paths[*][post,put,patch].requestBody
+    then:
+      field: description
+      function: truthy
+
+  # ── RESPONSES ───────────────────────────────────────────────────
+  response-success-defined:
+    description: Operations must define a 200 (or other 2xx) success response.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: "200"
+      function: truthy
+  response-description-required:
+    description: Every response must have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses[*]
+    then:
+      field: description
+      function: truthy
+  response-json-content:
+    description: 2xx responses should return application/json.
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].responses.200.content
+    then:
+      field: application/json
+      function: truthy
+
+  # ── SCHEMAS ─────────────────────────────────────────────────────
+  schema-description-required:
+    description: Top-level component schemas should have a description.
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: truthy
+  schema-property-type:
+    description: Schema properties should declare a type.
+    severity: info
+    given: $.components.schemas[*].properties[*]
+    then:
+      field: type
+      function: truthy
+  schema-property-example:
+    description: Scalar schema properties should include an example.
+    severity: info
+    given: $.components.schemas[*].properties[?(@.type && @.type != 'object' && @.type != 'array')]
+    then:
+      field: example
+      function: truthy
+
+  # ── HTTP METHOD CONVENTIONS ─────────────────────────────────────
+  get-no-request-body:
+    description: GET operations must not declare a request body.
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: falsy

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DynamoTableList",
+  "description": "A list of DynamoDB tables for an account.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-dynamo-table-list-schema.json",
+  "type": "object",
+  "properties": {
+    "Tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A DynamoDB table record.",
+        "properties": {
+          "Region": {
+            "type": "string",
+            "example": "us-east-1"
+          },
+          "TableName": {
+            "type": "string",
+            "example": "AWS-Accounts-Table"
+          }
+        }
+      }
+    }
+  }
+}

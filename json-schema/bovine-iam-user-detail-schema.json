@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IamUserDetail",
+  "description": "Detailed IAM user record including policies and access keys.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-iam-user-detail-schema.json",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "type": "object",
+      "properties": {
+        "accountNum": {
+          "type": "string",
+          "example": "123456789012"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "Username": {
+          "type": "string",
+          "example": "jsmith"
+        },
+        "ManagedPolicies": {
+          "type": "array",
+          "description": "Attached managed policies.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ManagedPolicy": {
+                "type": "string",
+                "example": "AdministratorAccess"
+              }
+            }
+          }
+        },
+        "AccessKeys": {
+          "type": "array",
+          "description": "Access keys associated with the user.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "AccessKeyId": {
+                "type": "string",
+                "example": "AKIAEXAMPLE1234567"
+              },
+              "Status": {
+                "type": "string",
+                "example": "Active"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

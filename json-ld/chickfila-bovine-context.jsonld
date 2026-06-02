@@ -1,0 +1,346 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cfa": "https://github.com/chick-fil-a/bovine#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "PingResponse": "cfa:PingResponse",
+    "response": {
+      "@id": "cfa:response",
+      "@type": "xsd:string"
+    },
+    "MessageResponse": "cfa:MessageResponse",
+    "Message": {
+      "@id": "cfa:Message",
+      "@type": "xsd:string"
+    },
+    "DashboardSummary": "cfa:DashboardSummary",
+    "AccountsCount": {
+      "@id": "cfa:AccountsCount",
+      "@type": "xsd:integer"
+    },
+    "InstancesCount": {
+      "@id": "cfa:InstancesCount",
+      "@type": "xsd:integer"
+    },
+    "UsersCount": {
+      "@id": "cfa:UsersCount",
+      "@type": "xsd:integer"
+    },
+    "Summary": {
+      "@id": "cfa:Summary",
+      "@type": "@id"
+    },
+    "CountSummary": "cfa:CountSummary",
+    "Time": {
+      "@id": "cfa:Time",
+      "@type": "xsd:double"
+    },
+    "ComplianceRule": "cfa:ComplianceRule",
+    "Service": {
+      "@id": "cfa:Service",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "priority": {
+      "@id": "cfa:priority",
+      "@type": "xsd:integer"
+    },
+    "Rule": {
+      "@id": "cfa:Rule",
+      "@type": "@id"
+    },
+    "Report": "cfa:Report",
+    "LastModified": {
+      "@id": "cfa:LastModified",
+      "@type": "xsd:string"
+    },
+    "RunReportResponse": "cfa:RunReportResponse",
+    "Response": {
+      "@id": "cfa:Response",
+      "@type": "xsd:integer"
+    },
+    "AccountListItem": "cfa:AccountListItem",
+    "accountNum": {
+      "@id": "cfa:accountNum",
+      "@type": "xsd:string"
+    },
+    "alias": {
+      "@id": "cfa:alias",
+      "@type": "xsd:string"
+    },
+    "email": "schema:email",
+    "AccountOwner": {
+      "@id": "cfa:AccountOwner",
+      "@type": "xsd:string"
+    },
+    "remediate": {
+      "@id": "cfa:remediate",
+      "@type": "xsd:boolean"
+    },
+    "AccountDetail": "cfa:AccountDetail",
+    "owner": {
+      "@id": "cfa:owner",
+      "@type": "xsd:string"
+    },
+    "iam": {
+      "@id": "cfa:iam",
+      "@type": "xsd:integer"
+    },
+    "publicIP": {
+      "@id": "cfa:publicIP",
+      "@type": "xsd:integer"
+    },
+    "riskysg": {
+      "@id": "cfa:riskysg",
+      "@type": "xsd:integer"
+    },
+    "unusedsg": {
+      "@id": "cfa:unusedsg",
+      "@type": "xsd:integer"
+    },
+    "bastion": {
+      "@id": "cfa:bastion",
+      "@type": "xsd:string"
+    },
+    "riskScore": {
+      "@id": "cfa:risk_score",
+      "@type": "xsd:integer"
+    },
+    "admins": {
+      "@id": "cfa:admins",
+      "@type": "xsd:integer"
+    },
+    "Account": {
+      "@id": "cfa:Account",
+      "@type": "@id"
+    },
+    "AddAccountRequest": "cfa:AddAccountRequest",
+    "AddAccountResponse": "cfa:AddAccountResponse",
+    "IamUserSummary": "cfa:IamUserSummary",
+    "Username": {
+      "@id": "cfa:Username",
+      "@type": "xsd:string"
+    },
+    "IamUserDetail": "cfa:IamUserDetail",
+    "ManagedPolicy": {
+      "@id": "cfa:ManagedPolicy",
+      "@type": "xsd:string"
+    },
+    "ManagedPolicies": {
+      "@id": "cfa:ManagedPolicies",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "AccessKeyId": {
+      "@id": "cfa:AccessKeyId",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "cfa:Status",
+      "@type": "xsd:string"
+    },
+    "AccessKeys": {
+      "@id": "cfa:AccessKeys",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "User": {
+      "@id": "cfa:User",
+      "@type": "@id"
+    },
+    "IamRole": "cfa:IamRole",
+    "Name": {
+      "@id": "cfa:Name",
+      "@type": "xsd:string"
+    },
+    "PublicIp": "cfa:PublicIp",
+    "PublicIP": {
+      "@id": "cfa:PublicIP",
+      "@type": "xsd:string"
+    },
+    "InstanceId": {
+      "@id": "cfa:InstanceId",
+      "@type": "xsd:string"
+    },
+    "PrivateIP": {
+      "@id": "cfa:PrivateIP",
+      "@type": "xsd:string"
+    },
+    "NetworkInterface": {
+      "@id": "cfa:NetworkInterface",
+      "@type": "xsd:string"
+    },
+    "Ec2Instance": "cfa:Ec2Instance",
+    "Cluster": {
+      "@id": "cfa:Cluster",
+      "@type": "xsd:string"
+    },
+    "Region": {
+      "@id": "cfa:Region",
+      "@type": "xsd:string"
+    },
+    "Ec2InstanceDetail": "cfa:Ec2InstanceDetail",
+    "PublicIpAddress": {
+      "@id": "cfa:PublicIpAddress",
+      "@type": "xsd:string"
+    },
+    "SubnetId": {
+      "@id": "cfa:SubnetId",
+      "@type": "xsd:string"
+    },
+    "LoadBalancers": {
+      "@id": "cfa:LoadBalancers",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Instance": {
+      "@id": "cfa:Instance",
+      "@type": "@id"
+    },
+    "SecurityGroupList": "cfa:SecurityGroupList",
+    "SecurityGroups": {
+      "@id": "cfa:SecurityGroups",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "SecurityGroup": "cfa:SecurityGroup",
+    "GroupId": {
+      "@id": "cfa:GroupId",
+      "@type": "xsd:string"
+    },
+    "GroupName": {
+      "@id": "cfa:GroupName",
+      "@type": "xsd:string"
+    },
+    "SecurityGroupDetail": "cfa:SecurityGroupDetail",
+    "InboundRules": {
+      "@id": "cfa:InboundRules",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "OutboundRules": {
+      "@id": "cfa:OutboundRules",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Instances": {
+      "@id": "cfa:Instances",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "SecurityGroupRule": "cfa:SecurityGroupRule",
+    "FromPort": {
+      "@id": "cfa:FromPort",
+      "@type": "xsd:integer"
+    },
+    "ToPort": {
+      "@id": "cfa:ToPort",
+      "@type": "xsd:integer"
+    },
+    "Protocol": {
+      "@id": "cfa:Protocol",
+      "@type": "xsd:string"
+    },
+    "Cidr": {
+      "@id": "cfa:Cidr",
+      "@type": "xsd:string"
+    },
+    "LoadBalancerList": "cfa:LoadBalancerList",
+    "LoadBalancer": "cfa:LoadBalancer",
+    "LoadBalancerName": {
+      "@id": "cfa:LoadBalancerName",
+      "@type": "xsd:string"
+    },
+    "LoadBalancerDetail": "cfa:LoadBalancerDetail",
+    "AccountNum": {
+      "@id": "cfa:AccountNum",
+      "@type": "xsd:string"
+    },
+    "Subnets": {
+      "@id": "cfa:Subnets",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "RdsDatabase": "cfa:RdsDatabase",
+    "DBName": {
+      "@id": "cfa:DBName",
+      "@type": "xsd:string"
+    },
+    "Address": {
+      "@id": "cfa:Address",
+      "@type": "xsd:string"
+    },
+    "Port": {
+      "@id": "cfa:Port",
+      "@type": "xsd:integer"
+    },
+    "Endpoint": {
+      "@id": "cfa:Endpoint",
+      "@type": "@id"
+    },
+    "CreateDate": {
+      "@id": "cfa:CreateDate",
+      "@type": "xsd:string"
+    },
+    "AccountAlias": {
+      "@id": "cfa:AccountAlias",
+      "@type": "xsd:string"
+    },
+    "DynamoTableList": "cfa:DynamoTableList",
+    "Tables": {
+      "@id": "cfa:Tables",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "DynamoTable": "cfa:DynamoTable",
+    "TableName": {
+      "@id": "cfa:TableName",
+      "@type": "xsd:string"
+    },
+    "RedshiftClusterList": "cfa:RedshiftClusterList",
+    "Clusters": {
+      "@id": "cfa:Clusters",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "RedshiftCluster": "cfa:RedshiftCluster",
+    "ClusterIdentifier": {
+      "@id": "cfa:ClusterIdentifier",
+      "@type": "xsd:string"
+    },
+    "S3Bucket": "cfa:S3Bucket",
+    "BucketName": {
+      "@id": "cfa:BucketName",
+      "@type": "xsd:string"
+    },
+    "Global": {
+      "@id": "cfa:Global",
+      "@type": "xsd:boolean"
+    },
+    "S3BucketDetail": "cfa:S3BucketDetail",
+    "Key": {
+      "@id": "cfa:Key",
+      "@type": "xsd:string"
+    },
+    "Encryption": {
+      "@id": "cfa:Encryption",
+      "@type": "xsd:string"
+    },
+    "StorageType": {
+      "@id": "cfa:StorageType",
+      "@type": "xsd:string"
+    },
+    "Objects": {
+      "@id": "cfa:Objects",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Bucket": {
+      "@id": "cfa:Bucket",
+      "@type": "@id"
+    }
+  }
+}

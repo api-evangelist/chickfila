@@ -1,0 +1,246 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "Chick-fil-A BOVINE API \u2014 Networking"
+  description: 'Networking surface of the Chick-fil-A BOVINE AWS governance API. 4 operations. Lead operation: List Security Groups. Self-contained Naftiko capability covering one Chick-fil-A business surface.'
+  tags:
+  - Chick-fil-A
+  - BOVINE
+  - Networking
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    BOVINE_TOKEN: BOVINE_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: bovine-networking
+    baseUri: https://api.example.com
+    description: "Chick-fil-A BOVINE API \u2014 Networking business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.BOVINE_TOKEN}}'
+    resources:
+    - name: api-securitygroups
+      path: /api/securitygroups
+      operations:
+      - name: getSecurityGroups
+        method: GET
+        description: Chick-fil-A List Security Groups
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-securitygroup
+      path: /api/securitygroup
+      operations:
+      - name: getSecurityGroup
+        method: GET
+        description: Chick-fil-A Get Security Group
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: securitygroup
+          in: query
+          type: string
+          required: true
+          description: The security group ID to look up.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-elbs
+      path: /api/elbs
+      operations:
+      - name: getElbs
+        method: GET
+        description: Chick-fil-A List Load Balancers
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-elb
+      path: /api/elb
+      operations:
+      - name: getElb
+        method: GET
+        description: Chick-fil-A Get Load Balancer
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: elb
+          in: query
+          type: string
+          required: true
+          description: The load balancer name to look up.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: bovine-networking-rest
+    port: 8080
+    description: "REST adapter for Chick-fil-A BOVINE API \u2014 Networking. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+    resources:
+    - path: /v1/securitygroups
+      name: securitygroups
+      description: REST surface for Chick-fil-A List Security Groups.
+      operations:
+      - method: GET
+        name: getSecurityGroups
+        description: Chick-fil-A List Security Groups
+        call: bovine-networking.getSecurityGroups
+        with:
+          account: rest.account
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/securitygroup
+      name: securitygroup
+      description: REST surface for Chick-fil-A Get Security Group.
+      operations:
+      - method: GET
+        name: getSecurityGroup
+        description: Chick-fil-A Get Security Group
+        call: bovine-networking.getSecurityGroup
+        with:
+          account: rest.account
+          securitygroup: rest.securitygroup
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/elbs
+      name: elbs
+      description: REST surface for Chick-fil-A List Load Balancers.
+      operations:
+      - method: GET
+        name: getElbs
+        description: Chick-fil-A List Load Balancers
+        call: bovine-networking.getElbs
+        with:
+          account: rest.account
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/elb
+      name: elb
+      description: REST surface for Chick-fil-A Get Load Balancer.
+      operations:
+      - method: GET
+        name: getElb
+        description: Chick-fil-A Get Load Balancer
+        call: bovine-networking.getElb
+        with:
+          account: rest.account
+          elb: rest.elb
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bovine-networking-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for Chick-fil-A BOVINE API \u2014 Networking. One tool per consumed operation, routed inline through this capability's consumes block."
+    tools:
+    - name: list-security-groups
+      description: Chick-fil-A List Security Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-networking.getSecurityGroups
+      with:
+        account: tools.account
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-security-group
+      description: Chick-fil-A Get Security Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-networking.getSecurityGroup
+      with:
+        account: tools.account
+        securitygroup: tools.securitygroup
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-load-balancers
+      description: Chick-fil-A List Load Balancers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-networking.getElbs
+      with:
+        account: tools.account
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-load-balancer
+      description: Chick-fil-A Get Load Balancer
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-networking.getElb
+      with:
+        account: tools.account
+        elb: tools.elb
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.

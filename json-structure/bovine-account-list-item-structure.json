@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-account-list-item-structure.json",
+  "name": "AccountListItem",
+  "description": "A summary AWS account record from the accounts table.",
+  "type": "object",
+  "properties": {
+    "accountNum": {
+      "type": "string",
+      "description": "The 12-digit AWS account number.",
+      "example": "123456789012"
+    },
+    "alias": {
+      "type": "string",
+      "description": "The account alias.",
+      "example": "prod-platform"
+    },
+    "email": {
+      "type": "string",
+      "description": "The account root contact email.",
+      "example": "aws-prod@example.com"
+    },
+    "AccountOwner": {
+      "type": "string",
+      "description": "The account owner.",
+      "example": "Platform Team"
+    },
+    "remediate": {
+      "type": "boolean",
+      "description": "Whether automated remediation is enabled for the account.",
+      "example": false
+    }
+  }
+}

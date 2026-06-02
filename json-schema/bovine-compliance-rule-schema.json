@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ComplianceRule",
+  "description": "An enabled compliance rule grouped by AWS service.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-compliance-rule-schema.json",
+  "type": "object",
+  "properties": {
+    "Service": {
+      "type": "string",
+      "description": "The AWS service the rule applies to.",
+      "example": "s3"
+    },
+    "Rule": {
+      "type": "object",
+      "description": "The compliance rule definition.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Rule name.",
+          "example": "s3-public-read-prohibited"
+        },
+        "description": {
+          "type": "string",
+          "description": "Rule description.",
+          "example": "Checks that S3 buckets do not allow public read access."
+        },
+        "priority": {
+          "type": "integer",
+          "description": "Rule priority.",
+          "example": 1
+        }
+      }
+    }
+  }
+}

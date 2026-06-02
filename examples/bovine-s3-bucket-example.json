@@ -1,0 +1,5 @@
+{
+  "BucketName": "my-app-logs-bucket",
+  "Global": false,
+  "AccountAlias": "prod-platform"
+}

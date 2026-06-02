@@ -1,0 +1,8 @@
+{
+  "Tables": [
+    {
+      "Region": "us-east-1",
+      "TableName": "AWS-Accounts-Table"
+    }
+  ]
+}

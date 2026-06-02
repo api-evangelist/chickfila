@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-report-structure.json",
+  "name": "Report",
+  "description": "A compliance audit report stored in S3.",
+  "type": "object",
+  "properties": {
+    "Report": {
+      "type": "string",
+      "description": "The report identifier (S3 key prefix).",
+      "example": "2026-06-01"
+    },
+    "LastModified": {
+      "type": "string",
+      "description": "The last-modified timestamp of the report object.",
+      "example": "2026-06-01 14:30:00+00:00"
+    }
+  }
+}

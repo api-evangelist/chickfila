@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-dashboard-summary-structure.json",
+  "name": "DashboardSummary",
+  "description": "Aggregate dashboard statistics across all monitored AWS accounts.",
+  "type": "object",
+  "properties": {
+    "Summary": {
+      "type": "object",
+      "description": "Aggregate counts and risk metrics for the dashboard.",
+      "properties": {
+        "AccountsCount": {
+          "type": "int32",
+          "description": "Total number of AWS accounts tracked.",
+          "example": 42
+        },
+        "InstancesCount": {
+          "type": "int32",
+          "description": "Total number of EC2 instances across accounts.",
+          "example": 318
+        },
+        "UsersCount": {
+          "type": "int32",
+          "description": "Total number of IAM users across accounts.",
+          "example": 127
+        }
+      }
+    }
+  }
+}

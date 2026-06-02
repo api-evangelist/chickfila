@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-rds-database-structure.json",
+  "name": "RdsDatabase",
+  "description": "An RDS database instance record.",
+  "type": "object",
+  "properties": {
+    "Region": {
+      "type": "string",
+      "example": "us-east-1"
+    },
+    "DBName": {
+      "type": "string",
+      "example": "orders"
+    },
+    "Endpoint": {
+      "type": "object",
+      "description": "The RDS endpoint descriptor.",
+      "properties": {
+        "Address": {
+          "type": "string",
+          "example": "orders.abc123.us-east-1.rds.amazonaws.com"
+        },
+        "Port": {
+          "type": "int32",
+          "example": 5432
+        }
+      }
+    },
+    "CreateDate": {
+      "type": "string",
+      "description": "The instance creation timestamp.",
+      "example": "2025-01-15T10:00:00Z"
+    },
+    "AccountAlias": {
+      "type": "string",
+      "example": "prod-platform"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RedshiftClusterList",
+  "description": "A list of Redshift clusters for an account.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-redshift-cluster-list-schema.json",
+  "type": "object",
+  "properties": {
+    "Clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A Redshift cluster record.",
+        "properties": {
+          "Region": {
+            "type": "string",
+            "example": "us-east-1"
+          },
+          "ClusterIdentifier": {
+            "type": "string",
+            "example": "analytics-prod"
+          },
+          "AccountAlias": {
+            "type": "string",
+            "example": "prod-platform"
+          }
+        }
+      }
+    }
+  }
+}

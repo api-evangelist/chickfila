@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ec2Instance",
+  "description": "An EC2 instance record, annotated with cluster/workload association.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-ec2-instance-schema.json",
+  "type": "object",
+  "properties": {
+    "InstanceId": {
+      "type": "string",
+      "example": "i-0a1b2c3d4e5f60718"
+    },
+    "Cluster": {
+      "type": "string",
+      "description": "The cluster or workload association (ECS, Beanstalk, ASG, etc.).",
+      "example": "ecs-prod-web"
+    },
+    "Region": {
+      "type": "string",
+      "example": "us-east-1"
+    }
+  }
+}

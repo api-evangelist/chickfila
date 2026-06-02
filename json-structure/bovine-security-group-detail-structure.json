@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-security-group-detail-structure.json",
+  "name": "SecurityGroupDetail",
+  "description": "Detailed security group including inbound and outbound rules and associated instances.",
+  "type": "object",
+  "properties": {
+    "GroupId": {
+      "type": "string",
+      "example": "sg-0a1b2c3d4e5f60718"
+    },
+    "InboundRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A single inbound or outbound security group rule.",
+        "properties": {
+          "FromPort": {
+            "type": "int32",
+            "example": 443
+          },
+          "ToPort": {
+            "type": "int32",
+            "example": 443
+          },
+          "Protocol": {
+            "type": "string",
+            "example": "tcp"
+          },
+          "Cidr": {
+            "type": "string",
+            "example": "10.0.0.0/16"
+          }
+        }
+      }
+    },
+    "OutboundRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A single inbound or outbound security group rule.",
+        "properties": {
+          "FromPort": {
+            "type": "int32",
+            "example": 443
+          },
+          "ToPort": {
+            "type": "int32",
+            "example": 443
+          },
+          "Protocol": {
+            "type": "string",
+            "example": "tcp"
+          },
+          "Cidr": {
+            "type": "string",
+            "example": "10.0.0.0/16"
+          }
+        }
+      }
+    },
+    "Instances": {
+      "type": "array",
+      "description": "Instances associated with this security group.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "InstanceId": {
+            "type": "string",
+            "example": "i-0a1b2c3d4e5f60718"
+          },
+          "Name": {
+            "type": "string",
+            "example": "prod-web-1"
+          }
+        }
+      }
+    }
+  }
+}

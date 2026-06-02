@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-s3-bucket-structure.json",
+  "name": "S3Bucket",
+  "description": "An S3 bucket record, flagged if globally accessible.",
+  "type": "object",
+  "properties": {
+    "BucketName": {
+      "type": "string",
+      "example": "my-app-logs-bucket"
+    },
+    "Global": {
+      "type": "boolean",
+      "description": "Whether the bucket is globally (publicly) accessible.",
+      "example": false
+    },
+    "AccountAlias": {
+      "type": "string",
+      "example": "prod-platform"
+    }
+  }
+}

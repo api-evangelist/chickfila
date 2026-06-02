@@ -1,0 +1,183 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "Chick-fil-A BOVINE API \u2014 Databases"
+  description: 'Databases surface of the Chick-fil-A BOVINE AWS governance API. 3 operations. Lead operation: List RDS Databases. Self-contained Naftiko capability covering one Chick-fil-A business surface.'
+  tags:
+  - Chick-fil-A
+  - BOVINE
+  - Databases
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    BOVINE_TOKEN: BOVINE_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: bovine-databases
+    baseUri: https://api.example.com
+    description: "Chick-fil-A BOVINE API \u2014 Databases business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.BOVINE_TOKEN}}'
+    resources:
+    - name: api-databases
+      path: /api/databases
+      operations:
+      - name: getDatabases
+        method: GET
+        description: Chick-fil-A List RDS Databases
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-dynamotables
+      path: /api/dynamotables
+      operations:
+      - name: getDynamoTables
+        method: GET
+        description: Chick-fil-A List DynamoDB Tables
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-redshiftclusters
+      path: /api/redshiftclusters
+      operations:
+      - name: getRedshiftClusters
+        method: GET
+        description: Chick-fil-A List Redshift Clusters
+        inputParameters:
+        - name: account
+          in: query
+          type: string
+          required: true
+          description: The AWS account number (12-digit) or account alias to scope the request to.
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: The AWS region to scope the request to.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: bovine-databases-rest
+    port: 8080
+    description: "REST adapter for Chick-fil-A BOVINE API \u2014 Databases. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+    resources:
+    - path: /v1/databases
+      name: databases
+      description: REST surface for Chick-fil-A List RDS Databases.
+      operations:
+      - method: GET
+        name: getDatabases
+        description: Chick-fil-A List RDS Databases
+        call: bovine-databases.getDatabases
+        with:
+          account: rest.account
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dynamotables
+      name: dynamotables
+      description: REST surface for Chick-fil-A List DynamoDB Tables.
+      operations:
+      - method: GET
+        name: getDynamoTables
+        description: Chick-fil-A List DynamoDB Tables
+        call: bovine-databases.getDynamoTables
+        with:
+          account: rest.account
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/redshiftclusters
+      name: redshiftclusters
+      description: REST surface for Chick-fil-A List Redshift Clusters.
+      operations:
+      - method: GET
+        name: getRedshiftClusters
+        description: Chick-fil-A List Redshift Clusters
+        call: bovine-databases.getRedshiftClusters
+        with:
+          account: rest.account
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bovine-databases-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for Chick-fil-A BOVINE API \u2014 Databases. One tool per consumed operation, routed inline through this capability's consumes block."
+    tools:
+    - name: list-rds-databases
+      description: Chick-fil-A List RDS Databases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-databases.getDatabases
+      with:
+        account: tools.account
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-dynamodb-tables
+      description: Chick-fil-A List DynamoDB Tables
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-databases.getDynamoTables
+      with:
+        account: tools.account
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-redshift-clusters
+      description: Chick-fil-A List Redshift Clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bovine-databases.getRedshiftClusters
+      with:
+        account: tools.account
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.

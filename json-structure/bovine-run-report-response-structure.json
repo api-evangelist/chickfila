@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-run-report-response-structure.json",
+  "name": "RunReportResponse",
+  "description": "Response indicating an audit report run was invoked.",
+  "type": "object",
+  "properties": {
+    "Response": {
+      "type": "int32",
+      "description": "The Lambda invocation status code.",
+      "example": 202
+    }
+  }
+}

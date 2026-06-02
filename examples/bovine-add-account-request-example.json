@@ -1,0 +1,7 @@
+{
+  "accountNum": "123456789012",
+  "alias": "prod-platform",
+  "email": "aws-prod@example.com",
+  "AccountOwner": "Platform Team",
+  "remediate": false
+}

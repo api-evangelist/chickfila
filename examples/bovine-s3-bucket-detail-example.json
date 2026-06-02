@@ -1,0 +1,8 @@
+{
+  "Bucket": {
+    "BucketName": "my-app-logs-bucket",
+    "Objects": [
+      {}
+    ]
+  }
+}

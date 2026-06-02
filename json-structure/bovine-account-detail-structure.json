@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-account-detail-structure.json",
+  "name": "AccountDetail",
+  "description": "Detailed AWS account metadata and risk posture.",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "type": "object",
+      "description": "The account detail payload.",
+      "properties": {
+        "accountNum": {
+          "type": "string",
+          "description": "The 12-digit AWS account number.",
+          "example": "123456789012"
+        },
+        "owner": {
+          "type": "string",
+          "description": "The account owner.",
+          "example": "Platform Team"
+        },
+        "alias": {
+          "type": "string",
+          "description": "The account alias.",
+          "example": "prod-platform"
+        },
+        "email": {
+          "type": "string",
+          "description": "The account root contact email.",
+          "example": "aws-prod@example.com"
+        },
+        "iam": {
+          "type": "int32",
+          "description": "Number of IAM users in the account.",
+          "example": 18
+        },
+        "publicIP": {
+          "type": "int32",
+          "description": "Number of public IP addresses in the account.",
+          "example": 6
+        },
+        "riskysg": {
+          "type": "int32",
+          "description": "Number of risky security groups detected.",
+          "example": 2
+        },
+        "unusedsg": {
+          "type": "int32",
+          "description": "Number of unused security groups detected.",
+          "example": 5
+        },
+        "bastion": {
+          "type": "string",
+          "description": "The bastion host identifier, if present.",
+          "example": "bastion-prod-1"
+        },
+        "risk_score": {
+          "type": "int32",
+          "description": "The computed risk score for the account.",
+          "example": -1
+        },
+        "admins": {
+          "type": "int32",
+          "description": "Number of admin group members.",
+          "example": 3
+        }
+      }
+    }
+  }
+}

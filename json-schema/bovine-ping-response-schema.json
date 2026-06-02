@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PingResponse",
+  "description": "Response from the BOVINE ping/dispatch endpoint.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-schema/bovine-ping-response-schema.json",
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "string",
+      "description": "The dispatched operation response payload.",
+      "example": "ok"
+    }
+  }
+}

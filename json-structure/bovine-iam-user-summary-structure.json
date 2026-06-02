@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/json-structure/bovine-iam-user-summary-structure.json",
+  "name": "IamUserSummary",
+  "description": "A summary IAM user record for an account.",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "type": "object",
+      "properties": {
+        "accountNum": {
+          "type": "string",
+          "example": "123456789012"
+        }
+      }
+    },
+    "Username": {
+      "type": "string",
+      "description": "The IAM username.",
+      "example": "jsmith"
+    }
+  }
+}
