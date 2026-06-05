@@ -11,11 +11,9 @@ tags:
   - Mobile Ordering
   - Catering
 description: >-
-  Chick-fil-A is an American fast-food restaurant chain specializing in
-  chicken sandwiches and operating over 3,000 locations across the United
-  States. Known for customer service and a closed-on-Sunday policy,
-  Chick-fil-A operates the Chick-fil-A One tiered loyalty program, the
-  Chick-fil-A mobile app for ordering and rewards, the catering platform,
+  Chick-fil-A is an American fast-food restaurant chain specializing in chicken sandwiches and operating over 3,000
+  locations across the United States. Known for customer service and a closed-on-Sunday policy, Chick-fil-A operates the
+  Chick-fil-A One tiered loyalty program, the Chick-fil-A mobile app for ordering and rewards, the catering platform,
   and eGift Cards.
 created: '2026-05-05'
 modified: '2026-06-02'
@@ -33,12 +31,9 @@ apis:
       - url: https://www.chick-fil-a.com/mobile-app
         type: Documentation
     description: >-
-      The Chick-fil-A mobile app provides mobile ordering, in-restaurant
-      pickup, curbside, drive-thru express, and delivery ordering. The app
-      manages Chick-fil-A One loyalty membership, points balance, tier
-      progress, available rewards, order history, customization, and
-      digital receipts.
-
+      The Chick-fil-A mobile app provides mobile ordering, in-restaurant pickup, curbside, drive-thru express, and
+      delivery ordering. The app manages Chick-fil-A One loyalty membership, points balance, tier progress, available
+      rewards, order history, customization, and digital receipts.
   - aid: chickfila:chick-fil-a-one
     name: Chick-fil-A One
     tags:
@@ -50,12 +45,9 @@ apis:
       - url: https://www.chick-fil-a.com/one
         type: Documentation
     description: >-
-      Chick-fil-A One is the tiered loyalty rewards program with four
-      levels (Member, Silver, Red, Signature) offering 10-13 points per
-      dollar, food rewards starting at 200 points, member-tier benefits
-      including reward gifting, Backstage Tour invitations, exclusive
-      rewards, and birthday rewards.
-
+      Chick-fil-A One is the tiered loyalty rewards program with four levels (Member, Silver, Red, Signature) offering
+      10-13 points per dollar, food rewards starting at 200 points, member-tier benefits including reward gifting,
+      Backstage Tour invitations, exclusive rewards, and birthday rewards.
   - aid: chickfila:chick-fil-a-ordering
     name: Chick-fil-A Online Ordering
     tags:
@@ -68,11 +60,9 @@ apis:
       - url: https://order.chick-fil-a.com/
         type: Documentation
     description: >-
-      Chick-fil-A's online ordering platform at order.chick-fil-a.com
-      supports pickup, drive-thru, curbside, dine-in, and delivery
-      ordering. Integrated with the Chick-fil-A One loyalty program
-      for points earning and reward redemption.
-
+      Chick-fil-A's online ordering platform at order.chick-fil-a.com supports pickup, drive-thru, curbside, dine-in,
+      and delivery ordering. Integrated with the Chick-fil-A One loyalty program for points earning and reward
+      redemption.
   - aid: chickfila:chick-fil-a-catering
     name: Chick-fil-A Catering
     tags:
@@ -84,11 +74,8 @@ apis:
       - url: https://www.chick-fil-a.com/catering
         type: Documentation
     description: >-
-      Chick-fil-A's catering platform for ordering party trays, packaged
-      meals, entrees, and sides for groups. Supports same-day and
-      advance scheduling, with pickup or delivery via local restaurant
-      coordination.
-
+      Chick-fil-A's catering platform for ordering party trays, packaged meals, entrees, and sides for groups. Supports
+      same-day and advance scheduling, with pickup or delivery via local restaurant coordination.
   - aid: chickfila:chick-fil-a-egift-cards
     name: Chick-fil-A eGift Cards
     tags:
@@ -100,10 +87,8 @@ apis:
       - url: https://www.chick-fil-a.com/gift-cards
         type: Documentation
     description: >-
-      Chick-fil-A eGift Cards in denominations from $5 to $100 are
-      deliverable via email and redeemable in-restaurant, through the
-      mobile app, and via the online ordering platform.
-
+      Chick-fil-A eGift Cards in denominations from $5 to $100 are deliverable via email and redeemable in-restaurant,
+      through the mobile app, and via the online ordering platform.
   - aid: chickfila:chick-fil-a-restaurant-locator
     name: Chick-fil-A Restaurant Locator
     tags:
@@ -115,10 +100,8 @@ apis:
       - url: https://www.chick-fil-a.com/locations
         type: Documentation
     description: >-
-      Chick-fil-A restaurant locator for finding nearby locations with
-      filters for services such as drive-thru, dine-in, delivery,
-      catering, and curbside pickup, plus hours and contact info.
-
+      Chick-fil-A restaurant locator for finding nearby locations with filters for services such as drive-thru, dine-in,
+      delivery, catering, and curbside pickup, plus hours and contact info.
   - aid: chickfila:chick-fil-a-bovine
     name: Chick-fil-A BOVINE
     tags:
@@ -135,34 +118,13 @@ apis:
         type: OpenAPI
       - url: https://github.com/chick-fil-a/bovine
         type: SourceCode
-      - type: NaftikoCapability
-        url: capabilities/bovine-system.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-accounts.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-summary.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-identity.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-compute.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-networking.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-databases.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-storage.yaml
-      - type: NaftikoCapability
-        url: capabilities/bovine-compliance.yaml
     description: >-
-      BOVI(n)E (Building Operational Visibility Into (n) Environments) is a
-      serverless, open-source AWS multi-account governance dashboard published
-      by Chick-fil-A. Built on AWS Lambda, API Gateway, DynamoDB, S3, and an
-      AngularJS front end with Cognito auth, it provides a single-pane view of
-      accounts, IAM users and roles, EC2 instances, public IPs, security groups,
-      load balancers, RDS/DynamoDB/Redshift databases, S3 buckets, and
-      compliance audit reports across an enterprise AWS estate. This is the only
-      Chick-fil-A repository exposing a documented HTTP API surface; the company
-      operates no public consumer developer API.
+      BOVI(n)E (Building Operational Visibility Into (n) Environments) is a serverless, open-source AWS multi-account
+      governance dashboard published by Chick-fil-A. Built on AWS Lambda, API Gateway, DynamoDB, S3, and an AngularJS
+      front end with Cognito auth, it provides a single-pane view of accounts, IAM users and roles, EC2 instances,
+      public IPs, security groups, load balancers, RDS/DynamoDB/Redshift databases, S3 buckets, and compliance audit
+      reports across an enterprise AWS estate. This is the only Chick-fil-A repository exposing a documented HTTP API
+      surface; the company operates no public consumer developer API.
 common:
   - type: GitHubOrganization
     url: https://github.com/chick-fil-a
