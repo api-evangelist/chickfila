@@ -1,0 +1,2901 @@
+{
+  "item": [
+    {
+      "id": "d25f75b2-475d-47dc-827a-09c23112563b",
+      "name": "System",
+      "description": {
+        "content": "Health and configuration operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77db7be2-dd06-40e3-94ba-b319d8c87697",
+          "name": "Chick-fil-A Ping the BOVINE Service",
+          "request": {
+            "name": "Chick-fil-A Ping the BOVINE Service",
+            "description": {
+              "content": "Health-check style endpoint that dispatches a named operation and returns a response payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "operation",
+                  "value": "<string>",
+                  "description": "The named operation to dispatch."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bd95913-a0d1-4d91-aebe-271998093206",
+              "name": "Service responded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "operation",
+                      "value": "status"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "069d6bea-6698-414d-b6ea-8f1ed023c8aa",
+          "name": "Chick-fil-A Initiate Login",
+          "request": {
+            "name": "Chick-fil-A Initiate Login",
+            "description": {
+              "content": "Initiates the authentication flow for the BOVINE single-page application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d476830e-1e85-45a1-be8c-ea25f7294def",
+              "name": "Login flow initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f014f995-10c2-4ec4-a1c7-d60f4a5d9a37",
+          "name": "Chick-fil-A Get Dashboard Summary",
+          "request": {
+            "name": "Chick-fil-A Get Dashboard Summary",
+            "description": {
+              "content": "Returns the aggregate dashboard summary statistics across all monitored AWS accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "dashboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f48520c-aa2f-4f45-be62-c5cba6ce6ad9",
+              "name": "Dashboard summary returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Summary\": {\n    \"AccountsCount\": 42,\n    \"InstancesCount\": 318,\n    \"UsersCount\": 127\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c9cd9674-820a-4b2e-b807-ac1177c61496",
+      "name": "Accounts",
+      "description": {
+        "content": "AWS account inventory and metadata operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f000954-b2bd-48a0-97b8-97f63f7a6c3b",
+          "name": "Chick-fil-A List Accounts",
+          "request": {
+            "name": "Chick-fil-A List Accounts",
+            "description": {
+              "content": "Lists all AWS accounts tracked in the BOVINE DynamoDB accounts table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ca9b034-3424-497b-97ca-ff1c63a307f1",
+              "name": "Accounts returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accountNum\": \"123456789012\",\n    \"alias\": \"prod-platform\",\n    \"email\": \"aws-prod@example.com\",\n    \"AccountOwner\": \"Platform Team\",\n    \"remediate\": false\n  },\n  {\n    \"accountNum\": \"123456789012\",\n    \"alias\": \"prod-platform\",\n    \"email\": \"aws-prod@example.com\",\n    \"AccountOwner\": \"Platform Team\",\n    \"remediate\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7481b36b-3a5f-4764-be56-5a47031e51a2",
+          "name": "Chick-fil-A Get Account",
+          "request": {
+            "name": "Chick-fil-A Get Account",
+            "description": {
+              "content": "Returns detailed metadata and risk posture for a single AWS account, looked up by account number or alias.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6ef3b83-d552-4a85-9b4d-13885924e2bf",
+              "name": "Account detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"accountNum\": \"123456789012\",\n    \"owner\": \"Platform Team\",\n    \"alias\": \"prod-platform\",\n    \"email\": \"aws-prod@example.com\",\n    \"iam\": 18,\n    \"publicIP\": 6,\n    \"riskysg\": 2,\n    \"unusedsg\": 5,\n    \"bastion\": \"bastion-prod-1\",\n    \"risk_score\": -1,\n    \"admins\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b662947-6503-4a07-afd9-31d645645d1e",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7400449-95dc-4dca-a8d9-0f946e2aa924",
+          "name": "Chick-fil-A Add Account",
+          "request": {
+            "name": "Chick-fil-A Add Account",
+            "description": {
+              "content": "Adds an AWS account to the BOVINE accounts table. The account number must be a 12-digit numeric string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "addAccount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNum\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"email\": \"<email>\",\n  \"AccountOwner\": \"<string>\",\n  \"remediate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11eac211-eb5e-4eac-a55f-854e3a06da9e",
+              "name": "Account added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "addAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountNum\": \"123456789012\",\n  \"alias\": \"prod-platform\",\n  \"email\": \"aws-prod@example.com\",\n  \"AccountOwner\": \"Platform Team\",\n  \"remediate\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": \"added\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5de9952-942a-4139-8751-ef4361c47185",
+              "name": "Incorrect account number or account not added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "addAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountNum\": \"123456789012\",\n  \"alias\": \"prod-platform\",\n  \"email\": \"aws-prod@example.com\",\n  \"AccountOwner\": \"Platform Team\",\n  \"remediate\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": \"added\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8bbe1954-3d56-4e5f-a0e6-1a64745f547e",
+      "name": "Summary",
+      "description": {
+        "content": "Aggregate counts across accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a9b17e2-8d1e-47ca-bfa4-0d2acf896dba",
+          "name": "Chick-fil-A Get Account Count",
+          "request": {
+            "name": "Chick-fil-A Get Account Count",
+            "description": {
+              "content": "Returns the total number of AWS accounts tracked in BOVINE.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "summary",
+                "accountcount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9af33845-a825-4686-ae48-9e3ae0e3eb61",
+              "name": "Account count returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "summary",
+                    "accountcount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Summary\": {\n    \"AccountsCount\": 42,\n    \"UsersCount\": 127,\n    \"InstancesCount\": 318\n  },\n  \"Time\": 1.42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d7f9b73-adce-4b97-a986-99e1202e3391",
+          "name": "Chick-fil-A Get User Count",
+          "request": {
+            "name": "Chick-fil-A Get User Count",
+            "description": {
+              "content": "Returns aggregate IAM user counts across accounts, optionally scoped to a single account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "summary",
+                "usercount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8d1ee8f-37e1-4e24-a409-10fd6e0b9538",
+              "name": "User count returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "summary",
+                    "usercount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Summary\": {\n    \"AccountsCount\": 42,\n    \"UsersCount\": 127,\n    \"InstancesCount\": 318\n  },\n  \"Time\": 1.42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2af7d16-4cc0-4535-92f4-e50affbcbe23",
+          "name": "Chick-fil-A Get Instance Count",
+          "request": {
+            "name": "Chick-fil-A Get Instance Count",
+            "description": {
+              "content": "Returns aggregate EC2 instance counts across accounts, optionally scoped to a single account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "summary",
+                "instancecount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e34bee29-8c45-4201-b032-c9ce4e3b6b11",
+              "name": "Instance count returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "summary",
+                    "instancecount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Summary\": {\n    \"AccountsCount\": 42,\n    \"UsersCount\": 127,\n    \"InstancesCount\": 318\n  },\n  \"Time\": 1.42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a01e441a-c3d0-4c15-81da-0e265b19dce6",
+      "name": "Identity",
+      "description": {
+        "content": "IAM users and roles across accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24199b2e-7fe3-4a8f-84a4-73d5acd5b1f9",
+          "name": "Chick-fil-A List IAM Users",
+          "request": {
+            "name": "Chick-fil-A List IAM Users",
+            "description": {
+              "content": "Lists IAM users for a given account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "035074c3-be76-4c64-a076-2be06cb5100b",
+              "name": "IAM users returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Account\": {\n      \"accountNum\": \"123456789012\"\n    },\n    \"Username\": \"jsmith\"\n  },\n  {\n    \"Account\": {\n      \"accountNum\": \"123456789012\"\n    },\n    \"Username\": \"jsmith\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b0f4556-1fcb-4922-a5df-6f3c9a92b5b4",
+          "name": "Chick-fil-A Get IAM User",
+          "request": {
+            "name": "Chick-fil-A Get IAM User",
+            "description": {
+              "content": "Returns detailed IAM user information including managed policies and access keys for a given account and user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) The IAM username to look up."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74e497f0-70d3-4909-ac85-e13316a3e37c",
+              "name": "IAM user detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "user",
+                      "value": "jsmith"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"accountNum\": \"123456789012\"\n  },\n  \"User\": {\n    \"Username\": \"jsmith\",\n    \"ManagedPolicies\": [\n      {\n        \"ManagedPolicy\": \"AdministratorAccess\"\n      },\n      {\n        \"ManagedPolicy\": \"AdministratorAccess\"\n      }\n    ],\n    \"AccessKeys\": [\n      {\n        \"AccessKeyId\": \"AKIAEXAMPLE1234567\",\n        \"Status\": \"Active\"\n      },\n      {\n        \"AccessKeyId\": \"AKIAEXAMPLE1234567\",\n        \"Status\": \"Active\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2906b85-a1d1-4546-ab44-0fef97436d0d",
+          "name": "Chick-fil-A List IAM Roles",
+          "request": {
+            "name": "Chick-fil-A List IAM Roles",
+            "description": {
+              "content": "Lists IAM roles for a given account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ada2036-078a-422e-8edd-0ad26141b312",
+              "name": "IAM roles returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"platform-deploy-role\"\n  },\n  {\n    \"Name\": \"platform-deploy-role\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ba71e5db-6cc3-4410-8cc4-ec34bc0b9e52",
+      "name": "Compute",
+      "description": {
+        "content": "EC2 instances and public IP address operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "716885a5-2144-4448-b911-beeae03e1698",
+          "name": "Chick-fil-A List Public IPs",
+          "request": {
+            "name": "Chick-fil-A List Public IPs",
+            "description": {
+              "content": "Lists Elastic IP / public IP addresses and their associated instances and network interfaces for a given account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "publicips"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f986b809-f2bf-4817-b754-9a0e83dec8da",
+              "name": "Public IPs returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "publicips"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"PublicIP\": \"203.0.113.25\",\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"PrivateIP\": \"10.0.4.12\",\n    \"NetworkInterface\": \"eni-0a1b2c3d4e5f60718\"\n  },\n  {\n    \"PublicIP\": \"203.0.113.25\",\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"PrivateIP\": \"10.0.4.12\",\n    \"NetworkInterface\": \"eni-0a1b2c3d4e5f60718\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a274cea5-464c-4648-9bbf-4c948d40492e",
+          "name": "Chick-fil-A List EC2 Instances",
+          "request": {
+            "name": "Chick-fil-A List EC2 Instances",
+            "description": {
+              "content": "Lists EC2 instances for a given account, annotated with cluster/workload associations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66cc2496-7616-4f7b-bd5a-5ceeefae6a94",
+              "name": "EC2 instances returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"Cluster\": \"ecs-prod-web\",\n    \"Region\": \"us-east-1\"\n  },\n  {\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"Cluster\": \"ecs-prod-web\",\n    \"Region\": \"us-east-1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25096846-ef58-410c-960f-360eb9b00f93",
+          "name": "Chick-fil-A Get EC2 Instance",
+          "request": {
+            "name": "Chick-fil-A Get EC2 Instance",
+            "description": {
+              "content": "Returns detailed information for a single EC2 instance, including public IP, subnet, and ELB associations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "instance",
+                  "value": "<string>",
+                  "description": "(Required) The EC2 instance ID to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c260c96a-42ad-4e7c-95c8-f6af09b4bfc0",
+              "name": "EC2 instance detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "instance",
+                      "value": "i-0a1b2c3d4e5f60718"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"accountNum\": \"123456789012\"\n  },\n  \"Instance\": {\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"PublicIpAddress\": \"203.0.113.25\",\n    \"SubnetId\": \"subnet-0a1b2c3d4e5f60718\",\n    \"LoadBalancers\": [\n      \"prod-web-elb\",\n      \"prod-web-elb\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f21e7980-edd2-469d-a85b-7b5b75530fc7",
+              "name": "Instance not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "instance",
+                      "value": "i-0a1b2c3d4e5f60718"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "26bc617b-cdcc-45b7-886c-2394f160c17b",
+      "name": "Networking",
+      "description": {
+        "content": "Security groups and load balancers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e6d436a-708a-44ad-8175-0793e393e0fc",
+          "name": "Chick-fil-A List Security Groups",
+          "request": {
+            "name": "Chick-fil-A List Security Groups",
+            "description": {
+              "content": "Lists EC2 security groups for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "securitygroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a82a983-ef11-4687-9035-546dfe03ff7a",
+              "name": "Security groups returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "securitygroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SecurityGroups\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"GroupId\": \"sg-0a1b2c3d4e5f60718\",\n      \"GroupName\": \"prod-web-sg\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"GroupId\": \"sg-0a1b2c3d4e5f60718\",\n      \"GroupName\": \"prod-web-sg\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8e56505-e38a-4876-bb94-4cb586268f77",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "securitygroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8489def9-ee31-4822-aac0-2e97fb7b0bf1",
+          "name": "Chick-fil-A Get Security Group",
+          "request": {
+            "name": "Chick-fil-A Get Security Group",
+            "description": {
+              "content": "Returns detailed inbound and outbound rules and associated instances for a single security group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "securitygroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "securitygroup",
+                  "value": "<string>",
+                  "description": "(Required) The security group ID to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c38fcf83-1f17-4c25-b85b-b44c5cbbaee1",
+              "name": "Security group detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "securitygroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "securitygroup",
+                      "value": "sg-0a1b2c3d4e5f60718"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GroupId\": \"sg-0a1b2c3d4e5f60718\",\n  \"InboundRules\": [\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    },\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    }\n  ],\n  \"OutboundRules\": [\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    },\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    }\n  ],\n  \"Instances\": [\n    {\n      \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n      \"Name\": \"prod-web-1\"\n    },\n    {\n      \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n      \"Name\": \"prod-web-1\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9eab1219-9ad9-4c56-9cdf-3df25026f139",
+          "name": "Chick-fil-A List Load Balancers",
+          "request": {
+            "name": "Chick-fil-A List Load Balancers",
+            "description": {
+              "content": "Lists elastic load balancers for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "elbs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4189dcce-12b4-4bc0-a288-8032994d1c06",
+              "name": "Load balancers returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elbs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"LoadBalancers\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"LoadBalancerName\": \"prod-web-elb\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"LoadBalancerName\": \"prod-web-elb\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0f97a9d-7a30-4039-9796-a3a86290dd30",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elbs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9c25c56-fe91-4575-b81c-a4c264dad2df",
+          "name": "Chick-fil-A Get Load Balancer",
+          "request": {
+            "name": "Chick-fil-A Get Load Balancer",
+            "description": {
+              "content": "Returns detailed information for a single load balancer including subnets and gateway routing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "elb"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "elb",
+                  "value": "<string>",
+                  "description": "(Required) The load balancer name to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e402967e-438c-4b43-ba21-6a31ca8e8afb",
+              "name": "Load balancer detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "elb",
+                      "value": "prod-web-elb"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"AccountNum\": \"123456789012\"\n  },\n  \"LoadBalancer\": {\n    \"LoadBalancerName\": \"prod-web-elb\",\n    \"Subnets\": [\n      \"subnet-0a1b2c3d4e5f60718\",\n      \"subnet-0a1b2c3d4e5f60718\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70b69709-e0f3-4c3b-8067-1622b25e434c",
+              "name": "Load balancer not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "elb",
+                      "value": "prod-web-elb"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "59d8e2f5-f2b5-4f87-9148-f58ff8e4e3c6",
+      "name": "Databases",
+      "description": {
+        "content": "RDS, DynamoDB, and Redshift inventory.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aeb7e135-4d21-4c5a-bb42-7a19c195506a",
+          "name": "Chick-fil-A List RDS Databases",
+          "request": {
+            "name": "Chick-fil-A List RDS Databases",
+            "description": {
+              "content": "Lists RDS database instances for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d14d3a91-71e2-4b97-a6ca-4554f170e675",
+              "name": "RDS databases returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Region\": \"us-east-1\",\n    \"DBName\": \"orders\",\n    \"Endpoint\": {\n      \"Address\": \"orders.abc123.us-east-1.rds.amazonaws.com\",\n      \"Port\": 5432\n    },\n    \"CreateDate\": \"2025-01-15T10:00:00Z\",\n    \"AccountAlias\": \"prod-platform\"\n  },\n  {\n    \"Region\": \"us-east-1\",\n    \"DBName\": \"orders\",\n    \"Endpoint\": {\n      \"Address\": \"orders.abc123.us-east-1.rds.amazonaws.com\",\n      \"Port\": 5432\n    },\n    \"CreateDate\": \"2025-01-15T10:00:00Z\",\n    \"AccountAlias\": \"prod-platform\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78de86c2-f18c-4420-82d4-145acc6a3a58",
+          "name": "Chick-fil-A List DynamoDB Tables",
+          "request": {
+            "name": "Chick-fil-A List DynamoDB Tables",
+            "description": {
+              "content": "Lists DynamoDB tables for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "dynamotables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7ceac41-26de-4d21-b88f-dbe34f2ba6d5",
+              "name": "DynamoDB tables returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "dynamotables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Tables\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"TableName\": \"AWS-Accounts-Table\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"TableName\": \"AWS-Accounts-Table\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18a55227-f2b2-454c-a1fe-7a756a18b75a",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "dynamotables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e85d1dec-b4f5-41d6-ace5-ee356e1e90a8",
+          "name": "Chick-fil-A List Redshift Clusters",
+          "request": {
+            "name": "Chick-fil-A List Redshift Clusters",
+            "description": {
+              "content": "Lists Redshift clusters for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "redshiftclusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "593590bb-8bca-4fac-b2d0-b513fda678e3",
+              "name": "Redshift clusters returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "redshiftclusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Clusters\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"ClusterIdentifier\": \"analytics-prod\",\n      \"AccountAlias\": \"prod-platform\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"ClusterIdentifier\": \"analytics-prod\",\n      \"AccountAlias\": \"prod-platform\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "764367a2-d9f5-4caa-8ea1-049e1adb7b7a",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "redshiftclusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5afbf5ee-7e30-472c-b27a-1ca79490ff8a",
+      "name": "Storage",
+      "description": {
+        "content": "S3 bucket inventory and object listing.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88e4a982-0277-41dd-88a5-999c0e099fc6",
+          "name": "Chick-fil-A List S3 Buckets",
+          "request": {
+            "name": "Chick-fil-A List S3 Buckets",
+            "description": {
+              "content": "Lists S3 buckets for a given account, flagging globally accessible buckets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "s3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4ff5915-6573-4973-9a7e-056c719834e8",
+              "name": "S3 buckets returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "s3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"BucketName\": \"my-app-logs-bucket\",\n    \"Global\": false,\n    \"AccountAlias\": \"prod-platform\"\n  },\n  {\n    \"BucketName\": \"my-app-logs-bucket\",\n    \"Global\": false,\n    \"AccountAlias\": \"prod-platform\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3f84717-325e-4b8d-8754-617f11255dc5",
+          "name": "Chick-fil-A Get S3 Bucket",
+          "request": {
+            "name": "Chick-fil-A Get S3 Bucket",
+            "description": {
+              "content": "Returns detailed information and object listing for a single S3 bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "bucket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>",
+                  "description": "(Required) The S3 bucket name to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b141d2b3-e615-4260-811c-1b7e4fb40389",
+              "name": "S3 bucket detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "bucket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "my-app-logs-bucket"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Bucket\": {\n    \"BucketName\": \"my-app-logs-bucket\",\n    \"Objects\": [\n      {\n        \"Key\": \"logs/2026-06-01.json\",\n        \"Encryption\": \"AES256\",\n        \"StorageType\": \"STANDARD\"\n      },\n      {\n        \"Key\": \"logs/2026-06-01.json\",\n        \"Encryption\": \"AES256\",\n        \"StorageType\": \"STANDARD\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23954c0d-469a-412d-a343-3990db5d37de",
+              "name": "Bucket or account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "bucket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "my-app-logs-bucket"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ba575ec2-bf58-4de0-94c7-098c68be25ab",
+      "name": "Compliance",
+      "description": {
+        "content": "Compliance rules and audit report operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7232813b-d3df-434f-944c-9885d3f8b65a",
+          "name": "Chick-fil-A List Compliance Rules",
+          "request": {
+            "name": "Chick-fil-A List Compliance Rules",
+            "description": {
+              "content": "Lists all enabled compliance rules grouped by AWS service, sourced from the rules S3 bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80d7619c-0f01-41b4-9e24-268ceefdf26b",
+              "name": "Compliance rules returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Service\": \"s3\",\n    \"Rule\": {\n      \"name\": \"s3-public-read-prohibited\",\n      \"description\": \"Checks that S3 buckets do not allow public read access.\",\n      \"priority\": 1\n    }\n  },\n  {\n    \"Service\": \"s3\",\n    \"Rule\": {\n      \"name\": \"s3-public-read-prohibited\",\n      \"description\": \"Checks that S3 buckets do not allow public read access.\",\n      \"priority\": 1\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08216949-fc2f-4050-9394-160fa6b32711",
+          "name": "Chick-fil-A List Compliance Reports",
+          "request": {
+            "name": "Chick-fil-A List Compliance Reports",
+            "description": {
+              "content": "Lists available compliance audit reports stored in the reports S3 bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a7806af-fa30-41c5-a43c-e71bcb01b4ef",
+              "name": "Reports returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Report\": \"2026-06-01\",\n    \"LastModified\": \"2026-06-01 14:30:00+00:00\"\n  },\n  {\n    \"Report\": \"2026-06-01\",\n    \"LastModified\": \"2026-06-01 14:30:00+00:00\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06e1f38b-1f1e-4b75-9997-f3d859034381",
+          "name": "Chick-fil-A Run Compliance Audit Report",
+          "request": {
+            "name": "Chick-fil-A Run Compliance Audit Report",
+            "description": {
+              "content": "Triggers an asynchronous compliance audit Lambda that generates a new compliance report.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "reports",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4eebb9b5-81ed-4ddd-8846-e8e388ae1f87",
+              "name": "Audit report run invoked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reports",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": 202\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1801e716-f32f-4608-b7bb-2c19c596e61b",
+    "name": "Chick-fil-A BOVINE API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}
