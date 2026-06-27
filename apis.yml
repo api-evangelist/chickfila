@@ -134,7 +134,7 @@ common:
     url: https://www.chick-fil-a.com/
   - type: Login
     url: https://www.chick-fil-a.com/sign-in
-  - type: SignUp
+  - type: Signup
     url: https://www.chick-fil-a.com/sign-up
   - type: Ordering
     url: https://order.chick-fil-a.com/

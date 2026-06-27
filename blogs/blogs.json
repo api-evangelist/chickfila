@@ -7,9 +7,9 @@
       "title": "Chick-fil-A Tech Blog",
       "saved": 0,
       "method": "feed",
-      "note": "Latest post dated November 2025; no posts found in June 1-7, 2026"
+      "note": "Latest post in feed dated 2025-11-06 (Self-Hosting Maestro Mobile Tests); nothing newer than prior fetch cutoff of 2026-06-07"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-07T00:00:00Z"
+  "fetched": "2026-06-21T17:00:00Z"
 }
