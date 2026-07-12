@@ -126,6 +126,8 @@ apis:
       reports across an enterprise AWS estate. This is the only Chick-fil-A repository exposing a documented HTTP API
       surface; the company operates no public consumer developer API.
 common:
+  - type: DomainSecurity
+    url: security/chickfila-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/chick-fil-a
   - type: LinkedIn
