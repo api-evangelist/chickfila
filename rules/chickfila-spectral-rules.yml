@@ -1,9 +1,20 @@
-# Chick-fil-A BOVINE API — Spectral Ruleset
-# Enforces the conventions observed across the Chick-fil-A BOVINE OpenAPI specification.
-# Apply with: spectral lint openapi/chickfila-bovine.yml --ruleset rules/chickfila-spectral-rules.yml
+# chickfila — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on example.com
+#   - query-params-casing: snake @ 100% (n=36)
+#   - operationid-casing: camel @ 100% (n=27)
+#   - schema-names-casing: pascal @ 100% (n=31)
+#   - schema-properties-casing: pascal @ 86% (n=69)
+#   - merge: kept 32 existing, added 5 measured, upgraded 0
+#   - added: servers-expected-domain, query-params-casing, schema-names-casing, schema-properties-casing, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
-
-  # ── INFO / METADATA ─────────────────────────────────────────────
   info-title-prefix:
     description: API title should start with "Chick-fil-A".
     severity: warn
@@ -11,7 +22,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^Chick-fil-A"
+        match: ^Chick-fil-A
   info-description-required:
     description: Info object must have a description of reasonable length.
     severity: warn
@@ -33,8 +44,6 @@ rules:
     then:
       field: contact
       function: truthy
-
-  # ── OPENAPI VERSION ─────────────────────────────────────────────
   openapi-version-3:
     description: Specifications must use OpenAPI 3.0.x.
     severity: warn
@@ -42,9 +51,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^3\\.0\\."
-
-  # ── SERVERS ─────────────────────────────────────────────────────
+        match: ^3\.0\.
   servers-defined:
     description: At least one server must be defined.
     severity: error
@@ -62,7 +69,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
+        match: ^https://
   server-description:
     description: Each server should have a description.
     severity: info
@@ -70,8 +77,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # ── PATHS ───────────────────────────────────────────────────────
   paths-no-trailing-slash:
     description: Paths must not end with a trailing slash.
     severity: warn
@@ -79,7 +84,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: ".+/$"
+        notMatch: .+/$
   paths-no-query-string:
     description: Paths must not contain query strings.
     severity: error
@@ -87,7 +92,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: "\\?"
+        notMatch: \?
   paths-lower-case:
     description: Path segments should be lower camelCase or kebab-case (no UPPER snake).
     severity: info
@@ -95,9 +100,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: "[A-Z]{2,}"
-
-  # ── OPERATIONS ──────────────────────────────────────────────────
+        notMatch: '[A-Z]{2,}'
   operation-operationId-required:
     description: Every operation must declare an operationId.
     severity: error
@@ -112,7 +115,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^(get|list|add|run|create|update|delete|getAll)[A-Z0-9].*$|^(get|list|add|run|create|update|delete)[A-Za-z0-9]*$"
+        match: ^(get|list|add|run|create|update|delete|getAll)[A-Z0-9].*$|^(get|list|add|run|create|update|delete)[A-Za-z0-9]*$
   operation-summary-required:
     description: Every operation must have a summary.
     severity: warn
@@ -127,7 +130,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^Chick-fil-A "
+        match: '^Chick-fil-A '
   operation-description-required:
     description: Every operation should have a description.
     severity: warn
@@ -149,8 +152,6 @@ rules:
     then:
       field: x-microcks-operation
       function: truthy
-
-  # ── TAGS ────────────────────────────────────────────────────────
   global-tags-defined:
     description: A global tags array should be defined.
     severity: info
@@ -172,9 +173,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][A-Za-z]+$"
-
-  # ── PARAMETERS ──────────────────────────────────────────────────
+        match: ^[A-Z][A-Za-z]+$
   parameter-description-required:
     description: Every parameter must have a description.
     severity: warn
@@ -189,8 +188,6 @@ rules:
     then:
       field: schema
       function: truthy
-
-  # ── REQUEST BODIES ──────────────────────────────────────────────
   request-body-json:
     description: Request bodies should offer application/json content.
     severity: warn
@@ -205,14 +202,12 @@ rules:
     then:
       field: description
       function: truthy
-
-  # ── RESPONSES ───────────────────────────────────────────────────
   response-success-defined:
     description: Operations must define a 200 (or other 2xx) success response.
     severity: warn
     given: $.paths[*][get,post,put,patch,delete].responses
     then:
-      field: "200"
+      field: '200'
       function: truthy
   response-description-required:
     description: Every response must have a description.
@@ -228,8 +223,6 @@ rules:
     then:
       field: application/json
       function: truthy
-
-  # ── SCHEMAS ─────────────────────────────────────────────────────
   schema-description-required:
     description: Top-level component schemas should have a description.
     severity: warn
@@ -251,8 +244,6 @@ rules:
     then:
       field: example
       function: truthy
-
-  # ── HTTP METHOD CONVENTIONS ─────────────────────────────────────
   get-no-request-body:
     description: GET operations must not declare a request body.
     severity: error
@@ -260,3 +251,44 @@ rules:
     then:
       field: requestBody
       function: falsy
+  servers-expected-domain:
+    description: Server URLs should be on the example.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: example\.com
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be PascalCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
