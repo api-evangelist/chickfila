@@ -126,6 +126,8 @@ apis:
       reports across an enterprise AWS estate. This is the only Chick-fil-A repository exposing a documented HTTP API
       surface; the company operates no public consumer developer API.
 common:
+  - type: AgenticAccess
+    url: agentic-access/chickfila-agentic-access.yml
   - type: DomainSecurity
     url: security/chickfila-domain-security.yml
   - type: GitHubOrganization
