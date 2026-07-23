@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Chick-fil-A BOVINE Accounts System API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  version: '1.0'
+  x-generated-from: documentation
+  x-source-url: https://github.com/chick-fil-a/bovine
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: See repository
+    url: https://github.com/chick-fil-a/bovine
+servers:
+- url: https://api.example.com
+  description: Deployment-specific AWS API Gateway endpoint. BOVINE is self-hosted; the host is configured per-deployment via the serverless domainName setting.
+tags:
+- name: System
+  description: Health and configuration operations.
+paths:
+  /api/ping:
+    get:
+      operationId: getPing
+      summary: Chick-fil-A Ping the BOVINE Service
+      description: Health-check style endpoint that dispatches a named operation and returns a response payload.
+      tags:
+      - System
+      parameters:
+      - name: operation
+        in: query
+        required: false
+        description: The named operation to dispatch.
+        schema:
+          type: string
+        example: status
+      responses:
+        '200':
+          description: Service responded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /login:
+    get:
+      operationId: getLogin
+      summary: Chick-fil-A Initiate Login
+      description: Initiates the authentication flow for the BOVINE single-page application.
+      tags:
+      - System
+      responses:
+        '200':
+          description: Login flow initiated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/dashboard:
+    get:
+      operationId: getDashboard
+      summary: Chick-fil-A Get Dashboard Summary
+      description: Returns the aggregate dashboard summary statistics across all monitored AWS accounts.
+      tags:
+      - System
+      responses:
+        '200':
+          description: Dashboard summary returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DashboardSummary:
+      type: object
+      description: Aggregate dashboard statistics across all monitored AWS accounts.
+      properties:
+        Summary:
+          type: object
+          description: Aggregate counts and risk metrics for the dashboard.
+          properties:
+            AccountsCount:
+              type: integer
+              description: Total number of AWS accounts tracked.
+              example: 42
+            InstancesCount:
+              type: integer
+              description: Total number of EC2 instances across accounts.
+              example: 318
+            UsersCount:
+              type: integer
+              description: Total number of IAM users across accounts.
+              example: 127
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    PingResponse:
+      type: object
+      description: Response from the BOVINE ping/dispatch endpoint.
+      properties:
+        response:
+          type: string
+          description: The dispatched operation response payload.
+          example: ok

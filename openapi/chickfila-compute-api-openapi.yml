@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: Chick-fil-A BOVINE Accounts Compute API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  version: '1.0'
+  x-generated-from: documentation
+  x-source-url: https://github.com/chick-fil-a/bovine
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: See repository
+    url: https://github.com/chick-fil-a/bovine
+servers:
+- url: https://api.example.com
+  description: Deployment-specific AWS API Gateway endpoint. BOVINE is self-hosted; the host is configured per-deployment via the serverless domainName setting.
+tags:
+- name: Compute
+  description: EC2 instances and public IP address operations.
+paths:
+  /api/publicips:
+    get:
+      operationId: getPublicIps
+      summary: Chick-fil-A List Public IPs
+      description: Lists Elastic IP / public IP addresses and their associated instances and network interfaces for a given account.
+      tags:
+      - Compute
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Public IPs returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PublicIp'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/instances:
+    get:
+      operationId: getInstances
+      summary: Chick-fil-A List EC2 Instances
+      description: Lists EC2 instances for a given account, annotated with cluster/workload associations.
+      tags:
+      - Compute
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: EC2 instances returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ec2Instance'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/instance:
+    get:
+      operationId: getInstance
+      summary: Chick-fil-A Get EC2 Instance
+      description: Returns detailed information for a single EC2 instance, including public IP, subnet, and ELB associations.
+      tags:
+      - Compute
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - name: instance
+        in: query
+        required: true
+        description: The EC2 instance ID to look up.
+        schema:
+          type: string
+        example: i-0a1b2c3d4e5f60718
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: EC2 instance detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ec2InstanceDetail'
+        '404':
+          description: Instance not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
+    RegionParam:
+      name: region
+      in: query
+      required: false
+      description: The AWS region to scope the request to.
+      schema:
+        type: string
+        default: us-east-1
+      example: us-east-1
+  schemas:
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    PublicIp:
+      type: object
+      description: A public/Elastic IP address association.
+      properties:
+        PublicIP:
+          type: string
+          description: The public IP address.
+          example: 203.0.113.25
+        InstanceId:
+          type: string
+          description: The associated EC2 instance ID.
+          example: i-0a1b2c3d4e5f60718
+        PrivateIP:
+          type: string
+          description: The associated private IP address.
+          example: 10.0.4.12
+        NetworkInterface:
+          type: string
+          description: The associated network interface ID.
+          example: eni-0a1b2c3d4e5f60718
+    Ec2Instance:
+      type: object
+      description: An EC2 instance record, annotated with cluster/workload association.
+      properties:
+        InstanceId:
+          type: string
+          example: i-0a1b2c3d4e5f60718
+        Cluster:
+          type: string
+          description: The cluster or workload association (ECS, Beanstalk, ASG, etc.).
+          example: ecs-prod-web
+        Region:
+          type: string
+          example: us-east-1
+    Ec2InstanceDetail:
+      type: object
+      description: Detailed EC2 instance information.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        Instance:
+          type: object
+          properties:
+            InstanceId:
+              type: string
+              example: i-0a1b2c3d4e5f60718
+            PublicIpAddress:
+              type: string
+              example: 203.0.113.25
+            SubnetId:
+              type: string
+              example: subnet-0a1b2c3d4e5f60718
+            LoadBalancers:
+              type: array
+              description: ELBs associated with this instance.
+              items:
+                type: string
+                example: prod-web-elb

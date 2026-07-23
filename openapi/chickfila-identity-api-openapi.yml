@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Chick-fil-A BOVINE Accounts Identity API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  version: '1.0'
+  x-generated-from: documentation
+  x-source-url: https://github.com/chick-fil-a/bovine
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: See repository
+    url: https://github.com/chick-fil-a/bovine
+servers:
+- url: https://api.example.com
+  description: Deployment-specific AWS API Gateway endpoint. BOVINE is self-hosted; the host is configured per-deployment via the serverless domainName setting.
+tags:
+- name: Identity
+  description: IAM users and roles across accounts.
+paths:
+  /api/users:
+    get:
+      operationId: getUsers
+      summary: Chick-fil-A List IAM Users
+      description: Lists IAM users for a given account.
+      tags:
+      - Identity
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: IAM users returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IamUserSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/user:
+    get:
+      operationId: getUser
+      summary: Chick-fil-A Get IAM User
+      description: Returns detailed IAM user information including managed policies and access keys for a given account and user.
+      tags:
+      - Identity
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - name: user
+        in: query
+        required: true
+        description: The IAM username to look up.
+        schema:
+          type: string
+        example: jsmith
+      responses:
+        '200':
+          description: IAM user detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IamUserDetail'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/roles:
+    get:
+      operationId: getRoles
+      summary: Chick-fil-A List IAM Roles
+      description: Lists IAM roles for a given account.
+      tags:
+      - Identity
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: IAM roles returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IamRole'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    IamRole:
+      type: object
+      description: An IAM role record for an account.
+      properties:
+        Name:
+          type: string
+          description: The IAM role name.
+          example: platform-deploy-role
+    IamUserSummary:
+      type: object
+      description: A summary IAM user record for an account.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        Username:
+          type: string
+          description: The IAM username.
+          example: jsmith
+    IamUserDetail:
+      type: object
+      description: Detailed IAM user record including policies and access keys.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        User:
+          type: object
+          properties:
+            Username:
+              type: string
+              example: jsmith
+            ManagedPolicies:
+              type: array
+              description: Attached managed policies.
+              items:
+                type: object
+                properties:
+                  ManagedPolicy:
+                    type: string
+                    example: AdministratorAccess
+            AccessKeys:
+              type: array
+              description: Access keys associated with the user.
+              items:
+                type: object
+                properties:
+                  AccessKeyId:
+                    type: string
+                    example: AKIAEXAMPLE1234567
+                  Status:
+                    type: string
+                    example: Active
+  parameters:
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'

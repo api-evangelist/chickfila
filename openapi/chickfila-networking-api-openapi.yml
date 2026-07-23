@@ -1,0 +1,264 @@
+openapi: 3.0.3
+info:
+  title: Chick-fil-A BOVINE Accounts Networking API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  version: '1.0'
+  x-generated-from: documentation
+  x-source-url: https://github.com/chick-fil-a/bovine
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: See repository
+    url: https://github.com/chick-fil-a/bovine
+servers:
+- url: https://api.example.com
+  description: Deployment-specific AWS API Gateway endpoint. BOVINE is self-hosted; the host is configured per-deployment via the serverless domainName setting.
+tags:
+- name: Networking
+  description: Security groups and load balancers.
+paths:
+  /api/securitygroups:
+    get:
+      operationId: getSecurityGroups
+      summary: Chick-fil-A List Security Groups
+      description: Lists EC2 security groups for a given account and region.
+      tags:
+      - Networking
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Security groups returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityGroupList'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/securitygroup:
+    get:
+      operationId: getSecurityGroup
+      summary: Chick-fil-A Get Security Group
+      description: Returns detailed inbound and outbound rules and associated instances for a single security group.
+      tags:
+      - Networking
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - name: securitygroup
+        in: query
+        required: true
+        description: The security group ID to look up.
+        schema:
+          type: string
+        example: sg-0a1b2c3d4e5f60718
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Security group detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityGroupDetail'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/elbs:
+    get:
+      operationId: getElbs
+      summary: Chick-fil-A List Load Balancers
+      description: Lists elastic load balancers for a given account and region.
+      tags:
+      - Networking
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Load balancers returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadBalancerList'
+        '404':
+          description: Account not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/elb:
+    get:
+      operationId: getElb
+      summary: Chick-fil-A Get Load Balancer
+      description: Returns detailed information for a single load balancer including subnets and gateway routing.
+      tags:
+      - Networking
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      - name: elb
+        in: query
+        required: true
+        description: The load balancer name to look up.
+        schema:
+          type: string
+        example: prod-web-elb
+      - $ref: '#/components/parameters/RegionParam'
+      responses:
+        '200':
+          description: Load balancer detail returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadBalancerDetail'
+        '404':
+          description: Load balancer not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SecurityGroup:
+      type: object
+      description: An EC2 security group record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        GroupId:
+          type: string
+          example: sg-0a1b2c3d4e5f60718
+        GroupName:
+          type: string
+          example: prod-web-sg
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    LoadBalancer:
+      type: object
+      description: An elastic load balancer record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        LoadBalancerName:
+          type: string
+          example: prod-web-elb
+    SecurityGroupDetail:
+      type: object
+      description: Detailed security group including inbound and outbound rules and associated instances.
+      properties:
+        GroupId:
+          type: string
+          example: sg-0a1b2c3d4e5f60718
+        InboundRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroupRule'
+        OutboundRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroupRule'
+        Instances:
+          type: array
+          description: Instances associated with this security group.
+          items:
+            type: object
+            properties:
+              InstanceId:
+                type: string
+                example: i-0a1b2c3d4e5f60718
+              Name:
+                type: string
+                example: prod-web-1
+    LoadBalancerDetail:
+      type: object
+      description: Detailed load balancer information.
+      properties:
+        Account:
+          type: object
+          properties:
+            AccountNum:
+              type: string
+              example: '123456789012'
+        LoadBalancer:
+          type: object
+          properties:
+            LoadBalancerName:
+              type: string
+              example: prod-web-elb
+            Subnets:
+              type: array
+              items:
+                type: string
+                example: subnet-0a1b2c3d4e5f60718
+    SecurityGroupList:
+      type: object
+      description: A list of security groups for an account.
+      properties:
+        SecurityGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroup'
+    SecurityGroupRule:
+      type: object
+      description: A single inbound or outbound security group rule.
+      properties:
+        FromPort:
+          type: integer
+          example: 443
+        ToPort:
+          type: integer
+          example: 443
+        Protocol:
+          type: string
+          example: tcp
+        Cidr:
+          type: string
+          example: 10.0.0.0/16
+    LoadBalancerList:
+      type: object
+      description: A list of load balancers for an account.
+      properties:
+        LoadBalancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+  parameters:
+    RegionParam:
+      name: region
+      in: query
+      required: false
+      description: The AWS region to scope the request to.
+      schema:
+        type: string
+        default: us-east-1
+      example: us-east-1
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'

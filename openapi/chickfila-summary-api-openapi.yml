@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Chick-fil-A BOVINE Accounts Summary API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  version: '1.0'
+  x-generated-from: documentation
+  x-source-url: https://github.com/chick-fil-a/bovine
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: See repository
+    url: https://github.com/chick-fil-a/bovine
+servers:
+- url: https://api.example.com
+  description: Deployment-specific AWS API Gateway endpoint. BOVINE is self-hosted; the host is configured per-deployment via the serverless domainName setting.
+tags:
+- name: Summary
+  description: Aggregate counts across accounts.
+paths:
+  /api/summary/accountcount:
+    get:
+      operationId: getAccountCount
+      summary: Chick-fil-A Get Account Count
+      description: Returns the total number of AWS accounts tracked in BOVINE.
+      tags:
+      - Summary
+      responses:
+        '200':
+          description: Account count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/summary/usercount:
+    get:
+      operationId: getUserCount
+      summary: Chick-fil-A Get User Count
+      description: Returns aggregate IAM user counts across accounts, optionally scoped to a single account.
+      tags:
+      - Summary
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: User count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/summary/instancecount:
+    get:
+      operationId: getInstanceCount
+      summary: Chick-fil-A Get Instance Count
+      description: Returns aggregate EC2 instance counts across accounts, optionally scoped to a single account.
+      tags:
+      - Summary
+      parameters:
+      - $ref: '#/components/parameters/AccountParam'
+      responses:
+        '200':
+          description: Instance count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountSummary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CountSummary:
+      type: object
+      description: A summary count wrapper returned by the count endpoints.
+      properties:
+        Summary:
+          type: object
+          description: The aggregate count payload.
+          properties:
+            AccountsCount:
+              type: integer
+              description: Count of accounts.
+              example: 42
+            UsersCount:
+              type: integer
+              description: Count of IAM users.
+              example: 127
+            InstancesCount:
+              type: integer
+              description: Count of EC2 instances.
+              example: 318
+        Time:
+          type: number
+          format: double
+          description: Elapsed time in seconds to compute the count.
+          example: 1.42
+  parameters:
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
