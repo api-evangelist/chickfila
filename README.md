@@ -116,11 +116,6 @@ Chick-fil-A eGift Cards in denominations from $5 to $100 are deliverable via ema
 - [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
 - [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-### Chick-fil-A Restaurant Locator
-
-Chick-fil-A restaurant locator for finding nearby locations with filters for services such as drive-thru, dine-in, delivery, catering, and curbside pickup, plus hours and contact info.
-
-- **Human URL:** [https://www.chick-fil-a.com/locations](https://www.chick-fil-a.com/locations)
 
 #### Tags
 
