@@ -1,0 +1,30 @@
+{
+  "provider": "chickfila",
+  "sources": [
+    "chickfila-accounts-api-openapi.yml",
+    "chickfila-compliance-api-openapi.yml",
+    "chickfila-compute-api-openapi.yml",
+    "chickfila-databases-api-openapi.yml",
+    "chickfila-identity-api-openapi.yml",
+    "chickfila-networking-api-openapi.yml",
+    "chickfila-storage-api-openapi.yml",
+    "chickfila-summary-api-openapi.yml",
+    "chickfila-system-api-openapi.yml"
+  ],
+  "outputs": [
+    "chickfila-accounts-api-openapi.yml",
+    "chickfila-compliance-api-openapi.yml",
+    "chickfila-compute-api-openapi.yml",
+    "chickfila-databases-api-openapi.yml",
+    "chickfila-identity-api-openapi.yml",
+    "chickfila-networking-api-openapi.yml",
+    "chickfila-storage-api-openapi.yml",
+    "chickfila-summary-api-openapi.yml",
+    "chickfila-system-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
