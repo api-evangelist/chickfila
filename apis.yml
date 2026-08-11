@@ -218,6 +218,11 @@ apis:
       - type: SourceCode
         url: https://github.com/chick-fil-a/bovine
 common:
+  - type: IssueTracker
+    url: https://github.com/chick-fil-a/bovine/issues
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/chick-fil-a/bovine/blob/master/LICENSE
   - type: AgenticAccess
     url: agentic-access/chickfila-agentic-access.yml
   - type: DomainSecurity
