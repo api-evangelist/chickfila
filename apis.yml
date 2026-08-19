@@ -28,7 +28,7 @@ description: >-
   and eGift Cards.
 created: '2026-05-05'
 modified: '2026-07-25'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: chickfila:chick-fil-a-mobile-app
     name: Chick-fil-A Mobile App
