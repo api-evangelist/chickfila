@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts Compliance API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A List Compliance Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/rules"
+          },
+          "docs": "Lists all enabled compliance rules grouped by AWS service, sourced from the rules S3 bucket."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A List Compliance Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/reports"
+          },
+          "docs": "Lists available compliance audit reports stored in the reports S3 bucket."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Run Compliance Audit Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/reports/run"
+          },
+          "docs": "Triggers an asynchronous compliance audit Lambda that generates a new compliance report."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

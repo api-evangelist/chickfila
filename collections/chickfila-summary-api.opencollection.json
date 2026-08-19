@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts Summary API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A Get Account Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/summary/accountcount"
+          },
+          "docs": "Returns the total number of AWS accounts tracked in BOVINE."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get User Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/summary/usercount",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns aggregate IAM user counts across accounts, optionally scoped to a single account."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get Instance Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/summary/instancecount",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns aggregate EC2 instance counts across accounts, optionally scoped to a single account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

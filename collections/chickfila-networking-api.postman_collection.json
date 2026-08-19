@@ -1,0 +1,567 @@
+{
+  "item": [
+    {
+      "id": "88b1b882-c0e5-4700-a71f-a5e06881dea2",
+      "name": "Networking",
+      "description": {
+        "content": "Security groups and load balancers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9307806e-5f49-42c8-a1a2-d2236d69336b",
+          "name": "Chick-fil-A List Security Groups",
+          "request": {
+            "name": "Chick-fil-A List Security Groups",
+            "description": {
+              "content": "Lists EC2 security groups for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "securitygroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00dba965-1da0-46e3-a538-625d4f8031ed",
+              "name": "Security groups returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "securitygroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SecurityGroups\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"GroupId\": \"sg-0a1b2c3d4e5f60718\",\n      \"GroupName\": \"prod-web-sg\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"GroupId\": \"sg-0a1b2c3d4e5f60718\",\n      \"GroupName\": \"prod-web-sg\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f8f41e2-5aab-4eee-8db2-358876acecd9",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "securitygroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f9356ea-23fc-429e-ad61-61e61f42b76a",
+          "name": "Chick-fil-A Get Security Group",
+          "request": {
+            "name": "Chick-fil-A Get Security Group",
+            "description": {
+              "content": "Returns detailed inbound and outbound rules and associated instances for a single security group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "securitygroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "securitygroup",
+                  "value": "<string>",
+                  "description": "(Required) The security group ID to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91809ad3-ca83-4954-af14-b4828ff79f55",
+              "name": "Security group detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "securitygroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "securitygroup",
+                      "value": "sg-0a1b2c3d4e5f60718"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GroupId\": \"sg-0a1b2c3d4e5f60718\",\n  \"InboundRules\": [\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    },\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    }\n  ],\n  \"OutboundRules\": [\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    },\n    {\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"Protocol\": \"tcp\",\n      \"Cidr\": \"10.0.0.0/16\"\n    }\n  ],\n  \"Instances\": [\n    {\n      \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n      \"Name\": \"prod-web-1\"\n    },\n    {\n      \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n      \"Name\": \"prod-web-1\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e346438b-43b6-4392-8e2a-f2a3e9a936ee",
+          "name": "Chick-fil-A List Load Balancers",
+          "request": {
+            "name": "Chick-fil-A List Load Balancers",
+            "description": {
+              "content": "Lists elastic load balancers for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "elbs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcee9deb-08dd-463e-b241-920b456ce75f",
+              "name": "Load balancers returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elbs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"LoadBalancers\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"LoadBalancerName\": \"prod-web-elb\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"LoadBalancerName\": \"prod-web-elb\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e89a43-0bcf-4d6e-ad94-8a6f51cac1f1",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elbs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef1fd1ff-f120-449e-8965-b0cde1e6a20a",
+          "name": "Chick-fil-A Get Load Balancer",
+          "request": {
+            "name": "Chick-fil-A Get Load Balancer",
+            "description": {
+              "content": "Returns detailed information for a single load balancer including subnets and gateway routing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "elb"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "elb",
+                  "value": "<string>",
+                  "description": "(Required) The load balancer name to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf18eda3-d432-4103-9726-022ca24af584",
+              "name": "Load balancer detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "elb",
+                      "value": "prod-web-elb"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"AccountNum\": \"123456789012\"\n  },\n  \"LoadBalancer\": {\n    \"LoadBalancerName\": \"prod-web-elb\",\n    \"Subnets\": [\n      \"subnet-0a1b2c3d4e5f60718\",\n      \"subnet-0a1b2c3d4e5f60718\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe804cdd-3e4d-4bd4-afee-f58848bf53c6",
+              "name": "Load balancer not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "elb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "elb",
+                      "value": "prod-web-elb"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fbc477ab-304b-4c4f-b2ee-c3de67c6dac8",
+    "name": "Chick-fil-A BOVINE Accounts Networking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

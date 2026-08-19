@@ -1,0 +1,373 @@
+{
+  "item": [
+    {
+      "id": "367778fe-e15b-4dac-9d3d-98175641a92d",
+      "name": "Compute",
+      "description": {
+        "content": "EC2 instances and public IP address operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1814fb7a-f46a-464d-bb42-c11ed60092b9",
+          "name": "Chick-fil-A List Public IPs",
+          "request": {
+            "name": "Chick-fil-A List Public IPs",
+            "description": {
+              "content": "Lists Elastic IP / public IP addresses and their associated instances and network interfaces for a given account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "publicips"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9be9545a-1c28-4eec-ae96-f6388473b573",
+              "name": "Public IPs returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "publicips"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"PublicIP\": \"203.0.113.25\",\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"PrivateIP\": \"10.0.4.12\",\n    \"NetworkInterface\": \"eni-0a1b2c3d4e5f60718\"\n  },\n  {\n    \"PublicIP\": \"203.0.113.25\",\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"PrivateIP\": \"10.0.4.12\",\n    \"NetworkInterface\": \"eni-0a1b2c3d4e5f60718\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cbcccbc-0d3e-4e19-9c0f-8cee71af8fd4",
+          "name": "Chick-fil-A List EC2 Instances",
+          "request": {
+            "name": "Chick-fil-A List EC2 Instances",
+            "description": {
+              "content": "Lists EC2 instances for a given account, annotated with cluster/workload associations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b792601a-692d-45e6-8942-e258d4899b38",
+              "name": "EC2 instances returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"Cluster\": \"ecs-prod-web\",\n    \"Region\": \"us-east-1\"\n  },\n  {\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"Cluster\": \"ecs-prod-web\",\n    \"Region\": \"us-east-1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fb692d8-3766-4f40-bbe3-f6eed7490446",
+          "name": "Chick-fil-A Get EC2 Instance",
+          "request": {
+            "name": "Chick-fil-A Get EC2 Instance",
+            "description": {
+              "content": "Returns detailed information for a single EC2 instance, including public IP, subnet, and ELB associations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "instance",
+                  "value": "<string>",
+                  "description": "(Required) The EC2 instance ID to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfb47984-6dc7-4d0a-af0e-945d9449bde1",
+              "name": "EC2 instance detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "instance",
+                      "value": "i-0a1b2c3d4e5f60718"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"accountNum\": \"123456789012\"\n  },\n  \"Instance\": {\n    \"InstanceId\": \"i-0a1b2c3d4e5f60718\",\n    \"PublicIpAddress\": \"203.0.113.25\",\n    \"SubnetId\": \"subnet-0a1b2c3d4e5f60718\",\n    \"LoadBalancers\": [\n      \"prod-web-elb\",\n      \"prod-web-elb\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "957dee46-1f1f-4a8d-99d4-728893ab2655",
+              "name": "Instance not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "instance",
+                      "value": "i-0a1b2c3d4e5f60718"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9341716f-f52f-4537-aa19-9e6372ffc0bd",
+    "name": "Chick-fil-A BOVINE Accounts Compute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

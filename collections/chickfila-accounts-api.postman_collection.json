@@ -1,0 +1,366 @@
+{
+  "item": [
+    {
+      "id": "e1af1b12-7d8f-4399-9d8d-0597bb608d65",
+      "name": "Accounts",
+      "description": {
+        "content": "AWS account inventory and metadata operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9c3c11b-b357-4e4a-915b-5b083c86b46b",
+          "name": "Chick-fil-A List Accounts",
+          "request": {
+            "name": "Chick-fil-A List Accounts",
+            "description": {
+              "content": "Lists all AWS accounts tracked in the BOVINE DynamoDB accounts table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "238a12e3-9694-4f55-a789-72b5d15175b1",
+              "name": "Accounts returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accountNum\": \"123456789012\",\n    \"alias\": \"prod-platform\",\n    \"email\": \"aws-prod@example.com\",\n    \"AccountOwner\": \"Platform Team\",\n    \"remediate\": false\n  },\n  {\n    \"accountNum\": \"123456789012\",\n    \"alias\": \"prod-platform\",\n    \"email\": \"aws-prod@example.com\",\n    \"AccountOwner\": \"Platform Team\",\n    \"remediate\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ede9ed9-8247-40ad-896a-fbe62705458c",
+          "name": "Chick-fil-A Get Account",
+          "request": {
+            "name": "Chick-fil-A Get Account",
+            "description": {
+              "content": "Returns detailed metadata and risk posture for a single AWS account, looked up by account number or alias.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66b9b53d-0671-4e22-8311-d5eaee81654a",
+              "name": "Account detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"accountNum\": \"123456789012\",\n    \"owner\": \"Platform Team\",\n    \"alias\": \"prod-platform\",\n    \"email\": \"aws-prod@example.com\",\n    \"iam\": 18,\n    \"publicIP\": 6,\n    \"riskysg\": 2,\n    \"unusedsg\": 5,\n    \"bastion\": \"bastion-prod-1\",\n    \"risk_score\": -1,\n    \"admins\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be22f780-0386-4871-a4de-c43a0a49395d",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c0a1236-c1c9-4829-b0dc-8a7223220bba",
+          "name": "Chick-fil-A Add Account",
+          "request": {
+            "name": "Chick-fil-A Add Account",
+            "description": {
+              "content": "Adds an AWS account to the BOVINE accounts table. The account number must be a 12-digit numeric string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "addAccount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNum\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"email\": \"<email>\",\n  \"AccountOwner\": \"<string>\",\n  \"remediate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bed8de71-f4cb-4dd0-a539-5c5997b8900a",
+              "name": "Account added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "addAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountNum\": \"123456789012\",\n  \"alias\": \"prod-platform\",\n  \"email\": \"aws-prod@example.com\",\n  \"AccountOwner\": \"Platform Team\",\n  \"remediate\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": \"added\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8dda4358-17e2-4ff3-8399-c9bbbeacadf7",
+              "name": "Incorrect account number or account not added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "addAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountNum\": \"123456789012\",\n  \"alias\": \"prod-platform\",\n  \"email\": \"aws-prod@example.com\",\n  \"AccountOwner\": \"Platform Team\",\n  \"remediate\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": \"added\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "811c8234-9716-4b12-8e74-bf683330f5ba",
+    "name": "Chick-fil-A BOVINE Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

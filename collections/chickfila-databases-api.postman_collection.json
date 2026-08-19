@@ -1,0 +1,404 @@
+{
+  "item": [
+    {
+      "id": "0e10b5c1-1dc2-4852-b2fe-6b226e17e781",
+      "name": "Databases",
+      "description": {
+        "content": "RDS, DynamoDB, and Redshift inventory.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54c59921-83cb-4786-be1e-097bb181e761",
+          "name": "Chick-fil-A List RDS Databases",
+          "request": {
+            "name": "Chick-fil-A List RDS Databases",
+            "description": {
+              "content": "Lists RDS database instances for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ae2c30c-bb5f-418c-b2e5-dc7a5d515448",
+              "name": "RDS databases returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Region\": \"us-east-1\",\n    \"DBName\": \"orders\",\n    \"Endpoint\": {\n      \"Address\": \"orders.abc123.us-east-1.rds.amazonaws.com\",\n      \"Port\": 5432\n    },\n    \"CreateDate\": \"2025-01-15T10:00:00Z\",\n    \"AccountAlias\": \"prod-platform\"\n  },\n  {\n    \"Region\": \"us-east-1\",\n    \"DBName\": \"orders\",\n    \"Endpoint\": {\n      \"Address\": \"orders.abc123.us-east-1.rds.amazonaws.com\",\n      \"Port\": 5432\n    },\n    \"CreateDate\": \"2025-01-15T10:00:00Z\",\n    \"AccountAlias\": \"prod-platform\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f82adc3a-1a23-498f-b0c8-f7fd0488ebec",
+          "name": "Chick-fil-A List DynamoDB Tables",
+          "request": {
+            "name": "Chick-fil-A List DynamoDB Tables",
+            "description": {
+              "content": "Lists DynamoDB tables for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "dynamotables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db49b0d2-b93c-4018-9eca-b6db47428633",
+              "name": "DynamoDB tables returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "dynamotables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Tables\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"TableName\": \"AWS-Accounts-Table\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"TableName\": \"AWS-Accounts-Table\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48c2cdd8-4ca6-4ea0-a072-8df74150b8bd",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "dynamotables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de93a25f-e52b-4fcf-9bb8-75542dcaa7a0",
+          "name": "Chick-fil-A List Redshift Clusters",
+          "request": {
+            "name": "Chick-fil-A List Redshift Clusters",
+            "description": {
+              "content": "Lists Redshift clusters for a given account and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "redshiftclusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "us-east-1",
+                  "description": "The AWS region to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02e6e0f5-d7a9-45aa-a025-05b75090122e",
+              "name": "Redshift clusters returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "redshiftclusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Clusters\": [\n    {\n      \"Region\": \"us-east-1\",\n      \"ClusterIdentifier\": \"analytics-prod\",\n      \"AccountAlias\": \"prod-platform\"\n    },\n    {\n      \"Region\": \"us-east-1\",\n      \"ClusterIdentifier\": \"analytics-prod\",\n      \"AccountAlias\": \"prod-platform\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41b74c5e-b452-43a8-8588-ef87d24b2e66",
+              "name": "Account not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "redshiftclusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-east-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"Account not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a6a021e-0c14-4126-913d-c4378795678b",
+    "name": "Chick-fil-A BOVINE Accounts Databases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

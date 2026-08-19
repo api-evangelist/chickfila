@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/accounts"
+          },
+          "docs": "Lists all AWS accounts tracked in the BOVINE DynamoDB accounts table."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/account",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns detailed metadata and risk posture for a single AWS account, looked up by account number or alias."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Add Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.example.com/api/addAccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an AWS account to the BOVINE accounts table. The account number must be a 12-digit numeric string."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

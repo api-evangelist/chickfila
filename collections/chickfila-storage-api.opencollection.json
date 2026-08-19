@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts Storage API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A List S3 Buckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/s3",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists S3 buckets for a given account, flagging globally accessible buckets."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get S3 Bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/bucket",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "bucket",
+                "value": "my-app-logs-bucket",
+                "type": "query",
+                "description": "The S3 bucket name to look up."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns detailed information and object listing for a single S3 bucket."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

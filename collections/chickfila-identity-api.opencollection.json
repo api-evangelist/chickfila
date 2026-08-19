@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts Identity API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A List IAM Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/users",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists IAM users for a given account."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get IAM User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/user",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "user",
+                "value": "jsmith",
+                "type": "query",
+                "description": "The IAM username to look up."
+              }
+            ]
+          },
+          "docs": "Returns detailed IAM user information including managed policies and access keys for a given account and user."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A List IAM Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/roles",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists IAM roles for a given account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

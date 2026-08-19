@@ -1,0 +1,294 @@
+{
+  "item": [
+    {
+      "id": "7d80b95d-f710-4cda-8ac7-3b5926f4fa82",
+      "name": "Identity",
+      "description": {
+        "content": "IAM users and roles across accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c463f19b-93cd-4f7f-968a-85cbff8c0170",
+          "name": "Chick-fil-A List IAM Users",
+          "request": {
+            "name": "Chick-fil-A List IAM Users",
+            "description": {
+              "content": "Lists IAM users for a given account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6796b1e-d750-4dea-851e-f3d492637db7",
+              "name": "IAM users returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Account\": {\n      \"accountNum\": \"123456789012\"\n    },\n    \"Username\": \"jsmith\"\n  },\n  {\n    \"Account\": {\n      \"accountNum\": \"123456789012\"\n    },\n    \"Username\": \"jsmith\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccfc5c0d-ba6d-49e3-a00a-1156c250312d",
+          "name": "Chick-fil-A Get IAM User",
+          "request": {
+            "name": "Chick-fil-A Get IAM User",
+            "description": {
+              "content": "Returns detailed IAM user information including managed policies and access keys for a given account and user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) The IAM username to look up."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "379f3f78-9215-4f9a-980e-3853f07f3d62",
+              "name": "IAM user detail returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    },
+                    {
+                      "key": "user",
+                      "value": "jsmith"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Account\": {\n    \"accountNum\": \"123456789012\"\n  },\n  \"User\": {\n    \"Username\": \"jsmith\",\n    \"ManagedPolicies\": [\n      {\n        \"ManagedPolicy\": \"AdministratorAccess\"\n      },\n      {\n        \"ManagedPolicy\": \"AdministratorAccess\"\n      }\n    ],\n    \"AccessKeys\": [\n      {\n        \"AccessKeyId\": \"AKIAEXAMPLE1234567\",\n        \"Status\": \"Active\"\n      },\n      {\n        \"AccessKeyId\": \"AKIAEXAMPLE1234567\",\n        \"Status\": \"Active\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75a3de73-7564-4b1b-8092-454089516540",
+          "name": "Chick-fil-A List IAM Roles",
+          "request": {
+            "name": "Chick-fil-A List IAM Roles",
+            "description": {
+              "content": "Lists IAM roles for a given account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) The AWS account number (12-digit) or account alias to scope the request to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d78c43a-5c8e-4ce3-a387-bdf2a92c036b",
+              "name": "IAM roles returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "123456789012"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"platform-deploy-role\"\n  },\n  {\n    \"Name\": \"platform-deploy-role\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8555c5cb-8175-4797-9fd3-5f5201dd97c9",
+    "name": "Chick-fil-A BOVINE Accounts Identity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

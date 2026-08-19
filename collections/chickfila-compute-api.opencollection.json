@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts Compute API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compute",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A List Public IPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/publicips",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists Elastic IP / public IP addresses and their associated instances and network interfaces for a given account."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A List EC2 Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/instances",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists EC2 instances for a given account, annotated with cluster/workload associations."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get EC2 Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/instance",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "instance",
+                "value": "i-0a1b2c3d4e5f60718",
+                "type": "query",
+                "description": "The EC2 instance ID to look up."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a single EC2 instance, including public IP, subnet, and ELB associations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

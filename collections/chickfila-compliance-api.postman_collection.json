@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "76b28979-b286-4c72-bfc8-c19549212590",
+      "name": "Compliance",
+      "description": {
+        "content": "Compliance rules and audit report operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3824d550-6f92-4ef1-8a53-f6571678d6eb",
+          "name": "Chick-fil-A List Compliance Rules",
+          "request": {
+            "name": "Chick-fil-A List Compliance Rules",
+            "description": {
+              "content": "Lists all enabled compliance rules grouped by AWS service, sourced from the rules S3 bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ac40fa2-ee99-439e-af0a-0d886e05f2ac",
+              "name": "Compliance rules returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Service\": \"s3\",\n    \"Rule\": {\n      \"name\": \"s3-public-read-prohibited\",\n      \"description\": \"Checks that S3 buckets do not allow public read access.\",\n      \"priority\": 1\n    }\n  },\n  {\n    \"Service\": \"s3\",\n    \"Rule\": {\n      \"name\": \"s3-public-read-prohibited\",\n      \"description\": \"Checks that S3 buckets do not allow public read access.\",\n      \"priority\": 1\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76939870-fef7-4abf-9e4f-b6178bc8d9b5",
+          "name": "Chick-fil-A List Compliance Reports",
+          "request": {
+            "name": "Chick-fil-A List Compliance Reports",
+            "description": {
+              "content": "Lists available compliance audit reports stored in the reports S3 bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3298489-0d2f-411f-9d73-b243b8fdd9bb",
+              "name": "Reports returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Report\": \"2026-06-01\",\n    \"LastModified\": \"2026-06-01 14:30:00+00:00\"\n  },\n  {\n    \"Report\": \"2026-06-01\",\n    \"LastModified\": \"2026-06-01 14:30:00+00:00\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1102878-02cf-4867-87b7-561249af248e",
+          "name": "Chick-fil-A Run Compliance Audit Report",
+          "request": {
+            "name": "Chick-fil-A Run Compliance Audit Report",
+            "description": {
+              "content": "Triggers an asynchronous compliance audit Lambda that generates a new compliance report.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "reports",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7657adf-002a-44e6-8098-5e045556c645",
+              "name": "Audit report run invoked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reports",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": 202\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b39495cb-6b6d-49ff-8b8d-c9c514d138b1",
+    "name": "Chick-fil-A BOVINE Accounts Compliance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a \"10,000 foot view\" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

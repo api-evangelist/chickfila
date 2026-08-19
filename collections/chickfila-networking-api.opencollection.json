@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chick-fil-A BOVINE Accounts Networking API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Networking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chick-fil-A List Security Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/securitygroups",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists EC2 security groups for a given account and region."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/securitygroup",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "securitygroup",
+                "value": "sg-0a1b2c3d4e5f60718",
+                "type": "query",
+                "description": "The security group ID to look up."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns detailed inbound and outbound rules and associated instances for a single security group."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A List Load Balancers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/elbs",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Lists elastic load balancers for a given account and region."
+        },
+        {
+          "info": {
+            "name": "Chick-fil-A Get Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.example.com/api/elb",
+            "params": [
+              {
+                "name": "account",
+                "value": "123456789012",
+                "type": "query",
+                "description": "The AWS account number (12-digit) or account alias to scope the request to."
+              },
+              {
+                "name": "elb",
+                "value": "prod-web-elb",
+                "type": "query",
+                "description": "The load balancer name to look up."
+              },
+              {
+                "name": "region",
+                "value": "us-east-1",
+                "type": "query",
+                "description": "The AWS region to scope the request to."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a single load balancer including subnets and gateway routing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
