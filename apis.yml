@@ -16,6 +16,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/chickfila.png
 tags:
   - Fast Food
+  - Restaurant
+  - Food and Beverage
+  - Loyalty
+  - Mobile Ordering
+  - Catering
+tags_raw:
+  - Fast Food
   - Restaurants
   - Food & Beverage
   - Loyalty
@@ -78,6 +85,10 @@ apis:
     name: Chick-fil-A Catering
     tags:
       - Catering
+      - Group
+      - Trays
+    tags_raw:
+      - Catering
       - Groups
       - Trays
     humanURL: https://www.chick-fil-a.com/catering
@@ -105,6 +116,8 @@ apis:
     description: AWS account inventory and metadata operations.
     humanURL: https://www.chick-fil-a.com/mobile-app
     tags:
+      - Account
+    tags_raw:
       - Accounts
     properties:
       - type: OpenAPI
