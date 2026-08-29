@@ -25,6 +25,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "chickfila-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-compliance-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-compute-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-databases-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-identity-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-networking-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-storage-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-summary-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "chickfila-system-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Chick-fil-A BOVINE Accounts Networking API
   description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
@@ -133,27 +133,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SecurityGroup:
+    LoadBalancerList:
       type: object
-      description: An EC2 security group record.
+      description: A list of load balancers for an account.
       properties:
-        Region:
-          type: string
-          example: us-east-1
-        GroupId:
-          type: string
-          example: sg-0a1b2c3d4e5f60718
-        GroupName:
-          type: string
-          example: prod-web-sg
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
+        LoadBalancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
     LoadBalancer:
       type: object
       description: An elastic load balancer record.
@@ -164,6 +151,22 @@ components:
         LoadBalancerName:
           type: string
           example: prod-web-elb
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    SecurityGroupList:
+      type: object
+      description: A list of security groups for an account.
+      properties:
+        SecurityGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroup'
     SecurityGroupDetail:
       type: object
       description: Detailed security group including inbound and outbound rules and associated instances.
@@ -191,6 +194,22 @@ components:
               Name:
                 type: string
                 example: prod-web-1
+    SecurityGroupRule:
+      type: object
+      description: A single inbound or outbound security group rule.
+      properties:
+        FromPort:
+          type: integer
+          example: 443
+        ToPort:
+          type: integer
+          example: 443
+        Protocol:
+          type: string
+          example: tcp
+        Cidr:
+          type: string
+          example: 10.0.0.0/16
     LoadBalancerDetail:
       type: object
       description: Detailed load balancer information.
@@ -212,38 +231,19 @@ components:
               items:
                 type: string
                 example: subnet-0a1b2c3d4e5f60718
-    SecurityGroupList:
+    SecurityGroup:
       type: object
-      description: A list of security groups for an account.
+      description: An EC2 security group record.
       properties:
-        SecurityGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecurityGroup'
-    SecurityGroupRule:
-      type: object
-      description: A single inbound or outbound security group rule.
-      properties:
-        FromPort:
-          type: integer
-          example: 443
-        ToPort:
-          type: integer
-          example: 443
-        Protocol:
+        Region:
           type: string
-          example: tcp
-        Cidr:
+          example: us-east-1
+        GroupId:
           type: string
-          example: 10.0.0.0/16
-    LoadBalancerList:
-      type: object
-      description: A list of load balancers for an account.
-      properties:
-        LoadBalancers:
-          type: array
-          items:
-            $ref: '#/components/schemas/LoadBalancer'
+          example: sg-0a1b2c3d4e5f60718
+        GroupName:
+          type: string
+          example: prod-web-sg
   parameters:
     RegionParam:
       name: region
