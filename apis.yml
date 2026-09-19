@@ -171,6 +171,8 @@ apis:
     description: RDS, DynamoDB, and Redshift inventory.
     humanURL: https://www.chick-fil-a.com/mobile-app
     tags:
+      - Database
+    tags_raw:
       - Databases
     properties:
       - type: OpenAPI
