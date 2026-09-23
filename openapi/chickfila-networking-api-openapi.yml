@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Chick-fil-A BOVINE Accounts Networking API
-  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  title: Chick-fil-A BOVINE Networking API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy.
   version: '1.0'
   x-generated-from: documentation
   x-source-url: https://github.com/chick-fil-a/bovine
@@ -133,67 +133,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    LoadBalancerList:
-      type: object
-      description: A list of load balancers for an account.
-      properties:
-        LoadBalancers:
-          type: array
-          items:
-            $ref: '#/components/schemas/LoadBalancer'
-    LoadBalancer:
-      type: object
-      description: An elastic load balancer record.
-      properties:
-        Region:
-          type: string
-          example: us-east-1
-        LoadBalancerName:
-          type: string
-          example: prod-web-elb
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
-    SecurityGroupList:
-      type: object
-      description: A list of security groups for an account.
-      properties:
-        SecurityGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecurityGroup'
-    SecurityGroupDetail:
-      type: object
-      description: Detailed security group including inbound and outbound rules and associated instances.
-      properties:
-        GroupId:
-          type: string
-          example: sg-0a1b2c3d4e5f60718
-        InboundRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecurityGroupRule'
-        OutboundRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecurityGroupRule'
-        Instances:
-          type: array
-          description: Instances associated with this security group.
-          items:
-            type: object
-            properties:
-              InstanceId:
-                type: string
-                example: i-0a1b2c3d4e5f60718
-              Name:
-                type: string
-                example: prod-web-1
     SecurityGroupRule:
       type: object
       description: A single inbound or outbound security group rule.
@@ -210,6 +149,32 @@ components:
         Cidr:
           type: string
           example: 10.0.0.0/16
+    LoadBalancer:
+      type: object
+      description: An elastic load balancer record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        LoadBalancerName:
+          type: string
+          example: prod-web-elb
+    SecurityGroupList:
+      type: object
+      description: A list of security groups for an account.
+      properties:
+        SecurityGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroup'
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
     LoadBalancerDetail:
       type: object
       description: Detailed load balancer information.
@@ -244,6 +209,41 @@ components:
         GroupName:
           type: string
           example: prod-web-sg
+    LoadBalancerList:
+      type: object
+      description: A list of load balancers for an account.
+      properties:
+        LoadBalancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+    SecurityGroupDetail:
+      type: object
+      description: Detailed security group including inbound and outbound rules and associated instances.
+      properties:
+        GroupId:
+          type: string
+          example: sg-0a1b2c3d4e5f60718
+        InboundRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroupRule'
+        OutboundRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGroupRule'
+        Instances:
+          type: array
+          description: Instances associated with this security group.
+          items:
+            type: object
+            properties:
+              InstanceId:
+                type: string
+                example: i-0a1b2c3d4e5f60718
+              Name:
+                type: string
+                example: prod-web-1
   parameters:
     RegionParam:
       name: region

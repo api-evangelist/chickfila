@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Chick-fil-A BOVINE Accounts Compliance API
-  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy. The backend runs on AWS Lambda behind AWS API Gateway, with data stored in DynamoDB and audit reports in S3. The API surfaces account inventory, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/ Redshift databases, S3 buckets, and compliance audit reports for security and governance teams. This specification was generated from the project's serverless.yml route definitions and Python Lambda handlers.
+  title: Chick-fil-A BOVINE Compliance API
+  description: BOVI(n)E — Building Operational Visibility Into (n) Environments — is a serverless, single-page application open-sourced by Chick-fil-A (github.com/chick-fil-a/bovine) that provides a "10,000 foot view" across all of an enterprise's AWS accounts in a multi-account strategy.
   version: '1.0'
   x-generated-from: documentation
   x-source-url: https://github.com/chick-fil-a/bovine
@@ -76,26 +76,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Report:
-      type: object
-      description: A compliance audit report stored in S3.
-      properties:
-        Report:
-          type: string
-          description: The report identifier (S3 key prefix).
-          example: 2026-06-01
-        LastModified:
-          type: string
-          description: The last-modified timestamp of the report object.
-          example: '2026-06-01 14:30:00+00:00'
-    RunReportResponse:
-      type: object
-      description: Response indicating an audit report run was invoked.
-      properties:
-        Response:
-          type: integer
-          description: The Lambda invocation status code.
-          example: 202
     ComplianceRule:
       type: object
       description: An enabled compliance rule grouped by AWS service.
@@ -120,3 +100,23 @@ components:
               type: integer
               description: Rule priority.
               example: 1
+    RunReportResponse:
+      type: object
+      description: Response indicating an audit report run was invoked.
+      properties:
+        Response:
+          type: integer
+          description: The Lambda invocation status code.
+          example: 202
+    Report:
+      type: object
+      description: A compliance audit report stored in S3.
+      properties:
+        Report:
+          type: string
+          description: The report identifier (S3 key prefix).
+          example: 2026-06-01
+        LastModified:
+          type: string
+          description: The last-modified timestamp of the report object.
+          example: '2026-06-01 14:30:00+00:00'
