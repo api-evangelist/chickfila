@@ -94,6 +94,14 @@ components:
         type: string
       example: '123456789012'
   schemas:
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
     S3Bucket:
       type: object
       description: An S3 bucket record, flagged if globally accessible.
@@ -108,14 +116,6 @@ components:
         AccountAlias:
           type: string
           example: prod-platform
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
     S3BucketDetail:
       type: object
       description: Detailed S3 bucket information including object listing.

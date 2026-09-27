@@ -113,37 +113,6 @@ components:
         type: string
       example: '123456789012'
   schemas:
-    RedshiftCluster:
-      type: object
-      description: A Redshift cluster record.
-      properties:
-        Region:
-          type: string
-          example: us-east-1
-        ClusterIdentifier:
-          type: string
-          example: analytics-prod
-        AccountAlias:
-          type: string
-          example: prod-platform
-    DynamoTableList:
-      type: object
-      description: A list of DynamoDB tables for an account.
-      properties:
-        Tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamoTable'
-    DynamoTable:
-      type: object
-      description: A DynamoDB table record.
-      properties:
-        Region:
-          type: string
-          example: us-east-1
-        TableName:
-          type: string
-          example: AWS-Accounts-Table
     MessageResponse:
       type: object
       description: Generic message wrapper used for not-found and informational responses.
@@ -152,6 +121,14 @@ components:
           type: string
           description: A human-readable message.
           example: Account not found.
+    RedshiftClusterList:
+      type: object
+      description: A list of Redshift clusters for an account.
+      properties:
+        Clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RedshiftCluster'
     RdsDatabase:
       type: object
       description: An RDS database instance record.
@@ -179,11 +156,34 @@ components:
         AccountAlias:
           type: string
           example: prod-platform
-    RedshiftClusterList:
+    RedshiftCluster:
       type: object
-      description: A list of Redshift clusters for an account.
+      description: A Redshift cluster record.
       properties:
-        Clusters:
+        Region:
+          type: string
+          example: us-east-1
+        ClusterIdentifier:
+          type: string
+          example: analytics-prod
+        AccountAlias:
+          type: string
+          example: prod-platform
+    DynamoTable:
+      type: object
+      description: A DynamoDB table record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        TableName:
+          type: string
+          example: AWS-Accounts-Table
+    DynamoTableList:
+      type: object
+      description: A list of DynamoDB tables for an account.
+      properties:
+        Tables:
           type: array
           items:
-            $ref: '#/components/schemas/RedshiftCluster'
+            $ref: '#/components/schemas/DynamoTable'

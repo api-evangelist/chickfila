@@ -98,14 +98,6 @@ components:
         type: string
       example: '123456789012'
   schemas:
-    IamRole:
-      type: object
-      description: An IAM role record for an account.
-      properties:
-        Name:
-          type: string
-          description: The IAM role name.
-          example: platform-deploy-role
     IamUserDetail:
       type: object
       description: Detailed IAM user record including policies and access keys.
@@ -157,3 +149,11 @@ components:
           type: string
           description: The IAM username.
           example: jsmith
+    IamRole:
+      type: object
+      description: An IAM role record for an account.
+      properties:
+        Name:
+          type: string
+          description: The IAM role name.
+          example: platform-deploy-role

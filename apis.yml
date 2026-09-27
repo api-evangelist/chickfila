@@ -51,21 +51,6 @@ created: '2026-05-05'
 modified: '2026-07-25'
 specificationVersion: '0.23'
 apis:
-  - aid: chickfila:chick-fil-a-mobile-app
-    name: Chick-fil-A Mobile App
-    tags:
-      - Mobile App
-      - Mobile Ordering
-      - Loyalty
-      - Pickup
-    humanURL: https://www.chick-fil-a.com/mobile-app
-    properties:
-      - url: https://www.chick-fil-a.com/mobile-app
-        type: Documentation
-    description: >-
-      The Chick-fil-A mobile app provides mobile ordering, in-restaurant pickup, curbside, drive-thru express,
-      and delivery ordering. The app manages Chick-fil-A One loyalty membership, points balance, tier progress,
-      available rewards, order history, customization, and digital receipts.
   - aid: chickfila:chick-fil-a-one
     name: Chick-fil-A One
     tags:

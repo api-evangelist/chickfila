@@ -94,16 +94,75 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    AccountParam:
-      name: account
-      in: query
-      required: true
-      description: The AWS account number (12-digit) or account alias to scope the request to.
-      schema:
-        type: string
-      example: '123456789012'
   schemas:
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    AddAccountRequest:
+      type: object
+      description: Request body to add an AWS account to BOVINE.
+      required:
+      - accountNum
+      properties:
+        accountNum:
+          type: string
+          description: The 12-digit AWS account number.
+          example: '123456789012'
+        alias:
+          type: string
+          description: The account alias.
+          example: prod-platform
+        email:
+          type: string
+          format: email
+          description: The account root contact email.
+          example: aws-prod@example.com
+        AccountOwner:
+          type: string
+          description: The account owner.
+          example: Platform Team
+        remediate:
+          type: boolean
+          description: Whether automated remediation is enabled.
+          example: false
+    AccountListItem:
+      type: object
+      description: A summary AWS account record from the accounts table.
+      properties:
+        accountNum:
+          type: string
+          description: The 12-digit AWS account number.
+          example: '123456789012'
+        alias:
+          type: string
+          description: The account alias.
+          example: prod-platform
+        email:
+          type: string
+          format: email
+          description: The account root contact email.
+          example: aws-prod@example.com
+        AccountOwner:
+          type: string
+          description: The account owner.
+          example: Platform Team
+        remediate:
+          type: boolean
+          description: Whether automated remediation is enabled for the account.
+          example: false
+    AddAccountResponse:
+      type: object
+      description: Response from adding an account.
+      properties:
+        response:
+          type: string
+          description: The result of the add operation, or an error message.
+          example: added
     AccountDetail:
       type: object
       description: Detailed AWS account metadata and risk posture.
@@ -157,71 +216,12 @@ components:
               type: integer
               description: Number of admin group members.
               example: 3
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
-    AddAccountResponse:
-      type: object
-      description: Response from adding an account.
-      properties:
-        response:
-          type: string
-          description: The result of the add operation, or an error message.
-          example: added
-    AddAccountRequest:
-      type: object
-      description: Request body to add an AWS account to BOVINE.
-      required:
-      - accountNum
-      properties:
-        accountNum:
-          type: string
-          description: The 12-digit AWS account number.
-          example: '123456789012'
-        alias:
-          type: string
-          description: The account alias.
-          example: prod-platform
-        email:
-          type: string
-          format: email
-          description: The account root contact email.
-          example: aws-prod@example.com
-        AccountOwner:
-          type: string
-          description: The account owner.
-          example: Platform Team
-        remediate:
-          type: boolean
-          description: Whether automated remediation is enabled.
-          example: false
-    AccountListItem:
-      type: object
-      description: A summary AWS account record from the accounts table.
-      properties:
-        accountNum:
-          type: string
-          description: The 12-digit AWS account number.
-          example: '123456789012'
-        alias:
-          type: string
-          description: The account alias.
-          example: prod-platform
-        email:
-          type: string
-          format: email
-          description: The account root contact email.
-          example: aws-prod@example.com
-        AccountOwner:
-          type: string
-          description: The account owner.
-          example: Platform Team
-        remediate:
-          type: boolean
-          description: Whether automated remediation is enabled for the account.
-          example: false
+  parameters:
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'

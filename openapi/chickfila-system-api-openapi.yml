@@ -80,6 +80,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PingResponse:
+      type: object
+      description: Response from the BOVINE ping/dispatch endpoint.
+      properties:
+        response:
+          type: string
+          description: The dispatched operation response payload.
+          example: ok
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
     DashboardSummary:
       type: object
       description: Aggregate dashboard statistics across all monitored AWS accounts.
@@ -100,19 +116,3 @@ components:
               type: integer
               description: Total number of IAM users across accounts.
               example: 127
-    PingResponse:
-      type: object
-      description: Response from the BOVINE ping/dispatch endpoint.
-      properties:
-        response:
-          type: string
-          description: The dispatched operation response payload.
-          example: ok
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
