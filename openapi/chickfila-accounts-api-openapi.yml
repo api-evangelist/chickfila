@@ -95,14 +95,39 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MessageResponse:
+    AddAccountResponse:
       type: object
-      description: Generic message wrapper used for not-found and informational responses.
+      description: Response from adding an account.
       properties:
-        Message:
+        response:
           type: string
-          description: A human-readable message.
-          example: Account not found.
+          description: The result of the add operation, or an error message.
+          example: added
+    AccountListItem:
+      type: object
+      description: A summary AWS account record from the accounts table.
+      properties:
+        accountNum:
+          type: string
+          description: The 12-digit AWS account number.
+          example: '123456789012'
+        alias:
+          type: string
+          description: The account alias.
+          example: prod-platform
+        email:
+          type: string
+          format: email
+          description: The account root contact email.
+          example: aws-prod@example.com
+        AccountOwner:
+          type: string
+          description: The account owner.
+          example: Platform Team
+        remediate:
+          type: boolean
+          description: Whether automated remediation is enabled for the account.
+          example: false
     AddAccountRequest:
       type: object
       description: Request body to add an AWS account to BOVINE.
@@ -130,39 +155,14 @@ components:
           type: boolean
           description: Whether automated remediation is enabled.
           example: false
-    AccountListItem:
+    MessageResponse:
       type: object
-      description: A summary AWS account record from the accounts table.
+      description: Generic message wrapper used for not-found and informational responses.
       properties:
-        accountNum:
+        Message:
           type: string
-          description: The 12-digit AWS account number.
-          example: '123456789012'
-        alias:
-          type: string
-          description: The account alias.
-          example: prod-platform
-        email:
-          type: string
-          format: email
-          description: The account root contact email.
-          example: aws-prod@example.com
-        AccountOwner:
-          type: string
-          description: The account owner.
-          example: Platform Team
-        remediate:
-          type: boolean
-          description: Whether automated remediation is enabled for the account.
-          example: false
-    AddAccountResponse:
-      type: object
-      description: Response from adding an account.
-      properties:
-        response:
-          type: string
-          description: The result of the add operation, or an error message.
-          example: added
+          description: A human-readable message.
+          example: Account not found.
     AccountDetail:
       type: object
       description: Detailed AWS account metadata and risk posture.

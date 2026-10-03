@@ -76,6 +76,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    RunReportResponse:
+      type: object
+      description: Response indicating an audit report run was invoked.
+      properties:
+        Response:
+          type: integer
+          description: The Lambda invocation status code.
+          example: 202
     ComplianceRule:
       type: object
       description: An enabled compliance rule grouped by AWS service.
@@ -112,11 +120,3 @@ components:
           type: string
           description: The last-modified timestamp of the report object.
           example: '2026-06-01 14:30:00+00:00'
-    RunReportResponse:
-      type: object
-      description: Response indicating an audit report run was invoked.
-      properties:
-        Response:
-          type: integer
-          description: The Lambda invocation status code.
-          example: 202

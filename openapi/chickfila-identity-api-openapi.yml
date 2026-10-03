@@ -88,15 +88,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    AccountParam:
-      name: account
-      in: query
-      required: true
-      description: The AWS account number (12-digit) or account alias to scope the request to.
-      schema:
-        type: string
-      example: '123456789012'
   schemas:
     IamUserDetail:
       type: object
@@ -157,3 +148,12 @@ components:
           type: string
           description: The IAM role name.
           example: platform-deploy-role
+  parameters:
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
