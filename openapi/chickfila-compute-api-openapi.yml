@@ -97,7 +97,53 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    RegionParam:
+      name: region
+      in: query
+      required: false
+      description: The AWS region to scope the request to.
+      schema:
+        type: string
+        default: us-east-1
+      example: us-east-1
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
   schemas:
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    PublicIp:
+      type: object
+      description: A public/Elastic IP address association.
+      properties:
+        PublicIP:
+          type: string
+          description: The public IP address.
+          example: 203.0.113.25
+        InstanceId:
+          type: string
+          description: The associated EC2 instance ID.
+          example: i-0a1b2c3d4e5f60718
+        PrivateIP:
+          type: string
+          description: The associated private IP address.
+          example: 10.0.4.12
+        NetworkInterface:
+          type: string
+          description: The associated network interface ID.
+          example: eni-0a1b2c3d4e5f60718
     Ec2InstanceDetail:
       type: object
       description: Detailed EC2 instance information.
@@ -140,49 +186,3 @@ components:
         Region:
           type: string
           example: us-east-1
-    PublicIp:
-      type: object
-      description: A public/Elastic IP address association.
-      properties:
-        PublicIP:
-          type: string
-          description: The public IP address.
-          example: 203.0.113.25
-        InstanceId:
-          type: string
-          description: The associated EC2 instance ID.
-          example: i-0a1b2c3d4e5f60718
-        PrivateIP:
-          type: string
-          description: The associated private IP address.
-          example: 10.0.4.12
-        NetworkInterface:
-          type: string
-          description: The associated network interface ID.
-          example: eni-0a1b2c3d4e5f60718
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
-  parameters:
-    AccountParam:
-      name: account
-      in: query
-      required: true
-      description: The AWS account number (12-digit) or account alias to scope the request to.
-      schema:
-        type: string
-      example: '123456789012'
-    RegionParam:
-      name: region
-      in: query
-      required: false
-      description: The AWS region to scope the request to.
-      schema:
-        type: string
-        default: us-east-1
-      example: us-east-1

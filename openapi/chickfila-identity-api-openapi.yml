@@ -126,6 +126,14 @@ components:
                   Status:
                     type: string
                     example: Active
+    IamRole:
+      type: object
+      description: An IAM role record for an account.
+      properties:
+        Name:
+          type: string
+          description: The IAM role name.
+          example: platform-deploy-role
     IamUserSummary:
       type: object
       description: A summary IAM user record for an account.
@@ -140,14 +148,6 @@ components:
           type: string
           description: The IAM username.
           example: jsmith
-    IamRole:
-      type: object
-      description: An IAM role record for an account.
-      properties:
-        Name:
-          type: string
-          description: The IAM role name.
-          example: platform-deploy-role
   parameters:
     AccountParam:
       name: account

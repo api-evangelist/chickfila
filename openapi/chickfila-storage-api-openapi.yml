@@ -76,14 +76,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    AccountParam:
-      name: account
-      in: query
-      required: true
-      description: The AWS account number (12-digit) or account alias to scope the request to.
-      schema:
-        type: string
-      example: '123456789012'
     RegionParam:
       name: region
       in: query
@@ -93,7 +85,23 @@ components:
         type: string
         default: us-east-1
       example: us-east-1
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
   schemas:
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
     S3BucketDetail:
       type: object
       description: Detailed S3 bucket information including object listing.
@@ -132,11 +140,3 @@ components:
         AccountAlias:
           type: string
           example: prod-platform
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.

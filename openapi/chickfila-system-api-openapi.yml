@@ -80,14 +80,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
     DashboardSummary:
       type: object
       description: Aggregate dashboard statistics across all monitored AWS accounts.
@@ -116,3 +108,11 @@ components:
           type: string
           description: The dispatched operation response payload.
           example: ok
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.

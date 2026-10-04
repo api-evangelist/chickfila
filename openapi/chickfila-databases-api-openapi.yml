@@ -94,7 +94,72 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    RegionParam:
+      name: region
+      in: query
+      required: false
+      description: The AWS region to scope the request to.
+      schema:
+        type: string
+        default: us-east-1
+      example: us-east-1
+    AccountParam:
+      name: account
+      in: query
+      required: true
+      description: The AWS account number (12-digit) or account alias to scope the request to.
+      schema:
+        type: string
+      example: '123456789012'
   schemas:
+    MessageResponse:
+      type: object
+      description: Generic message wrapper used for not-found and informational responses.
+      properties:
+        Message:
+          type: string
+          description: A human-readable message.
+          example: Account not found.
+    DynamoTable:
+      type: object
+      description: A DynamoDB table record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        TableName:
+          type: string
+          example: AWS-Accounts-Table
+    DynamoTableList:
+      type: object
+      description: A list of DynamoDB tables for an account.
+      properties:
+        Tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamoTable'
+    RedshiftClusterList:
+      type: object
+      description: A list of Redshift clusters for an account.
+      properties:
+        Clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RedshiftCluster'
+    RedshiftCluster:
+      type: object
+      description: A Redshift cluster record.
+      properties:
+        Region:
+          type: string
+          example: us-east-1
+        ClusterIdentifier:
+          type: string
+          example: analytics-prod
+        AccountAlias:
+          type: string
+          example: prod-platform
     RdsDatabase:
       type: object
       description: An RDS database instance record.
@@ -122,68 +187,3 @@ components:
         AccountAlias:
           type: string
           example: prod-platform
-    DynamoTableList:
-      type: object
-      description: A list of DynamoDB tables for an account.
-      properties:
-        Tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamoTable'
-    RedshiftCluster:
-      type: object
-      description: A Redshift cluster record.
-      properties:
-        Region:
-          type: string
-          example: us-east-1
-        ClusterIdentifier:
-          type: string
-          example: analytics-prod
-        AccountAlias:
-          type: string
-          example: prod-platform
-    RedshiftClusterList:
-      type: object
-      description: A list of Redshift clusters for an account.
-      properties:
-        Clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/RedshiftCluster'
-    DynamoTable:
-      type: object
-      description: A DynamoDB table record.
-      properties:
-        Region:
-          type: string
-          example: us-east-1
-        TableName:
-          type: string
-          example: AWS-Accounts-Table
-    MessageResponse:
-      type: object
-      description: Generic message wrapper used for not-found and informational responses.
-      properties:
-        Message:
-          type: string
-          description: A human-readable message.
-          example: Account not found.
-  parameters:
-    AccountParam:
-      name: account
-      in: query
-      required: true
-      description: The AWS account number (12-digit) or account alias to scope the request to.
-      schema:
-        type: string
-      example: '123456789012'
-    RegionParam:
-      name: region
-      in: query
-      required: false
-      description: The AWS region to scope the request to.
-      schema:
-        type: string
-        default: us-east-1
-      example: us-east-1
