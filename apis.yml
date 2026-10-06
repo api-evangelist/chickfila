@@ -48,7 +48,7 @@ description: >-
   Chick-fil-A One tiered loyalty program, the Chick-fil-A mobile app for ordering and rewards, the catering platform,
   and eGift Cards.
 created: '2026-05-05'
-modified: '2026-07-25'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
   - aid: chickfila:chick-fil-a-one
@@ -232,6 +232,8 @@ apis:
       - type: SourceCode
         url: https://github.com/chick-fil-a/bovine
 common:
+  - url: https://www.chick-fil-a.com/feed
+    type: BlogRSS
   - type: IssueTracker
     url: https://github.com/chick-fil-a/bovine/issues
   - type: License
