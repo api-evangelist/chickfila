@@ -95,6 +95,67 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AccountDetail:
+      type: object
+      description: Detailed AWS account metadata and risk posture.
+      properties:
+        Account:
+          type: object
+          description: The account detail payload.
+          properties:
+            accountNum:
+              type: string
+              description: The 12-digit AWS account number.
+              example: '123456789012'
+            owner:
+              type: string
+              description: The account owner.
+              example: Platform Team
+            alias:
+              type: string
+              description: The account alias.
+              example: prod-platform
+            email:
+              type: string
+              format: email
+              description: The account root contact email.
+              example: aws-prod@example.com
+            iam:
+              type: integer
+              description: Number of IAM users in the account.
+              example: 18
+            publicIP:
+              type: integer
+              description: Number of public IP addresses in the account.
+              example: 6
+            riskysg:
+              type: integer
+              description: Number of risky security groups detected.
+              example: 2
+            unusedsg:
+              type: integer
+              description: Number of unused security groups detected.
+              example: 5
+            bastion:
+              type: string
+              description: The bastion host identifier, if present.
+              example: bastion-prod-1
+            risk_score:
+              type: integer
+              description: The computed risk score for the account.
+              example: -1
+            admins:
+              type: integer
+              description: Number of admin group members.
+              example: 3
+    AddAccountResponse:
+      type: object
+      description: Response from adding an account.
+      properties:
+        response:
+          type: string
+          description: The result of the add operation, or an error message.
+          example: added
     AddAccountRequest:
       type: object
       description: Request body to add an AWS account to BOVINE.
@@ -155,67 +216,6 @@ components:
           type: boolean
           description: Whether automated remediation is enabled for the account.
           example: false
-    AddAccountResponse:
-      type: object
-      description: Response from adding an account.
-      properties:
-        response:
-          type: string
-          description: The result of the add operation, or an error message.
-          example: added
-    AccountDetail:
-      type: object
-      description: Detailed AWS account metadata and risk posture.
-      properties:
-        Account:
-          type: object
-          description: The account detail payload.
-          properties:
-            accountNum:
-              type: string
-              description: The 12-digit AWS account number.
-              example: '123456789012'
-            owner:
-              type: string
-              description: The account owner.
-              example: Platform Team
-            alias:
-              type: string
-              description: The account alias.
-              example: prod-platform
-            email:
-              type: string
-              format: email
-              description: The account root contact email.
-              example: aws-prod@example.com
-            iam:
-              type: integer
-              description: Number of IAM users in the account.
-              example: 18
-            publicIP:
-              type: integer
-              description: Number of public IP addresses in the account.
-              example: 6
-            riskysg:
-              type: integer
-              description: Number of risky security groups detected.
-              example: 2
-            unusedsg:
-              type: integer
-              description: Number of unused security groups detected.
-              example: 5
-            bastion:
-              type: string
-              description: The bastion host identifier, if present.
-              example: bastion-prod-1
-            risk_score:
-              type: integer
-              description: The computed risk score for the account.
-              example: -1
-            admins:
-              type: integer
-              description: Number of admin group members.
-              example: 3
   parameters:
     AccountParam:
       name: account

@@ -89,6 +89,20 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    IamUserSummary:
+      type: object
+      description: A summary IAM user record for an account.
+      properties:
+        Account:
+          type: object
+          properties:
+            accountNum:
+              type: string
+              example: '123456789012'
+        Username:
+          type: string
+          description: The IAM username.
+          example: jsmith
     IamUserDetail:
       type: object
       description: Detailed IAM user record including policies and access keys.
@@ -134,20 +148,6 @@ components:
           type: string
           description: The IAM role name.
           example: platform-deploy-role
-    IamUserSummary:
-      type: object
-      description: A summary IAM user record for an account.
-      properties:
-        Account:
-          type: object
-          properties:
-            accountNum:
-              type: string
-              example: '123456789012'
-        Username:
-          type: string
-          description: The IAM username.
-          example: jsmith
   parameters:
     AccountParam:
       name: account
