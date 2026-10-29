@@ -1,4 +1,4 @@
-# Chick-fil-A (chickfila)
+# Chick-fil-A
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,176 +66,228 @@
 
 Chick-fil-A is an American fast-food restaurant chain specializing in chicken sandwiches and operating over 3,000 locations across the United States. Known for customer service and a closed-on-Sunday policy, Chick-fil-A operates the Chick-fil-A One tiered loyalty program, the Chick-fil-A mobile app for ordering and rewards, the catering platform, and eGift Cards.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/chickfila/refs/heads/main/apis.yml)
+**Areas:** Fast Food · Restaurant · Food and Beverage · Loyalty · Mobile Ordering · Catering
 
-## Scope
+## Chick-fil-A on APIs.io
 
-- **Type:** Index
+Everything profiled for Chick-fil-A is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/chickfila/](https://apis.io/providers/chickfila/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (13)
 
-- Fast Food
-- Restaurants
-- Food & Beverage
-- Loyalty
-- Mobile Ordering
-- Catering
+- [Chick-fil-A One](https://apis.io/apis/chickfila/chick-fil-a-one/) — Chick-fil-A One is the tiered loyalty rewards program with four levels (Member, Silver, Red, Signature) offering 10-13 points per dollar, food rewards…
+- [Chick-fil-A Online Ordering](https://apis.io/apis/chickfila/chick-fil-a-ordering/) — Chick-fil-A's online ordering platform at order.chick-fil-a.com supports pickup, drive-thru, curbside, dine-in, and delivery ordering. Integrated with the…
+- [Chick-fil-A Catering](https://apis.io/apis/chickfila/chick-fil-a-catering/) — Chick-fil-A's catering platform for ordering party trays, packaged meals, entrees, and sides for groups. Supports same-day and advance scheduling, with…
+- [Chick-fil-A eGift Cards](https://apis.io/apis/chickfila/chick-fil-a-egift-cards/) — Chick-fil-A eGift Cards in denominations from $5 to $100 are deliverable via email and redeemable in-restaurant, through the mobile app, and via the online…
+- [Chick-fil-A Accounts API](https://apis.io/apis/chickfila/chickfila-accounts-api/) — AWS account inventory and metadata operations.
+- [Chick-fil-A Compliance API](https://apis.io/apis/chickfila/chickfila-compliance-api/) — Compliance rules and audit report operations.
+- [Chick-fil-A Compute API](https://apis.io/apis/chickfila/chickfila-compute-api/) — EC2 instances and public IP address operations.
+- [Chick-fil-A Databases API](https://apis.io/apis/chickfila/chickfila-databases-api/) — RDS, DynamoDB, and Redshift inventory.
+- [Chick-fil-A Identity API](https://apis.io/apis/chickfila/chickfila-identity-api/) — IAM users and roles across accounts.
+- [Chick-fil-A Networking API](https://apis.io/apis/chickfila/chickfila-networking-api/) — Security groups and load balancers.
+- [Chick-fil-A Storage API](https://apis.io/apis/chickfila/chickfila-storage-api/) — S3 bucket inventory and object listing.
+- [Chick-fil-A Summary API](https://apis.io/apis/chickfila/chickfila-summary-api/) — Aggregate counts across accounts.
+- [Chick-fil-A System API](https://apis.io/apis/chickfila/chickfila-system-api/) — Health and configuration operations.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-05
-- **Modified:** 2026-06-02
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Chick-fil-A Mobile App
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Chick-fil-A mobile app provides mobile ordering, in-restaurant pickup, curbside, drive-thru express, and delivery ordering. The app manages Chick-fil-A One loyalty membership, points balance, tier progress, available rewards, order history, customization, and digital receipts.
+- [Chickfila Agentic Access](https://apis.io/agentic-access/chickfila/chickfila-agentic-access/)
 
-- **Human URL:** [https://www.chick-fil-a.com/mobile-app](https://www.chick-fil-a.com/mobile-app)
+#### JSON Schema (31)
 
-#### Tags
+The data models the API reads and writes.
 
-- Mobile App
-- Mobile Ordering
-- Loyalty
-- Pickup
+- [AccountDetail](https://apis.io/schemas/chickfila/bovine-account-detail/)
+- [AccountListItem](https://apis.io/schemas/chickfila/bovine-account-list-item/)
+- [AddAccountRequest](https://apis.io/schemas/chickfila/bovine-add-account-request/)
+- [AddAccountResponse](https://apis.io/schemas/chickfila/bovine-add-account-response/)
+- [ComplianceRule](https://apis.io/schemas/chickfila/bovine-compliance-rule/)
+- [CountSummary](https://apis.io/schemas/chickfila/bovine-count-summary/)
+- [DashboardSummary](https://apis.io/schemas/chickfila/bovine-dashboard-summary/)
+- [DynamoTable](https://apis.io/schemas/chickfila/bovine-dynamo-table/)
+- [DynamoTableList](https://apis.io/schemas/chickfila/bovine-dynamo-table-list/)
+- [Ec2Instance](https://apis.io/schemas/chickfila/bovine-ec2-instance/)
+- [Ec2InstanceDetail](https://apis.io/schemas/chickfila/bovine-ec2-instance-detail/)
+- [IamRole](https://apis.io/schemas/chickfila/bovine-iam-role/)
+- [IamUserDetail](https://apis.io/schemas/chickfila/bovine-iam-user-detail/)
+- [IamUserSummary](https://apis.io/schemas/chickfila/bovine-iam-user-summary/)
+- [LoadBalancer](https://apis.io/schemas/chickfila/bovine-load-balancer/)
+- [LoadBalancerDetail](https://apis.io/schemas/chickfila/bovine-load-balancer-detail/)
+- [LoadBalancerList](https://apis.io/schemas/chickfila/bovine-load-balancer-list/)
+- [MessageResponse](https://apis.io/schemas/chickfila/bovine-message-response/)
+- [PingResponse](https://apis.io/schemas/chickfila/bovine-ping-response/)
+- [PublicIp](https://apis.io/schemas/chickfila/bovine-public-ip/)
+- [RdsDatabase](https://apis.io/schemas/chickfila/bovine-rds-database/)
+- [RedshiftCluster](https://apis.io/schemas/chickfila/bovine-redshift-cluster/)
+- [RedshiftClusterList](https://apis.io/schemas/chickfila/bovine-redshift-cluster-list/)
+- [Report](https://apis.io/schemas/chickfila/bovine-report/)
+- [RunReportResponse](https://apis.io/schemas/chickfila/bovine-run-report-response/)
+- …and 6 more published on APIs.io
 
-#### Properties
+#### JSON Structure (31)
 
-- [Documentation](https://www.chick-fil-a.com/mobile-app)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### Chick-fil-A One
+- [Bovine Account Detail Structure](https://apis.io/json-structure/chickfila/bovine-account-detail-structure/)
+- [Bovine Account List Item Structure](https://apis.io/json-structure/chickfila/bovine-account-list-item-structure/)
+- [Bovine Add Account Request Structure](https://apis.io/json-structure/chickfila/bovine-add-account-request-structure/)
+- [Bovine Add Account Response Structure](https://apis.io/json-structure/chickfila/bovine-add-account-response-structure/)
+- [Bovine Compliance Rule Structure](https://apis.io/json-structure/chickfila/bovine-compliance-rule-structure/)
+- [Bovine Count Summary Structure](https://apis.io/json-structure/chickfila/bovine-count-summary-structure/)
+- [Bovine Dashboard Summary Structure](https://apis.io/json-structure/chickfila/bovine-dashboard-summary-structure/)
+- [Bovine Dynamo Table List Structure](https://apis.io/json-structure/chickfila/bovine-dynamo-table-list-structure/)
+- [Bovine Dynamo Table Structure](https://apis.io/json-structure/chickfila/bovine-dynamo-table-structure/)
+- [Bovine Ec2 Instance Detail Structure](https://apis.io/json-structure/chickfila/bovine-ec2-instance-detail-structure/)
+- [Bovine Ec2 Instance Structure](https://apis.io/json-structure/chickfila/bovine-ec2-instance-structure/)
+- [Bovine Iam Role Structure](https://apis.io/json-structure/chickfila/bovine-iam-role-structure/)
+- [Bovine Iam User Detail Structure](https://apis.io/json-structure/chickfila/bovine-iam-user-detail-structure/)
+- [Bovine Iam User Summary Structure](https://apis.io/json-structure/chickfila/bovine-iam-user-summary-structure/)
+- [Bovine Load Balancer Detail Structure](https://apis.io/json-structure/chickfila/bovine-load-balancer-detail-structure/)
+- [Bovine Load Balancer List Structure](https://apis.io/json-structure/chickfila/bovine-load-balancer-list-structure/)
+- [Bovine Load Balancer Structure](https://apis.io/json-structure/chickfila/bovine-load-balancer-structure/)
+- [Bovine Message Response Structure](https://apis.io/json-structure/chickfila/bovine-message-response-structure/)
+- [Bovine Ping Response Structure](https://apis.io/json-structure/chickfila/bovine-ping-response-structure/)
+- [Bovine Public Ip Structure](https://apis.io/json-structure/chickfila/bovine-public-ip-structure/)
+- [Bovine Rds Database Structure](https://apis.io/json-structure/chickfila/bovine-rds-database-structure/)
+- [Bovine Redshift Cluster List Structure](https://apis.io/json-structure/chickfila/bovine-redshift-cluster-list-structure/)
+- [Bovine Redshift Cluster Structure](https://apis.io/json-structure/chickfila/bovine-redshift-cluster-structure/)
+- [Bovine Report Structure](https://apis.io/json-structure/chickfila/bovine-report-structure/)
+- [Bovine Run Report Response Structure](https://apis.io/json-structure/chickfila/bovine-run-report-response-structure/)
+- …and 6 more published on APIs.io
 
-Chick-fil-A One is the tiered loyalty rewards program with four levels (Member, Silver, Red, Signature) offering 10-13 points per dollar, food rewards starting at 200 points, member-tier benefits including reward gifting, Backstage Tour invitations, exclusive rewards, and birthday rewards.
+#### JSON-LD (1)
 
-- **Human URL:** [https://www.chick-fil-a.com/one](https://www.chick-fil-a.com/one)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Chickfila Bovine Context](https://apis.io/jsonld/chickfila/chickfila-bovine-context/)
 
-- Loyalty
-- Rewards
-- Tiered Membership
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://www.chick-fil-a.com/one)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Chickfila Vocabulary](https://apis.io/vocabularies/chickfila/chickfila-vocabulary/)
 
-### Chick-fil-A Online Ordering
+#### Examples (31)
 
-Chick-fil-A's online ordering platform at order.chick-fil-a.com supports pickup, drive-thru, curbside, dine-in, and delivery ordering. Integrated with the Chick-fil-A One loyalty program for points earning and reward redemption.
+Example requests and responses.
 
-- **Human URL:** [https://order.chick-fil-a.com/](https://order.chick-fil-a.com/)
+- [Bovine Account Detail Example](https://apis.io/examples/chickfila/bovine-account-detail-example/)
+- [Bovine Account List Item Example](https://apis.io/examples/chickfila/bovine-account-list-item-example/)
+- [Bovine Add Account Request Example](https://apis.io/examples/chickfila/bovine-add-account-request-example/)
+- [Bovine Add Account Response Example](https://apis.io/examples/chickfila/bovine-add-account-response-example/)
+- [Bovine Compliance Rule Example](https://apis.io/examples/chickfila/bovine-compliance-rule-example/)
+- [Bovine Count Summary Example](https://apis.io/examples/chickfila/bovine-count-summary-example/)
+- [Bovine Dashboard Summary Example](https://apis.io/examples/chickfila/bovine-dashboard-summary-example/)
+- [Bovine Dynamo Table Example](https://apis.io/examples/chickfila/bovine-dynamo-table-example/)
+- [Bovine Dynamo Table List Example](https://apis.io/examples/chickfila/bovine-dynamo-table-list-example/)
+- [Bovine Ec2 Instance Detail Example](https://apis.io/examples/chickfila/bovine-ec2-instance-detail-example/)
+- [Bovine Ec2 Instance Example](https://apis.io/examples/chickfila/bovine-ec2-instance-example/)
+- [Bovine Iam Role Example](https://apis.io/examples/chickfila/bovine-iam-role-example/)
+- [Bovine Iam User Detail Example](https://apis.io/examples/chickfila/bovine-iam-user-detail-example/)
+- [Bovine Iam User Summary Example](https://apis.io/examples/chickfila/bovine-iam-user-summary-example/)
+- [Bovine Load Balancer Detail Example](https://apis.io/examples/chickfila/bovine-load-balancer-detail-example/)
+- [Bovine Load Balancer Example](https://apis.io/examples/chickfila/bovine-load-balancer-example/)
+- [Bovine Load Balancer List Example](https://apis.io/examples/chickfila/bovine-load-balancer-list-example/)
+- [Bovine Message Response Example](https://apis.io/examples/chickfila/bovine-message-response-example/)
+- [Bovine Ping Response Example](https://apis.io/examples/chickfila/bovine-ping-response-example/)
+- [Bovine Public Ip Example](https://apis.io/examples/chickfila/bovine-public-ip-example/)
+- [Bovine Rds Database Example](https://apis.io/examples/chickfila/bovine-rds-database-example/)
+- [Bovine Redshift Cluster Example](https://apis.io/examples/chickfila/bovine-redshift-cluster-example/)
+- [Bovine Redshift Cluster List Example](https://apis.io/examples/chickfila/bovine-redshift-cluster-list-example/)
+- [Bovine Report Example](https://apis.io/examples/chickfila/bovine-report-example/)
+- [Bovine Run Report Response Example](https://apis.io/examples/chickfila/bovine-run-report-response-example/)
+- …and 6 more published on APIs.io
 
-#### Tags
+#### Collections (10)
 
-- Online Ordering
-- Pickup
-- Delivery
-- Drive-Thru
+Postman and Open Collection request collections.
 
-#### Properties
+- [Chick-fil-A BOVINE Accounts API](https://apis.io/collections/chickfila/open-chickfila-accounts-api/)
+- [Chick-fil-A BOVINE API](https://apis.io/collections/chickfila/open-chickfila-bovine/)
+- [Chick-fil-A BOVINE Accounts Compliance API](https://apis.io/collections/chickfila/open-chickfila-compliance-api/)
+- [Chick-fil-A BOVINE Accounts Compute API](https://apis.io/collections/chickfila/open-chickfila-compute-api/)
+- [Chick-fil-A BOVINE Accounts Databases API](https://apis.io/collections/chickfila/open-chickfila-databases-api/)
+- [Chick-fil-A BOVINE Accounts Identity API](https://apis.io/collections/chickfila/open-chickfila-identity-api/)
+- [Chick-fil-A BOVINE Accounts Networking API](https://apis.io/collections/chickfila/open-chickfila-networking-api/)
+- [Chick-fil-A BOVINE Accounts Storage API](https://apis.io/collections/chickfila/open-chickfila-storage-api/)
+- [Chick-fil-A BOVINE Accounts Summary API](https://apis.io/collections/chickfila/open-chickfila-summary-api/)
+- [Chick-fil-A BOVINE Accounts System API](https://apis.io/collections/chickfila/open-chickfila-system-api/)
 
-- [Documentation](https://order.chick-fil-a.com/)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### Chick-fil-A Catering
+Spectral rulesets for the provider's contracts.
 
-Chick-fil-A's catering platform for ordering party trays, packaged meals, entrees, and sides for groups. Supports same-day and advance scheduling, with pickup or delivery via local restaurant coordination.
+- [Chick-fil-A — jsonschema rules](https://apis.io/rules/chickfila/chickfila-jsonschema-spectral-rules/)
+- [Chick-fil-A API Rules](https://apis.io/rules/chickfila/chickfila-spectral-rules/)
 
-- **Human URL:** [https://www.chick-fil-a.com/catering](https://www.chick-fil-a.com/catering)
+#### Security (1)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Catering
-- Groups
-- Trays
+- [Chickfila Domain Security](https://apis.io/security/chickfila/chickfila-domain-security/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://www.chick-fil-a.com/catering)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Chick-fil-A eGift Cards
-
-Chick-fil-A eGift Cards in denominations from $5 to $100 are deliverable via email and redeemable in-restaurant, through the mobile app, and via the online ordering platform.
-
-- **Human URL:** [https://www.chick-fil-a.com/gift-cards](https://www.chick-fil-a.com/gift-cards)
-
-#### Tags
-
-- Gift Cards
-- Digital Gifts
-- Payments
-
-#### Properties
-
-- [Documentation](https://www.chick-fil-a.com/gift-cards)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-
-#### Tags
-
-- Locations
-- Store Locator
-- Restaurants
-
-#### Properties
-
-- [Documentation](https://www.chick-fil-a.com/locations)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chick-fil-A BOVINE
-
-BOVI(n)E (Building Operational Visibility Into (n) Environments) is a serverless, open-source AWS multi-account governance dashboard published by Chick-fil-A. Built on AWS Lambda, API Gateway, DynamoDB, S3, and an AngularJS front end with Cognito auth, it provides a single-pane view of accounts, IAM users and roles, EC2 instances, public IPs, security groups, load balancers, RDS/DynamoDB/Redshift databases, S3 buckets, and compliance audit reports across an enterprise AWS estate. This is the only Chick-fil-A repository exposing a documented HTTP API surface; the company operates no public consumer developer API.
-
-- **Human URL:** [https://github.com/chick-fil-a/bovine](https://github.com/chick-fil-a/bovine)
-
-#### Tags
-
-- Open Source
-- Cloud Governance
-- Security
-- AWS
-- Observability
-
-#### Properties
-
-- [Documentation](https://github.com/chick-fil-a/bovine)
-- [OpenAPI](openapi/chickfila-bovine.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chickfila-bovine.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chickfila-bovine.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Source Code](https://github.com/chick-fil-a/bovine)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/chick-fil-a)
-- [LinkedIn](https://www.linkedin.com/company/chick-fil-a-corporate)
 - [Website](https://www.chick-fil-a.com/)
-- [Login](https://www.chick-fil-a.com/sign-in)
-- [Sign Up](https://www.chick-fil-a.com/sign-up)
-- [Ordering](https://order.chick-fil-a.com/)
-- [Rules](rules/chickfila-spectral-rules.yml)
-- [Vocabulary](vocabulary/chickfila-vocabulary.yml)
 - [Blog](https://medium.com/chick-fil-atech)
-- [Tools](https://github.com/chick-fil-a/gha-docker-run)
-- [Tools](https://github.com/chick-fil-a/gha-clear-workspace)
-- [Tools](https://github.com/chick-fil-a/hoovesup)
-- [Code Examples](https://github.com/chick-fil-a/gitops)
-- [Code Examples](https://github.com/chick-fil-a/kustomize-application)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [GitHub](https://github.com/chick-fil-a)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 17.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 22.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 6.6 |
+
+**Agent readiness 23.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/chickfila/](https://apis.io/providers/chickfila/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Chick-fil-A: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/chickfila/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
